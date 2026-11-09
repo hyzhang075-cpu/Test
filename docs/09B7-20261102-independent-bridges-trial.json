@@ -1,0 +1,680 @@
+{
+  "source": "C:\\Users\\hyzha\\Desktop\\shape-sensing-integrate-1\\params\\09B7_20261102_boundary_review_candidate.json",
+  "phase_basis": "assembled phase at first support point versus unchanged stored local reference; diagnostic, not independent physical phase ground truth",
+  "use_full_transported_phase": false,
+  "bridge_bound_rad_per_m": 100.0,
+  "directions": {
+    "0": {
+      "samples": [
+        {
+          "region": "end15cm",
+          "radius_mm": 2000,
+          "before_deg": 153.194734352128,
+          "after_deg": 0.008642621504340624
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 1500,
+          "before_deg": 151.41997304153494,
+          "after_deg": 0.07253843128091658
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 1000,
+          "before_deg": 151.39035287489867,
+          "after_deg": 0.10362377334582297
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 800,
+          "before_deg": 152.04987930049873,
+          "after_deg": 0.03365389692069592
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 600,
+          "before_deg": 151.6301204946396,
+          "after_deg": 0.024667963562873367
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 400,
+          "before_deg": 153.74833382717563,
+          "after_deg": 0.04009176336232346
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 300,
+          "before_deg": 156.6744816740114,
+          "after_deg": 0.042671783748707566
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 200,
+          "before_deg": 156.78947816879207,
+          "after_deg": 0.024156449339766586
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 100,
+          "before_deg": 159.81783014424684,
+          "after_deg": 0.00021551004094852856
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 75,
+          "before_deg": 159.81807321774946,
+          "after_deg": 0.00021358676502864605
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 50,
+          "before_deg": 160.4551091430367,
+          "after_deg": 0.00042748716693217495
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 30,
+          "before_deg": 158.59261441545513,
+          "after_deg": 0.0006563710145658967
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 2000,
+          "before_deg": 120.56624284159773,
+          "after_deg": 0.08665475157444423
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 1500,
+          "before_deg": 119.53557508403637,
+          "after_deg": 0.09790216472256259
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 1000,
+          "before_deg": 119.0681332889672,
+          "after_deg": 0.1154395325450376
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 800,
+          "before_deg": 124.15554423199205,
+          "after_deg": 0.18142509979510524
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 600,
+          "before_deg": 126.94730138560786,
+          "after_deg": 0.15202751775486775
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 400,
+          "before_deg": 156.56581175627537,
+          "after_deg": 0.0678681777680195
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 300,
+          "before_deg": 146.06463700541872,
+          "after_deg": 0.19589094615597083
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 200,
+          "before_deg": 144.7473850967367,
+          "after_deg": 0.19183835463659502
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 100,
+          "before_deg": 150.48350874372053,
+          "after_deg": 0.13097895189052952
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 75,
+          "before_deg": 153.95586568923395,
+          "after_deg": 0.45288367993039136
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 50,
+          "before_deg": 156.86594483866148,
+          "after_deg": 0.30297495928986756
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 30,
+          "before_deg": 160.73235760990028,
+          "after_deg": 0.004756990944191832
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 20,
+          "before_deg": 170.13394320273892,
+          "after_deg": 0.000556424847323035
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 15,
+          "before_deg": 171.19125399065925,
+          "after_deg": 0.0006593601962109984
+        }
+      ],
+      "bridge_coefficients": {
+        "end15cm": [
+          -87.17446447653309,
+          -82.73739324848754,
+          -85.97192438374908,
+          -83.92111584496898,
+          -85.54487946100059,
+          -85.50566700370636,
+          -85.41105605831406,
+          -85.40474019737121,
+          -85.40461885819818
+        ],
+        "end5cm": [
+          -4.923563343954153,
+          -8.449388796898727,
+          -6.769390105709495,
+          -9.205991008611592,
+          -8.088289751396314,
+          -5.84258697595633,
+          -5.733888206134433,
+          -4.444022002237672,
+          -7.3099416639842065,
+          -3.1797021364908233,
+          -19.81604387433121
+        ]
+      },
+      "max_after_deg": {
+        "end15cm": 0.10362377334582297,
+        "end5cm": 0.45288367993039136
+      },
+      "geometry_before": {
+        "full": {
+          "point_ratio": 0.012595524910858946,
+          "end_ratio": 0.054924284377219496,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        },
+        "end15cm": {
+          "point_ratio": 0.19378161036676522,
+          "end_ratio": 0.4520555140034572,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        },
+        "end5cm": {
+          "point_ratio": 0.25688330031334666,
+          "end_ratio": 0.49043585505919457,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        }
+      },
+      "geometry_after": {
+        "full": {
+          "point_ratio": 0.009678841836156615,
+          "end_ratio": 0.016315123625844925,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        },
+        "end15cm": {
+          "point_ratio": 0.12197996808700516,
+          "end_ratio": 0.27106054796290213,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        },
+        "end5cm": {
+          "point_ratio": 0.1736688386262545,
+          "end_ratio": 0.28018250344439827,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        }
+      }
+    },
+    "120": {
+      "samples": [
+        {
+          "region": "end15cm",
+          "radius_mm": 2000,
+          "before_deg": 160.75480380410858,
+          "after_deg": 0.008034637592054769
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 1500,
+          "before_deg": 171.5581205574432,
+          "after_deg": 0.10753318221082048
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 1000,
+          "before_deg": 176.92556284733794,
+          "after_deg": 0.03927062149130077
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 800,
+          "before_deg": 172.61403771390283,
+          "after_deg": 0.15886866843410305
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 600,
+          "before_deg": 178.42504583833616,
+          "after_deg": 0.030488032230934863
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 400,
+          "before_deg": 179.33862910162821,
+          "after_deg": 0.01065574278796697
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 300,
+          "before_deg": 174.90460644251178,
+          "after_deg": 0.0028637005838445893
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 200,
+          "before_deg": 172.6679215361851,
+          "after_deg": 0.0002597276018230915
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 100,
+          "before_deg": 174.9707920678449,
+          "after_deg": 0.00021019694491224923
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 75,
+          "before_deg": 175.02689129300882,
+          "after_deg": 0.0001936861534666961
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 50,
+          "before_deg": 176.74478082502793,
+          "after_deg": 0.0003948000424184849
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 30,
+          "before_deg": 177.47653166371742,
+          "after_deg": 0.0005909064747308864
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 2000,
+          "before_deg": 175.87782839324763,
+          "after_deg": 0.7243392204593833
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 1500,
+          "before_deg": 167.270806270501,
+          "after_deg": 1.3340707147771413
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 1000,
+          "before_deg": 169.52890732743492,
+          "after_deg": 0.10808276988105182
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 800,
+          "before_deg": 154.9118133348309,
+          "after_deg": 0.836350375408609
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 600,
+          "before_deg": 150.8425699777879,
+          "after_deg": 0.08757177585473505
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 400,
+          "before_deg": 167.08222040003318,
+          "after_deg": 0.03589652284147862
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 300,
+          "before_deg": 156.46300707992597,
+          "after_deg": 0.0060599770754055345
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 200,
+          "before_deg": 139.4790021180058,
+          "after_deg": 0.002630879695402193
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 100,
+          "before_deg": 147.85584912246608,
+          "after_deg": 0.18218643051918723
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 75,
+          "before_deg": 153.46296980199094,
+          "after_deg": 0.3610363954589904
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 50,
+          "before_deg": 160.1736356202899,
+          "after_deg": 0.1801563338942043
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 30,
+          "before_deg": 165.55668404198613,
+          "after_deg": 0.0002153018301065719
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 20,
+          "before_deg": 176.25136182088966,
+          "after_deg": 0.0001538140361351685
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 15,
+          "before_deg": 178.0534184320558,
+          "after_deg": 0.0002689352595868304
+        }
+      ],
+      "bridge_coefficients": {
+        "end15cm": [
+          -77.22802395311,
+          -79.25786419691816,
+          -78.25635421186105,
+          -79.28093935620028,
+          -79.12158982790262,
+          -80.38946108818253,
+          -79.95114179392192,
+          -79.9508084065147,
+          -79.95070907070688
+        ],
+        "end5cm": [
+          -16.671706134947396,
+          9.825723377470872,
+          -6.100763619647638,
+          0.5570663124532775,
+          -2.576301306394181,
+          -2.4887457459406166,
+          -1.4900882123001253,
+          -1.4130254819110448,
+          -0.3479788285037615,
+          -0.36937530983339845,
+          -18.80289762194082
+        ]
+      },
+      "max_after_deg": {
+        "end15cm": 0.15886866843410305,
+        "end5cm": 1.3340707147771413
+      },
+      "geometry_before": {
+        "full": {
+          "point_ratio": 0.0133906867662144,
+          "end_ratio": 0.05619124973015069,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        },
+        "end15cm": {
+          "point_ratio": 0.17227565937119588,
+          "end_ratio": 0.40252273701344865,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        },
+        "end5cm": {
+          "point_ratio": 0.2873627349413182,
+          "end_ratio": 0.531620742593712,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        }
+      },
+      "geometry_after": {
+        "full": {
+          "point_ratio": 0.01043682919561461,
+          "end_ratio": 0.01678868974384899,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        },
+        "end15cm": {
+          "point_ratio": 0.12818455443502527,
+          "end_ratio": 0.283195078157077,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        },
+        "end5cm": {
+          "point_ratio": 0.1976830403197729,
+          "end_ratio": 0.288525453807624,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        }
+      }
+    },
+    "240": {
+      "samples": [
+        {
+          "region": "end15cm",
+          "radius_mm": 2000,
+          "before_deg": 82.26153964436031,
+          "after_deg": 0.09889180944680384
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 1500,
+          "before_deg": 82.38626728230594,
+          "after_deg": 0.07401891188558861
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 1000,
+          "before_deg": 84.95376981052476,
+          "after_deg": 0.3181970686785037
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 800,
+          "before_deg": 86.23467398737951,
+          "after_deg": 0.7249533577655979
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 600,
+          "before_deg": 87.71644740428256,
+          "after_deg": 0.5717391612539753
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 400,
+          "before_deg": 62.90658081787773,
+          "after_deg": 0.23170557396467936
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 300,
+          "before_deg": 29.517334222301386,
+          "after_deg": 0.10403518217741811
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 200,
+          "before_deg": 0.10320004624629309,
+          "after_deg": 0.011393548091224582
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 100,
+          "before_deg": 0.7751697111446102,
+          "after_deg": 1.0437733346087737e-05
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 75,
+          "before_deg": 0.7761731829032932,
+          "after_deg": 7.423883233559841e-06
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 50,
+          "before_deg": 0.8218155307067605,
+          "after_deg": 8.619136236270346e-06
+        },
+        {
+          "region": "end15cm",
+          "radius_mm": 30,
+          "before_deg": 3.3508410032172424,
+          "after_deg": 1.7637770880929587e-05
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 2000,
+          "before_deg": 52.90638908468901,
+          "after_deg": 0.049288194580374665
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 1500,
+          "before_deg": 62.19795521476555,
+          "after_deg": 0.08637582864555857
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 1000,
+          "before_deg": 76.34501361382557,
+          "after_deg": 0.09410569348992862
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 800,
+          "before_deg": 76.25847414427874,
+          "after_deg": 0.058589776677282886
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 600,
+          "before_deg": 81.93832021496338,
+          "after_deg": 0.025000620061232427
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 400,
+          "before_deg": 59.188554116567,
+          "after_deg": 0.03799413701355474
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 300,
+          "before_deg": 55.28597943465592,
+          "after_deg": 0.11488919538088808
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 200,
+          "before_deg": 69.05776290149649,
+          "after_deg": 0.16467960021138497
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 100,
+          "before_deg": 83.04083393832121,
+          "after_deg": 0.11909082555283382
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 75,
+          "before_deg": 82.35164122856317,
+          "after_deg": 0.05786500964544121
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 50,
+          "before_deg": 81.54872060026192,
+          "after_deg": 0.0030017588367313654
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 30,
+          "before_deg": 80.16971338484773,
+          "after_deg": 2.4185657531928556e-05
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 20,
+          "before_deg": 67.81527817410603,
+          "after_deg": 4.478607010333433e-05
+        },
+        {
+          "region": "end5cm",
+          "radius_mm": 15,
+          "before_deg": 61.96456482953704,
+          "after_deg": 0.00015391707546976187
+        }
+      ],
+      "bridge_coefficients": {
+        "end15cm": [
+          -35.16154014864242,
+          -30.81880636006042,
+          -37.4206374882877,
+          -27.861434225257366,
+          15.95730330180459,
+          21.371203213014248,
+          14.419006926917518,
+          14.415128759982775,
+          14.415153095452718
+        ],
+        "end5cm": [
+          7.332457642478689,
+          7.017613882619458,
+          5.429466340895322,
+          3.862412976096655,
+          1.8968982501395217,
+          1.057086638776159,
+          1.149181041827284,
+          1.1135874388393385,
+          -7.139828175848514,
+          6.519530602644656,
+          1.3719495162448638
+        ]
+      },
+      "max_after_deg": {
+        "end15cm": 0.7249533577655979,
+        "end5cm": 0.16467960021138497
+      },
+      "geometry_before": {
+        "full": {
+          "point_ratio": 0.01083088491631088,
+          "end_ratio": 0.03856670269253504,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        },
+        "end15cm": {
+          "point_ratio": 0.11609398998045052,
+          "end_ratio": 0.24334181777182187,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        },
+        "end5cm": {
+          "point_ratio": 0.12451649579691085,
+          "end_ratio": 0.19410607660685153,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        }
+      },
+      "geometry_after": {
+        "full": {
+          "point_ratio": 0.011372730584311657,
+          "end_ratio": 0.046935950471836914,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        },
+        "end15cm": {
+          "point_ratio": 0.12985417188282566,
+          "end_ratio": 0.2776200901404677,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        },
+        "end5cm": {
+          "point_ratio": 0.1803159515156027,
+          "end_ratio": 0.292440380033196,
+          "basis": "absolute assembled curve error within physical region, divided by region length"
+        }
+      }
+    }
+  }
+}

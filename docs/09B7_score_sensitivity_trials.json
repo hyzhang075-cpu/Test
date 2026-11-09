@@ -1,0 +1,242 @@
+[
+  {
+    "sharpness": 4.8,
+    "smooth_end15_weights": false,
+    "replay": {
+      "full": {
+        "point_ratio": 0.00612121092245075,
+        "end_ratio": 0.01753471616600128
+      },
+      "end15cm": {
+        "point_ratio": 0.027437004248472865,
+        "end_ratio": 0.048925315882100785
+      },
+      "end5cm": {
+        "point_ratio": 0.14399006196506584,
+        "end_ratio": 0.18515104424474688
+      }
+    },
+    "synthetic_sensitivity": [
+      {
+        "region": "full",
+        "radius": 200,
+        "angle_step_deg_16_17": 1.5114998684166632,
+        "curvature_step_16_17": 0.06345578390036177,
+        "angle_step_deg_18_22": 1.1416112472720144
+      },
+      {
+        "region": "end15cm",
+        "radius": 100,
+        "angle_step_deg_16_17": 0.12375765750263712,
+        "curvature_step_16_17": 0.10353407693163685,
+        "angle_step_deg_18_22": 0.8577456537793462
+      },
+      {
+        "region": "end5cm",
+        "radius": 30,
+        "angle_step_deg_16_17": 0.40673146794475623,
+        "curvature_step_16_17": 0.00021565325540830182,
+        "angle_step_deg_18_22": 5.492544456103549
+      },
+      {
+        "region": "end5cm",
+        "radius": 15,
+        "angle_step_deg_16_17": 0.8287759809460034,
+        "curvature_step_16_17": 0.00021565325540830182,
+        "angle_step_deg_18_22": 6.38276742485619
+      }
+    ]
+  },
+  {
+    "sharpness": 2.4,
+    "smooth_end15_weights": false,
+    "replay": {
+      "full": {
+        "point_ratio": 0.006122484633252412,
+        "end_ratio": 0.017535212621171407
+      },
+      "end15cm": {
+        "point_ratio": 0.027492140772080842,
+        "end_ratio": 0.048954586827025144
+      },
+      "end5cm": {
+        "point_ratio": 0.14413310599533197,
+        "end_ratio": 0.1853945629264793
+      }
+    },
+    "synthetic_sensitivity": [
+      {
+        "region": "full",
+        "radius": 200,
+        "angle_step_deg_16_17": 1.0078326583348507,
+        "curvature_step_16_17": 0.05612455732841104,
+        "angle_step_deg_18_22": 0.8595276068386477
+      },
+      {
+        "region": "end15cm",
+        "radius": 100,
+        "angle_step_deg_16_17": 0.07342676000815325,
+        "curvature_step_16_17": 0.10342590385962591,
+        "angle_step_deg_18_22": 0.6814532198041955
+      },
+      {
+        "region": "end5cm",
+        "radius": 30,
+        "angle_step_deg_16_17": 0.21607410012089384,
+        "curvature_step_16_17": 0.00019983227303846385,
+        "angle_step_deg_18_22": 2.951888047486044
+      },
+      {
+        "region": "end5cm",
+        "radius": 15,
+        "angle_step_deg_16_17": 0.4510383348253677,
+        "curvature_step_16_17": 0.00019983227303846385,
+        "angle_step_deg_18_22": 3.5159931508964957
+      }
+    ]
+  },
+  {
+    "sharpness": 1.6,
+    "smooth_end15_weights": false,
+    "replay": {
+      "full": {
+        "point_ratio": 0.006122614832585563,
+        "end_ratio": 0.017529112884811716
+      },
+      "end15cm": {
+        "point_ratio": 0.02749639333010633,
+        "end_ratio": 0.04883144497135659
+      },
+      "end5cm": {
+        "point_ratio": 0.14409285624310192,
+        "end_ratio": 0.18531801998413763
+      }
+    },
+    "synthetic_sensitivity": [
+      {
+        "region": "full",
+        "radius": 200,
+        "angle_step_deg_16_17": 0.9041443132322179,
+        "curvature_step_16_17": 0.05480271004343784,
+        "angle_step_deg_18_22": 0.8874068706208083
+      },
+      {
+        "region": "end15cm",
+        "radius": 100,
+        "angle_step_deg_16_17": 0.050883537840092516,
+        "curvature_step_16_17": 0.10277943081209973,
+        "angle_step_deg_18_22": 0.5415096207043123
+      },
+      {
+        "region": "end5cm",
+        "radius": 30,
+        "angle_step_deg_16_17": 0.14916637587235526,
+        "curvature_step_16_17": 0.00018545186307532442,
+        "angle_step_deg_18_22": 1.997422406275341
+      },
+      {
+        "region": "end5cm",
+        "radius": 15,
+        "angle_step_deg_16_17": 0.3128628055925427,
+        "curvature_step_16_17": 0.00018545186307532442,
+        "angle_step_deg_18_22": 2.5077449030048964
+      }
+    ]
+  },
+  {
+    "sharpness": 1.6,
+    "smooth_end15_weights": true,
+    "replay": {
+      "full": {
+        "point_ratio": 0.006107798358832752,
+        "end_ratio": 0.017259199600168355
+      },
+      "end15cm": {
+        "point_ratio": 0.025387081232513122,
+        "end_ratio": 0.0437958171928646
+      },
+      "end5cm": {
+        "point_ratio": 0.14378517412633154,
+        "end_ratio": 0.18497678220856306
+      }
+    },
+    "synthetic_sensitivity": [
+      {
+        "region": "full",
+        "radius": 200,
+        "angle_step_deg_16_17": 0.9041443132322179,
+        "curvature_step_16_17": 0.059929259361251486,
+        "angle_step_deg_18_22": 0.8874068706208083
+      },
+      {
+        "region": "end15cm",
+        "radius": 100,
+        "angle_step_deg_16_17": 0.0508835378400952,
+        "curvature_step_16_17": 0.10277117248606871,
+        "angle_step_deg_18_22": 0.5415096207043123
+      },
+      {
+        "region": "end5cm",
+        "radius": 30,
+        "angle_step_deg_16_17": 0.1491663758723298,
+        "curvature_step_16_17": 0.00012099588327229346,
+        "angle_step_deg_18_22": 1.997422406275341
+      },
+      {
+        "region": "end5cm",
+        "radius": 15,
+        "angle_step_deg_16_17": 0.3128628055925427,
+        "curvature_step_16_17": 0.00012099588327229346,
+        "angle_step_deg_18_22": 2.5077449030048964
+      }
+    ]
+  },
+  {
+    "sharpness": 0.8,
+    "smooth_end15_weights": true,
+    "replay": {
+      "full": {
+        "point_ratio": 0.006104645327643028,
+        "end_ratio": 0.017214306572549475
+      },
+      "end15cm": {
+        "point_ratio": 0.025445530552922896,
+        "end_ratio": 0.04343169102857586
+      },
+      "end5cm": {
+        "point_ratio": 0.14349865589091795,
+        "end_ratio": 0.18446355371089984
+      }
+    },
+    "synthetic_sensitivity": [
+      {
+        "region": "full",
+        "radius": 200,
+        "angle_step_deg_16_17": 0.8617357451322463,
+        "curvature_step_16_17": 0.05627613152415245,
+        "angle_step_deg_18_22": 0.8932729917514335
+      },
+      {
+        "region": "end15cm",
+        "radius": 100,
+        "angle_step_deg_16_17": 0.06846327855705067,
+        "curvature_step_16_17": 0.10255022458415564,
+        "angle_step_deg_18_22": 0.304815302475854
+      },
+      {
+        "region": "end5cm",
+        "radius": 30,
+        "angle_step_deg_16_17": 0.0758084552811965,
+        "curvature_step_16_17": 0.00011689693487101829,
+        "angle_step_deg_18_22": 1.0137445616263483
+      },
+      {
+        "region": "end5cm",
+        "radius": 15,
+        "angle_step_deg_16_17": 0.15944983904943336,
+        "curvature_step_16_17": 0.00011689693487101829,
+        "angle_step_deg_18_22": 1.3117415679666642
+      }
+    ]
+  }
+]

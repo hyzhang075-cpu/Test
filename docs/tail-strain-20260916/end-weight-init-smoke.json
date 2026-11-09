@@ -1,0 +1,33 @@
+{
+  "global_point_ids": [
+    19,
+    20,
+    21,
+    22
+  ],
+  "end_weights": true,
+  "end_start": -1,
+  "weights_shape": [
+    20
+  ],
+  "slopes_shape": [
+    10,
+    2
+  ],
+  "end_mask": [
+    false,
+    false,
+    false,
+    true
+  ],
+  "test_weight_banks": [
+    2,
+    5
+  ],
+  "R15_test_curvature": [
+    100.5801134063567,
+    80.89071035559199,
+    56.513197814698124,
+    62.696538727992575
+  ]
+}

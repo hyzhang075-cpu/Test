@@ -1,0 +1,370 @@
+{
+  "frames": 3217,
+  "seconds": 56.096442461013794,
+  "max_record_angle_difference_deg": 136.24536426676835,
+  "max_record_curvature_difference": 1.0857142462719533,
+  "points": {
+    "15": {
+      "active_frames": 481,
+      "jump_over30_count": 0,
+      "jump_max_deg": 13.204709650648425
+    },
+    "16": {
+      "active_frames": 686,
+      "jump_over30_count": 1,
+      "jump_max_deg": 176.44249330839216
+    },
+    "17": {
+      "active_frames": 656,
+      "jump_over30_count": 3,
+      "jump_max_deg": 174.69359118810775
+    },
+    "18": {
+      "active_frames": 754,
+      "jump_over30_count": 8,
+      "jump_max_deg": 97.12928581347961
+    },
+    "19": {
+      "active_frames": 720,
+      "jump_over30_count": 6,
+      "jump_max_deg": 174.7097500775759
+    },
+    "20": {
+      "active_frames": 639,
+      "jump_over30_count": 6,
+      "jump_max_deg": 178.2362529408733
+    },
+    "21": {
+      "active_frames": 400,
+      "jump_over30_count": 6,
+      "jump_max_deg": 175.93442898264115
+    },
+    "22": {
+      "active_frames": 234,
+      "jump_over30_count": 0,
+      "jump_max_deg": 13.30208426938724
+    }
+  },
+  "events": [
+    {
+      "point": 16,
+      "time_s": 43.03238034248352,
+      "frame": 2438,
+      "direction_jump_deg": -176.44249330839216,
+      "phase_jump_deg": -0.1451641816244843,
+      "k_before_after": [
+        51.52429341533199,
+        7.5512253827167894
+      ],
+      "point_slope_before_after": [
+        -36.08846764396435,
+        -36.08846764400004
+      ],
+      "point_weight_before_after": [
+        0.8289711299536852,
+        0.8280656565818967
+      ],
+      "raw_change_norm": 0.02291187242842782
+    },
+    {
+      "point": 17,
+      "time_s": 43.03238034248352,
+      "frame": 2438,
+      "direction_jump_deg": -174.69359118810775,
+      "phase_jump_deg": 2.287973536126979,
+      "k_before_after": [
+        7.047741331253808,
+        41.14742604619266
+      ],
+      "point_slope_before_after": [
+        4.705125175191643,
+        5.954132949580563
+      ],
+      "point_weight_before_after": [
+        0.8299473379736247,
+        0.8097320584924457
+      ],
+      "raw_change_norm": 0.02291187242842782
+    },
+    {
+      "point": 17,
+      "time_s": 43.849756479263306,
+      "frame": 2487,
+      "direction_jump_deg": 107.1871988435376,
+      "phase_jump_deg": 0.0031576764241256724,
+      "k_before_after": [
+        38.1324848671578,
+        48.65467493631057
+      ],
+      "point_slope_before_after": [
+        5.863268387911818,
+        5.863556398308536
+      ],
+      "point_weight_before_after": [
+        0.8119158479498546,
+        0.8119177233428847
+      ],
+      "raw_change_norm": 0.01822845783263311
+    },
+    {
+      "point": 18,
+      "time_s": 48.76514196395874,
+      "frame": 2782,
+      "direction_jump_deg": -97.12928581347961,
+      "phase_jump_deg": 0.04755973260030283,
+      "k_before_after": [
+        65.94424008174192,
+        30.504920698011922
+      ],
+      "point_slope_before_after": [
+        -11.73635445317967,
+        -11.735172794751714
+      ],
+      "point_weight_before_after": [
+        0.9985798054809711,
+        0.9994412296322619
+      ],
+      "raw_change_norm": 0.011423430014065062
+    },
+    {
+      "point": 18,
+      "time_s": 48.781853914260864,
+      "frame": 2783,
+      "direction_jump_deg": 96.73542340039147,
+      "phase_jump_deg": 0.03400891970824347,
+      "k_before_after": [
+        30.504920698011922,
+        65.99782730678135
+      ],
+      "point_slope_before_after": [
+        -11.735172794751714,
+        -11.73556366759037
+      ],
+      "point_weight_before_after": [
+        0.9994412296322619,
+        0.9985839550396511
+      ],
+      "raw_change_norm": 0.011409239462797354
+    },
+    {
+      "point": 17,
+      "time_s": 48.86588764190674,
+      "frame": 2788,
+      "direction_jump_deg": 33.00223959170643,
+      "phase_jump_deg": -0.1063278742695975,
+      "k_before_after": [
+        8.773292674196634,
+        7.133189795430695
+      ],
+      "point_slope_before_after": [
+        4.8897064077605705,
+        4.807551822528469
+      ],
+      "point_weight_before_after": [
+        0.8255935767650535,
+        0.8293675220961977
+      ],
+      "raw_change_norm": 0.0008526030316555988
+    },
+    {
+      "point": 18,
+      "time_s": 49.11565852165222,
+      "frame": 2803,
+      "direction_jump_deg": -78.89638578053504,
+      "phase_jump_deg": 0.003510523284485189,
+      "k_before_after": [
+        65.58420365067519,
+        27.004303160266158
+      ],
+      "point_slope_before_after": [
+        -11.759197500901614,
+        -11.753450664649565
+      ],
+      "point_weight_before_after": [
+        0.9982277623169235,
+        0.9991990144905029
+      ],
+      "raw_change_norm": 0.010107230555985763
+    },
+    {
+      "point": 19,
+      "time_s": 49.132163286209106,
+      "frame": 2804,
+      "direction_jump_deg": -167.49267389838545,
+      "phase_jump_deg": 7.512428133699805,
+      "k_before_after": [
+        53.20874754304348,
+        38.22344972597406
+      ],
+      "point_slope_before_after": [
+        10.376862996358216,
+        22.063118191426568
+      ],
+      "point_weight_before_after": [
+        0.9991990144905029,
+        0.9984399962083119
+      ],
+      "raw_change_norm": 0.022986737125040495
+    },
+    {
+      "point": 20,
+      "time_s": 49.132163286209106,
+      "frame": 2804,
+      "direction_jump_deg": -178.2362529408733,
+      "phase_jump_deg": 7.156185840747943,
+      "k_before_after": [
+        19.402942451654056,
+        65.40962818440686
+      ],
+      "point_slope_before_after": [
+        -2.8369282778505847,
+        -3.4021647275655087
+      ],
+      "point_weight_before_after": [
+        0.9991990144905029,
+        0.9984399962083119
+      ],
+      "raw_change_norm": 0.022986737125040495
+    },
+    {
+      "point": 19,
+      "time_s": 50.13190412521362,
+      "frame": 2864,
+      "direction_jump_deg": -174.7097500775759,
+      "phase_jump_deg": 5.749775349087249,
+      "k_before_after": [
+        29.84484832535708,
+        64.05607111126744
+      ],
+      "point_slope_before_after": [
+        9.347299796806347,
+        18.36543490763941
+      ],
+      "point_weight_before_after": [
+        0.9986434696912055,
+        0.9980208245266906
+      ],
+      "raw_change_norm": 0.025409409267344727
+    },
+    {
+      "point": 20,
+      "time_s": 50.13190412521362,
+      "frame": 2864,
+      "direction_jump_deg": -165.53734253338195,
+      "phase_jump_deg": 6.017281584314859,
+      "k_before_after": [
+        59.537369984072996,
+        30.270337028317293
+      ],
+      "point_slope_before_after": [
+        -3.2410289784351285,
+        -2.8165867444045967
+      ],
+      "point_weight_before_after": [
+        0.9986434696912055,
+        0.9980208245266906
+      ],
+      "raw_change_norm": 0.025409409267344727
+    },
+    {
+      "point": 21,
+      "time_s": 50.13190412521362,
+      "frame": 2864,
+      "direction_jump_deg": -166.91408766590087,
+      "phase_jump_deg": 6.77922705749202,
+      "k_before_after": [
+        63.32368535492643,
+        8.247011388790202
+      ],
+      "point_slope_before_after": [
+        -3.266934510854484,
+        -2.057983853799213
+      ],
+      "point_weight_before_after": [
+        0.7764121995178783,
+        0.8976597254441704
+      ],
+      "raw_change_norm": 0.025409409267344727
+    },
+    {
+      "point": 19,
+      "time_s": 50.21590852737427,
+      "frame": 2869,
+      "direction_jump_deg": 173.7655030416043,
+      "phase_jump_deg": -0.7825155713762142,
+      "k_before_after": [
+        67.48636875089241,
+        22.95274709714308
+      ],
+      "point_slope_before_after": [
+        11.774879258451065,
+        10.706588530091118
+      ],
+      "point_weight_before_after": [
+        0.9985549720874535,
+        0.9991767504416568
+      ],
+      "raw_change_norm": 0.023646572316731607
+    },
+    {
+      "point": 20,
+      "time_s": 50.21590852737427,
+      "frame": 2869,
+      "direction_jump_deg": 165.30708880181476,
+      "phase_jump_deg": -1.0466748132211308,
+      "k_before_after": [
+        32.62678947669162,
+        58.286268497569694
+      ],
+      "point_slope_before_after": [
+        -2.8237111626911777,
+        -3.242842846306303
+      ],
+      "point_weight_before_after": [
+        0.9985549720874535,
+        0.9991767504416568
+      ],
+      "raw_change_norm": 0.023646572316731607
+    },
+    {
+      "point": 21,
+      "time_s": 50.21590852737427,
+      "frame": 2869,
+      "direction_jump_deg": 175.93442898264115,
+      "phase_jump_deg": -1.7944555525213517,
+      "k_before_after": [
+        6.598307354860683,
+        65.16645144293746
+      ],
+      "point_slope_before_after": [
+        -2.0816647298092983,
+        -3.2681407283354353
+      ],
+      "point_weight_before_after": [
+        0.9315820042538343,
+        0.776412199517878
+      ],
+      "raw_change_norm": 0.023646572316731607
+    },
+    {
+      "point": 21,
+      "time_s": 50.3659782409668,
+      "frame": 2878,
+      "direction_jump_deg": -174.26456946925867,
+      "phase_jump_deg": -3.535367684924573,
+      "k_before_after": [
+        63.85953015364651,
+        8.580067162080995
+      ],
+      "point_slope_before_after": [
+        -3.267519039973584,
+        -2.8752809783682745
+      ],
+      "point_weight_before_after": [
+        0.7764121995178781,
+        0.8421654946008728
+      ],
+      "raw_change_norm": 0.02432840038552852
+    }
+  ]
+}

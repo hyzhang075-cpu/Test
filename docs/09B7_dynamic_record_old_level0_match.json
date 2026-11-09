@@ -1,0 +1,37 @@
+[
+  {
+    "file": "params/09B7_absolute_assembly_dynamic_candidate.json",
+    "mode": "level0_interval",
+    "median_deg": 1.90833280887811e-14,
+    "max_deg": 5.088887490341627e-14,
+    "curvature_max_diff": 1.4210854715202004e-14
+  },
+  {
+    "file": "params/09B7_absolute_assembly_reoptim_round2.json",
+    "mode": "level0_interval",
+    "median_deg": 1.90833280887811e-14,
+    "max_deg": 5.088887490341627e-14,
+    "curvature_max_diff": 1.4210854715202004e-14
+  },
+  {
+    "file": "params/09B7_dynamic_smooth_score_trial.json",
+    "mode": "level0_interval",
+    "median_deg": 0.011696391097705483,
+    "max_deg": 0.24020053469043898,
+    "curvature_max_diff": 0.46403000948015016
+  },
+  {
+    "file": "params/09B7_absolute_assembly_reoptim_candidate.json",
+    "mode": "level0_interval",
+    "median_deg": 0.0009030372563674074,
+    "max_deg": 7.226733550157556,
+    "curvature_max_diff": 7.300285487232827e-07
+  },
+  {
+    "file": "params/09B7_NeTi_new.json",
+    "mode": "level0_interval",
+    "median_deg": 3.149939732546291,
+    "max_deg": 24.038250024907583,
+    "curvature_max_diff": 0.11441446864685778
+  }
+]

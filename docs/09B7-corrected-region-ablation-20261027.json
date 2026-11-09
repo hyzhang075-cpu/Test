@@ -1,0 +1,89 @@
+{
+  "package": "params/09B7_corrected_multi_region_candidate.json",
+  "rot_ang": -31.4,
+  "use_full_transported_phase": false,
+  "radii_mm": [
+    2000,
+    1500,
+    1000,
+    800,
+    600,
+    400,
+    300,
+    200
+  ],
+  "rows": [
+    {
+      "variant": "full_only",
+      "direct": 0,
+      "mean_point_percent": 0.42195587224552716,
+      "mean_tip_mm": 11.692762530908217
+    },
+    {
+      "variant": "full_only",
+      "direct": 120,
+      "mean_point_percent": 0.41984854926260234,
+      "mean_tip_mm": 10.305939056835847
+    },
+    {
+      "variant": "full_only",
+      "direct": 240,
+      "mean_point_percent": 0.7944174695979003,
+      "mean_tip_mm": 17.85376567907407
+    },
+    {
+      "variant": "end15_only",
+      "direct": 0,
+      "mean_point_percent": 0.7280531555243601,
+      "mean_tip_mm": 53.434201481578036
+    },
+    {
+      "variant": "end15_only",
+      "direct": 120,
+      "mean_point_percent": 0.58614403406168,
+      "mean_tip_mm": 34.03820470139248
+    },
+    {
+      "variant": "end15_only",
+      "direct": 240,
+      "mean_point_percent": 1.1121697111830624,
+      "mean_tip_mm": 58.72544164394358
+    },
+    {
+      "variant": "end5_only",
+      "direct": 0,
+      "mean_point_percent": 0.4128437568278863,
+      "mean_tip_mm": 13.65081914067452
+    },
+    {
+      "variant": "end5_only",
+      "direct": 120,
+      "mean_point_percent": 0.42855028127163863,
+      "mean_tip_mm": 13.223551959679831
+    },
+    {
+      "variant": "end5_only",
+      "direct": 240,
+      "mean_point_percent": 0.7747613713165629,
+      "mean_tip_mm": 14.946575429506524
+    },
+    {
+      "variant": "merged",
+      "direct": 0,
+      "mean_point_percent": 0.7220284560521146,
+      "mean_tip_mm": 51.67977885788114
+    },
+    {
+      "variant": "merged",
+      "direct": 120,
+      "mean_point_percent": 0.5878915862686614,
+      "mean_tip_mm": 34.563427241928245
+    },
+    {
+      "variant": "merged",
+      "direct": 240,
+      "mean_point_percent": 1.1091942275657303,
+      "mean_tip_mm": 57.79727800787279
+    }
+  ]
+}

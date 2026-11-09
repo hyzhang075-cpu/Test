@@ -1,0 +1,84 @@
+{
+  "0": {
+    "trials": [
+      {
+        "factor": 0,
+        "offsets_rad_per_m": [
+          -0.0,
+          0.0
+        ],
+        "full_replay_point_ratio": 0.00770481743441623,
+        "full_replay_end_ratio": 0.04036244320767588,
+        "boundary_max_deg": [
+          23.92079838880222,
+          52.10999559744638
+        ]
+      },
+      {
+        "factor": 0.25,
+        "offsets_rad_per_m": [
+          -2.600363345054781,
+          1.9906892286046403
+        ],
+        "full_replay_point_ratio": 0.007505978258994778,
+        "full_replay_end_ratio": 0.03736465650876104,
+        "boundary_max_deg": [
+          18.855143663148752,
+          51.15942397781698
+        ]
+      },
+      {
+        "factor": 0.5,
+        "offsets_rad_per_m": [
+          -5.200726690109562,
+          3.9813784572092805
+        ],
+        "full_replay_point_ratio": 0.00730010212301631,
+        "full_replay_end_ratio": 0.034288496805921366,
+        "boundary_max_deg": [
+          13.789488937495285,
+          55.03739907593777
+        ]
+      },
+      {
+        "factor": 0.75,
+        "offsets_rad_per_m": [
+          -7.801090035164343,
+          5.97206768581392
+        ],
+        "full_replay_point_ratio": 0.007090196432491818,
+        "full_replay_end_ratio": 0.0311729363365727,
+        "boundary_max_deg": [
+          8.723834211841881,
+          58.91537417405857
+        ]
+      },
+      {
+        "factor": 1,
+        "offsets_rad_per_m": [
+          -10.401453380219124,
+          7.962756914418561
+        ],
+        "full_replay_point_ratio": 0.006877359236546936,
+        "full_replay_end_ratio": 0.028043507842556506,
+        "boundary_max_deg": [
+          3.658179486188413,
+          62.79334927217927
+        ]
+      }
+    ],
+    "selected": {
+      "factor": 0.25,
+      "offsets_rad_per_m": [
+        -2.600363345054781,
+        1.9906892286046403
+      ],
+      "full_replay_point_ratio": 0.007505978258994778,
+      "full_replay_end_ratio": 0.03736465650876104,
+      "boundary_max_deg": [
+        18.855143663148752,
+        51.15942397781698
+      ]
+    }
+  }
+}

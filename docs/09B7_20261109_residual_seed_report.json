@@ -1,0 +1,17 @@
+{
+  "0": {
+    "full_14_15_slope_seed": -40.30554331287061,
+    "end15_16_17_slope_seed": 16.34823861161191,
+    "point16_curvature_ratio_median": 1.1249047752328356
+  },
+  "120": {
+    "full_14_15_slope_seed": -42.767439493986785,
+    "end15_16_17_slope_seed": 8.12431771082408,
+    "point16_curvature_ratio_median": 1.2713877362602135
+  },
+  "240": {
+    "full_14_15_slope_seed": -44.85464312703605,
+    "end15_16_17_slope_seed": 7.623152849385722,
+    "point16_curvature_ratio_median": 1.419323542589247
+  }
+}

@@ -1,0 +1,248 @@
+{
+  "0": {
+    "trials": [
+      {
+        "factor": 0,
+        "offsets_rad_per_m": [
+          -0.0,
+          0.0
+        ],
+        "full_replay_point_ratio": 0.009052601130985828,
+        "full_replay_end_ratio": 0.06279926436198105,
+        "boundary_max_deg": [
+          84.68893507058074,
+          98.6254976007477
+        ]
+      },
+      {
+        "factor": 0.25,
+        "offsets_rad_per_m": [
+          -10.398079072538978,
+          7.959300619368905
+        ],
+        "full_replay_point_ratio": 0.008862638144873983,
+        "full_replay_end_ratio": 0.0587674612011641,
+        "boundary_max_deg": [
+          64.4328895099879,
+          83.12033026631394
+        ]
+      },
+      {
+        "factor": 0.5,
+        "offsets_rad_per_m": [
+          -20.796158145077957,
+          15.91860123873781
+        ],
+        "full_replay_point_ratio": 0.00840253988183685,
+        "full_replay_end_ratio": 0.05111011891898649,
+        "boundary_max_deg": [
+          44.17684394939506,
+          67.61516293188018
+        ]
+      },
+      {
+        "factor": 0.75,
+        "offsets_rad_per_m": [
+          -31.194237217616937,
+          23.877901858106718
+        ],
+        "full_replay_point_ratio": 0.00770481743441623,
+        "full_replay_end_ratio": 0.04036244320767588,
+        "boundary_max_deg": [
+          23.92079838880222,
+          52.10999559744638
+        ]
+      },
+      {
+        "factor": 1,
+        "offsets_rad_per_m": [
+          -41.592316290155914,
+          31.83720247747562
+        ],
+        "full_replay_point_ratio": 0.0068776264297447706,
+        "full_replay_end_ratio": 0.028047330515351868,
+        "boundary_max_deg": [
+          3.6647528282093846,
+          62.78661621412999
+        ]
+      }
+    ],
+    "selected": {
+      "factor": 0.75,
+      "offsets_rad_per_m": [
+        -31.194237217616937,
+        23.877901858106718
+      ],
+      "full_replay_point_ratio": 0.00770481743441623,
+      "full_replay_end_ratio": 0.04036244320767588,
+      "boundary_max_deg": [
+        23.92079838880222,
+        52.10999559744638
+      ]
+    }
+  },
+  "120": {
+    "trials": [
+      {
+        "factor": 0,
+        "offsets_rad_per_m": [
+          -0.0,
+          0.0
+        ],
+        "full_replay_point_ratio": 0.009908542134249115,
+        "full_replay_end_ratio": 0.06444096616976788,
+        "boundary_max_deg": [
+          69.90087496990331,
+          53.492847612328305
+        ]
+      },
+      {
+        "factor": 0.25,
+        "offsets_rad_per_m": [
+          -7.672214790441199,
+          2.45288339960749
+        ],
+        "full_replay_point_ratio": 0.009690170415067364,
+        "full_replay_end_ratio": 0.06048930656967691,
+        "boundary_max_deg": [
+          54.95496705155895,
+          48.71449215353121
+        ]
+      },
+      {
+        "factor": 0.5,
+        "offsets_rad_per_m": [
+          -15.344429580882398,
+          4.90576679921498
+        ],
+        "full_replay_point_ratio": 0.00929126992754084,
+        "full_replay_end_ratio": 0.053874776463925994,
+        "boundary_max_deg": [
+          40.00905913321454,
+          43.93613669473401
+        ]
+      },
+      {
+        "factor": 0.75,
+        "offsets_rad_per_m": [
+          -23.016644371323597,
+          7.35865019882247
+        ],
+        "full_replay_point_ratio": 0.008751255867966826,
+        "full_replay_end_ratio": 0.04514470346739883,
+        "boundary_max_deg": [
+          25.06315121487018,
+          39.1577812359369
+        ]
+      },
+      {
+        "factor": 1,
+        "offsets_rad_per_m": [
+          -30.688859161764796,
+          9.81153359842996
+        ],
+        "full_replay_point_ratio": 0.008101164243001089,
+        "full_replay_end_ratio": 0.03481324220247227,
+        "boundary_max_deg": [
+          13.752417930896982,
+          34.37942577713972
+        ]
+      }
+    ],
+    "selected": {
+      "factor": 1,
+      "offsets_rad_per_m": [
+        -30.688859161764796,
+        9.81153359842996
+      ],
+      "full_replay_point_ratio": 0.008101164243001089,
+      "full_replay_end_ratio": 0.03481324220247227,
+      "boundary_max_deg": [
+        13.752417930896982,
+        34.37942577713972
+      ]
+    }
+  },
+  "240": {
+    "trials": [
+      {
+        "factor": 0,
+        "offsets_rad_per_m": [
+          -0.0,
+          -0.0
+        ],
+        "full_replay_point_ratio": 0.012306770587334745,
+        "full_replay_end_ratio": 0.06732600285156336,
+        "boundary_max_deg": [
+          51.711062791265476,
+          34.864028248093916
+        ]
+      },
+      {
+        "factor": 0.25,
+        "offsets_rad_per_m": [
+          -5.204450737038583,
+          -0.3220192621153915
+        ],
+        "full_replay_point_ratio": 0.012056252464010694,
+        "full_replay_end_ratio": 0.06327052714901277,
+        "boundary_max_deg": [
+          41.57249868611938,
+          35.491339965892315
+        ]
+      },
+      {
+        "factor": 0.5,
+        "offsets_rad_per_m": [
+          -10.408901474077165,
+          -0.644038524230783
+        ],
+        "full_replay_point_ratio": 0.011717854133247285,
+        "full_replay_end_ratio": 0.05788641266424334,
+        "boundary_max_deg": [
+          31.43393458097328,
+          36.11865168369069
+        ]
+      },
+      {
+        "factor": 0.75,
+        "offsets_rad_per_m": [
+          -15.613352211115748,
+          -0.9660577863461746
+        ],
+        "full_replay_point_ratio": 0.011308922176518892,
+        "full_replay_end_ratio": 0.05146074995653752,
+        "boundary_max_deg": [
+          21.295370475827188,
+          36.74596340148906
+        ]
+      },
+      {
+        "factor": 1,
+        "offsets_rad_per_m": [
+          -20.81780294815433,
+          -1.288077048461566
+        ],
+        "full_replay_point_ratio": 0.010846554744845197,
+        "full_replay_end_ratio": 0.044252608962183096,
+        "boundary_max_deg": [
+          12.63098984708907,
+          37.37327511928744
+        ]
+      }
+    ],
+    "selected": {
+      "factor": 0.5,
+      "offsets_rad_per_m": [
+        -10.408901474077165,
+        -0.644038524230783
+      ],
+      "full_replay_point_ratio": 0.011717854133247285,
+      "full_replay_end_ratio": 0.05788641266424334,
+      "boundary_max_deg": [
+        31.43393458097328,
+        36.11865168369069
+      ]
+    }
+  }
+}

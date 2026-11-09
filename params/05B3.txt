@@ -1,0 +1,72 @@
+parser = argparse.ArgumentParser()
+    # 硬件参数
+    parser.add_argument('--sensor_id', type=str, default="05B3", help='传感器编号')
+    parser.add_argument('--start_value', type=float, default=135.0, help='传感器第一个传感点到固定件的距离, 单位为mm')
+    parser.add_argument('--end_value', type=float, default=5, help='传感器最后一个传感点到末端的距离, 单位为mm')
+    parser.add_argument('--R', type=float, default=0.1e-3, help='传感器半径, 单位为m')
+    parser.add_argument('--ideal_len', type=float, default=0.9, help='传感器长度, 单位为m')
+    parser.add_argument('--samp_dist_preset', type=list, default=[510, 520, 530, 540, 550, 580, 610, 640, 670, 720, 770, 850, 930, 1010, 1110, 1230], help='FBG传感点位置, 单位为mm')
+    parser.add_argument('--centre_fibre', type=bool, default=True, help='是否为1+x构型')
+    parser.add_argument('--discont', type=float, default=np.pi, help='np.unwrap跳变判断阈值')
+    # 标定实验参数
+    parser.add_argument('--interrogator', type=str, default='Hippo', choices=['FiberTecc', 'Hippo', 'LUNA'], help='解调仪器')
+    parser.add_argument('--active_channels', type=list, default=[4, 2, 6, 1, 5, 7, 3], help='传感器连接解调仪的通道以及其顺序')
+    parser.add_argument('--active_angles', type=list, default=None, help='外围通道角度排布(度数)，若为None则默认均匀排布')
+    parser.add_argument('--folder_path', type=str, default=str((Path(__file__).resolve()).parents[2] / "形状感知公共文件/支气管镜/传感器测试数据/0527-05B3-自研（1+6）FBG"), help='数据存储路径')
+    parser.add_argument('--rot_dir', type=int, default=[-1], help='各个标定实验按逆(1)还是顺(-1)时针调整的方向')
+    parser.add_argument('--exp_directs', type=list, default=[0, 120, 240], help='实验使用的方向')
+    parser.add_argument('--radii', type=list, default={'circ': [0, 2000, 1500, 1000, 800, 600, 400, 300, 200]}, help='标定圆弧形状半径')
+
+    # 优化使用的超参数
+    parser.add_argument('--direct', type=int, default=0, help='优化曲率权重与扭转系数的标定方向')
+    parser.add_argument('--freeze', type=list, default=None, help='冻结部分分区的参数，使得它们不参与优化。如果不需要冻结则调整为None')
+    parser.add_argument('--weight_bounds', type=tuple, default=(0.5, 2.0), help='曲率权重范围')
+    parser.add_argument('--slope_upper_bound', type=tuple, default=30.0, help='扭转系数大小上限')
+    parser.add_argument('--thresholds', type=list, default=[0.8, 1.2, 2.0, 4.0], help='各曲率分级的阈值 (5-level)')
+    parser.add_argument('--max_iter', type=int, default=15, help='优化的最大轮次')
+    parser.add_argument('--k_point', type=float, default=1.0, help='优化目标中末端误差的权重')
+    parser.add_argument('--k_end', type=float, default=0.3, help='优化目标中末端误差的权重')
+    parser.add_argument('--k_pitch', type=float, default=1.0, help='优化目标中螺距误差的权重')
+    parser.add_argument('--k_radius', type=float, default=1.0, help='优化目标中半径误差的权重')
+    parser.add_argument('--method', type=str, default="Powell", help='优化算法, 用于输入scipy.optimize.minimimze')
+    parser.add_argument('--hyper_params', type=dict, default=[10000, 1e-6, 1e-6], help='优化算法使用的超参数')
+    parser.add_argument('--min_loss_diff', type=float, default=1e-6, help='收敛判定')
+    parser.add_argument('--ss', type=float, default=2.6e-3, help='LUNA传感点间隔, 单位为m')
+    # 动态展示参数
+    parser.add_argument('--IP', type=str, default='10.0.0.122', help='解调仪IP')
+    parser.add_argument('--PORT', type=int, default=4010)
+    parser.add_argument('--data_freq', type=int, default=100, help='解调仪频率')
+    parser.add_argument('--total_scale', type=float, default=1.0, help='动态显示大小')
+    parser.add_argument('--imu', type=bool, default=False, help='是否启用IMU')
+    parser.add_argument('--imu_com', type=str, default='COM6', help='IMU接口')
+    parser.add_argument('--imu_maxlen', type=int, default=10)
+    # 重构使用的超参数
+    parser.add_argument('--min_consecutive', type=int, default=3, help='曲率分级判定前平滑滤波窗口大小')
+    parser.add_argument('--move_filter', type=int, default=3, help='动/静态重构前平滑滤波窗口大小')
+    parser.add_argument('--kalman_params', type=dict, default={'angle': {'Rk': 0.001, 'Bk': 0.001}, 'magnitude': {'Rk': 0.0001, 'Bk': 0.01}}, help='卡尔曼滤波参数')
+    parser.add_argument('--smoothing_params', type=dict, default={'window_length': 21,'polyorder': 3}, help='LUNA数据平滑参数')
+    parser.add_argument('--interp_num', type=int, default=60, help='插值目标点数')
+    parser.add_argument('--sharpness', type=float, default=4.8, help='sigmoid软评分硬度')
+    parser.add_argument('--end_weights', type=bool, default=True, help='是否对末端另算权重')
+    parser.add_argument('--end_start', type=int, default=-10, help='末端起点')
+    parser.add_argument('--TNB_threshold', type=float, default=0.0, help='TNB重构直线判定阈值')
+    # 初始化时必须手动调整的超参数
+    parser.add_argument('--segmentation', type=list, default=[2, 5, 5, 4], help='对扭转角度-传感点位置曲线的分段方法')
+    parser.add_argument('--turn_threshold', type=float, default=2.50, help='判断形状弯曲方向是否改变的阈值')
+    parser.add_argument('--sensing_ranges', type=dict, default={1: (583, 1048), 3: (678, 1146), 4: (749, 1215)}, help='LUNA各通道使用的传感点范围')
+    # 角度优化初始值
+    parser.add_argument('--rot_ang', type=float, default=0.0, help='绕x轴旋转角度, 初始为0.0')
+    # 曲率权重与扭转系数相关初始值 (5-level模型, weights长度=10, slopes形状=5x4)
+    parser.add_argument('--weights', default={0: np.array([1.4084337061209364, 1.2837638751594298, 1.43007822057886, 1.3391791395136199, 1.9471969512770637, 1.9999995270975885, 0.7531651659914089, 1.5837745548293953, 1.1013499835139864, 0.8533455623018592]), 
+                                            120: np.array([0.5000004729024115, 0.5000004729024115, 1.9999995270975885, 1.9999995270975885, 1.9999995270975885, 1.9999995270975885, 1.9999995270975885, 1.9999995270975885, 1.9999995270975885, 1.239807510442127]), 
+                                            240: np.array([1.6367579739765659, 1.293483350392234, 1.3949402589230444, 1.4516563982146384, 1.3759911195060128, 1.9999995270975885, 0.5000004729024115, 1.5377675686899819, 1.055140695036818, 1.2340827883655718])}, help='曲率权重')
+    parser.add_argument('--slopes', default={0: np.array([[-27.71854751541558, 16.314697851177616, -33.02989910021391, -33.02989525257003], [-33.025239619218894, 25.788634724162193, -16.00390827612648, -33.02989525257003], [-16.395212000190504, 13.16281367686235, -33.02989525257003, -33.02989525257003], [-16.644376378529003, 19.146333351652416, -26.999231471940927, 21.281265137996563], [15.904301772450282, 12.558203503768755, -18.98347278981315, -33.02991791039943]]),
+                                            120: np.array([[-5.099806060017675, 20.398593463896553, -30.47106860431647, -24.505536365667883], [12.908852256281161, 18.26626222700324, -33.13176548352513, 11.490675270181669], [2.0674388892481605, 17.43592398405325, -30.08646924882585, -10.47535806605716], [8.026593115392402, 19.180015075751914, -27.905173861693207, -17.228780921627656], [6.94698486185757, 23.138183696703237, -31.5422985099665, -8.82809078142617]]),
+                                            240: np.array([[-26.418000183585768, 12.640369217902835, -32.74828310020124, -28.451986686834903], [-34.001617906436564, 28.23891841601273, -34.001617906436564, -34.001617906436564], [-15.649069461076738, 14.415147613919787, -28.781492759099574, -34.001617906436564], [-20.540645690816962, 17.879922449006866, -26.358157529564412, -34.001617906436564], [-26.798075996076996, 20.684600647763865, -31.24277470525677, 19.707127657106707]])}, help='扭转系数')
+    # 全局相位补偿
+    parser.add_argument('--global_phases_set', type=float, default=-2.49335457038797, help='全局相位补偿值')
+    # 不传入Optimiser的参数
+    parser.add_argument('--task', type=str, required=True, choices=['init', 'ang', 'weights', 'slopes', 'recon', 'demo'], help='选择运行目的为初始化、旋转角度优化、曲率权重与扭转系数优化、重构还是动态展示')
+    parser.add_argument('--ang_step', type=float, default=0.1, help='旋转角度搜索步长, 初始为0.1')
+    parser.add_argument('--ang_range', type=float, default=180, help='旋转角度搜索距离, 初始为180.0')
+    args = parser.parse_args()

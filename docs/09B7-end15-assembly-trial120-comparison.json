@@ -1,0 +1,22 @@
+[
+  {
+    "variant": "original_end15",
+    "mean_point_percent": 0.58614403406168,
+    "mean_tip_mm": 34.03820470139248
+  },
+  {
+    "variant": "trial_end15",
+    "mean_point_percent": 0.5834770874731126,
+    "mean_tip_mm": 33.5738508316903
+  },
+  {
+    "variant": "original_merged",
+    "mean_point_percent": 0.5878915862686614,
+    "mean_tip_mm": 34.563427241928245
+  },
+  {
+    "variant": "trial_merged",
+    "mean_point_percent": 0.585298782277628,
+    "mean_tip_mm": 34.113674251980406
+  }
+]

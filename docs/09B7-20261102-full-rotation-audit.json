@@ -1,0 +1,22 @@
+{
+  "source": "params/09B7_20261102_boundary_review_candidate.json",
+  "basis": "cached production curves rotated about x; all three directions share angle",
+  "best": {
+    "rot_ang": -61.300000000000004,
+    "loss": 0.10702511729235496,
+    "metrics": {
+      "0": {
+        "point": 0.01056896045467183,
+        "end": 0.01316583772271458
+      },
+      "120": {
+        "point": 0.011355421664869922,
+        "end": 0.011120950070329642
+      },
+      "240": {
+        "point": 0.010125291904310935,
+        "end": 0.013200933841206913
+      }
+    }
+  }
+}

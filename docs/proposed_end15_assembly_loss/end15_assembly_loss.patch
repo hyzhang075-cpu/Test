@@ -1,0 +1,176 @@
+--- a/main.py
++++ b/main.py
+@@ -66,6 +66,16 @@
+         if not reference:
+             raise ValueError('固定局部相位recon需要使用新模式优化导出的sensor_params')
+         args.global_phases_set = reference['phase_at_first_point_rad']
++    if getattr(args, 'end15cm_assembly_loss', False):
++        if (args.task != 'optim' or args.multi_region_calib
++                or args.optimization_region != 'end15cm'
++                or not args.end15cm_point_calib or args.use_full_transported_phase
++                or args.optim_weights_only or args._sensor_package is None):
++            raise ValueError('assembly loss仅支持来源包+独立end15cm optim，point_calib=True、transported_phase=False、weights_only=False')
++        if args.reverse:
++            raise ValueError('assembly loss试验仅支持正向点位')
++        if not np.isfinite(args.end15cm_assembly_loss_weight) or args.end15cm_assembly_loss_weight <= 0:
++            raise ValueError('assembly loss系数必须有限且大于0')
+     profiles = deepcopy(args.calibration_regions)
+     if args.optimization_region not in profiles:
+         raise ValueError(f'未知 optimization_region={args.optimization_region!r}')
+@@ -365,6 +375,10 @@
+ # ---------- 初始化 ----------
+     parser = argparse.ArgumentParser()
+     # 以下区域配置也属于传感器参数；复制整个 parser 区块即可保留、迁移。
++    parser.add_argument('--end15cm_assembly_loss', type=_str2bool, default=False,
++                        help='独立end15cm：在真实点slopes目标中加入全长实测拼接损失')
++    parser.add_argument('--end15cm_assembly_loss_weight', type=float, default=1.0,
++                        help='拼接平方几何损失系数，仅试验使用')
+     parser.add_argument('--sensor_params', type=str, default=None,
+                         help='有序传感器参数包 JSON；显式 CLI 参数优先')
+     parser.add_argument('--use_full_transported_phase', type=_str2bool, default=False,
+--- a/optimiser.py
++++ b/optimiser.py
+@@ -10,6 +10,10 @@
+ 
+ class Optimiser(Reconstructor):
+     def __init__(self, direct=0, end_len=0.05, max_iter=5, min_loss_diff=1e-6, hyper_params=[10000, 1e-6, 1e-6], freeze=None, method='Powell', straight_threshold=2.0, rot_threshold=4.0, k_point=1.0, k_end=0.0, k_pitch=1.0, k_radius=1.0, weight_bounds=(0.5, 1.0), slope_upper_bound=20.0, *args, end5cm_point_calib=False, real_point_calib=False, **kwargs):
++        self.end15cm_assembly_loss = bool(kwargs.pop('end15cm_assembly_loss', False))
++        self.end15cm_assembly_loss_weight = float(kwargs.pop('end15cm_assembly_loss_weight', 1.0))
++        self._assembly_evaluator = None
++        self.assembly_loss_components = None
+         self.optim_weights_only = bool(kwargs.pop('optim_weights_only', False))
+         self.end5cm_coverage_aware_weights = bool(kwargs.pop('end5cm_coverage_aware_weights', False))
+         self.end5cm_min_weight_effective_samples = float(
+@@ -293,7 +297,20 @@
+             slope_stage['recoveries'] = slopes_recoveries
+         if weights_recoveries:
+             weight_stage['recoveries'] = weights_recoveries
+-        return {'objective': ('real_points' if self._uses_real_point_objective() else 'geometry'),
++        assembly_report = None
++        if getattr(self, 'end15cm_assembly_loss', False):
++            self._real_point_loss(direction_only=True)
++            assembly_report = dict(self.assembly_loss_components)
++            assembly_report.update(
++                source_sensor_params=self._assembly_evaluator.source,
++                full_calibration_radii=list(self._assembly_evaluator.radii),
++                initial_assembly_loss=self._assembly_evaluator.baseline,
++                definition='mean over nonzero full circles of mean squared point error plus squared tip error, divided by full length squared',
++                fixed_upstream='full; end5cm disabled during end15cm trial',
++            )
++            print('拼接损失分量:', assembly_report)
++        return {'assembly_loss': assembly_report,
++                'objective': ('real_points' if self._uses_real_point_objective() else 'geometry'),
+                 'loss_definitions': {'slopes': slope_loss_definition,
+                                       'weights': weight_loss_definition},
+                 'stages': {'slopes': slope_stage, 'weights': weight_stage}}
+@@ -621,7 +638,21 @@
+             else:
+                 target_curvature = 1000. / radius
+                 losses.append(float(np.mean((magnitude / target_curvature - 1.) ** 2)))
+-        return float(np.mean(losses))
++        real_point_loss = float(np.mean(losses))
++        if direction_only and getattr(self, 'end15cm_assembly_loss', False):
++            if self._assembly_evaluator is None:
++                from end15_assembly_loss import End15AssemblyLoss
++                self._assembly_evaluator = End15AssemblyLoss(self)
++            assembly = self._assembly_evaluator.evaluate(self)
++            total = real_point_loss + self.end15cm_assembly_loss_weight * assembly
++            self.assembly_loss_components = {
++                'real_point_direction_loss': real_point_loss,
++                'assembly_geometry_loss': assembly,
++                'coefficient': self.end15cm_assembly_loss_weight,
++                'total': total,
++            }
++            return total
++        return real_point_loss
+ 
+     def _loss_fn(self, rot_ang, weights, slopes_normalised, slope_upper_bound, force_ideal_magnitude=False):
+         """
+--- a/tools/sensor_parameter_package.py
++++ b/tools/sensor_parameter_package.py
+@@ -76,7 +76,7 @@
+ }
+ 
+ SPECIAL_DESTINATIONS = ('sensor_id', 'calibration_regions', 'global_phases_set', 'rot_ang')
+-TRANSIENT_DESTINATIONS = ('optim_weights_only',)
++TRANSIENT_DESTINATIONS = ('optim_weights_only', 'end15cm_assembly_loss', 'end15cm_assembly_loss_weight')
+ PATH_PARAMETER_DESTINATIONS = (
+     'sensor_params', 'zero_reference_path', 'calibration_data_root',
+     'calibration_output_dir',
+@@ -914,6 +914,8 @@
+     defaults['end5cm_groupwise_weight_score'] = defaults['end5cm_independent_weight_score']
+     # This is a per-run optimization control, never inherited from a package.
+     defaults['optim_weights_only'] = False
++    defaults['end15cm_assembly_loss'] = False
++    defaults['end15cm_assembly_loss_weight'] = 1.0
+     defaults['rot_dir'] = _direction_keyed(defaults.get('rot_dir'))
+     defaults['sensing_ranges'] = _direction_keyed(defaults.get('sensing_ranges'))
+     # Packages created before the continuity guard remain valid and use the
+--- /dev/null
++++ b/end15_assembly_loss.py
+@@ -0,0 +1,65 @@
++"""Full-data assembly loss for an independent end15cm slope trial."""
++from copy import deepcopy
++from pathlib import Path
++import numpy as np
++
++class End15AssemblyLoss:
++    def __init__(self, owner):
++        import main
++        from optimiser import Optimiser
++        from calibration_batch import optimizer_parameters
++        source = Path(owner.source_sensor_params).resolve()
++        argv = ['--task', 'recon', '--sensor_params', str(source),
++                '--multi_region_calib', 'True', '--use_full_transported_phase', 'False',
++                '--direct', str(owner.direct), '--exp_directs', str([owner.direct])]
++        args = main.parse_main_args(argv)
++        args.end15cm_assembly_loss = False
++        args.use_stored_zero = False
++        data_root = Path(args.calibration_data_root)
++        if not data_root.is_absolute():
++            data_root = source.parent.parent / data_root
++        args.calibration_data_root = str(data_root.resolve())
++        context = main.configure_calibration_args(args)
++        self.replay = Optimiser(**optimizer_parameters(args))
++        self.replay.calibration_context = context
++        self.direct = owner.direct
++        if not np.isclose(owner.rot_ang, self.replay.rot_ang):
++            raise ValueError('assembly loss requires the source package rot_ang')
++        if (owner.calibration_context['global_point_ids'] !=
++                args._sensor_package['regions']['end15cm']['support_point_ids']):
++            raise ValueError('end15cm support differs from source package')
++        config = self.replay.multi_region_parameters
++        config['region_order'] = ['full', 'end15cm']
++        config['regions'] = {k: config['regions'][k] for k in config['region_order']}
++        local = config['regions']['end15cm']
++        if not np.array_equal(owner.thresholds, local['thresholds']):
++            raise ValueError('assembly trial must retain source thresholds')
++        if list(owner.segmentation) != list(local['local_segmentation']):
++            raise ValueError('assembly trial must retain source segmentation')
++        owned = list(local['support_point_ids'])
++        local['owned_point_ids'] = owned
++        full = config['regions']['full']
++        full['owned_point_ids'] = [p for p in full['support_point_ids'] if p not in owned]
++        self.block = local
++        self.radii = [r for r in self.replay.radii[self.direct]['circ'] if r > 0]
++        if not self.radii:
++            raise ValueError('assembly loss requires nonzero full calibration samples')
++        self.source = str(source)
++        self.baseline = self.evaluate(owner)
++
++    def evaluate(self, owner):
++        from tools.calibration_validation import _reconstruct_frame, straight_prefix_circular_tail
++        self.block['slopes'][self.direct] = np.asarray(owner.slopes[self.direct]).copy()
++        self.block['weights'][self.direct] = np.asarray(owner.weights[self.direct]).copy()
++        values = []
++        length = float(self.replay.ideal_len)
++        for radius in self.radii:
++            frame = np.asarray(self.replay.processed_Data['circ'][self.direct][radius])
++            dist, curve, _, _ = _reconstruct_frame(self.replay, frame, self.direct)
++            ideal, _ = straight_prefix_circular_tail(dist-dist[0], 0., radius/1000.)
++            squared = np.sum((curve-ideal)**2, axis=1) / length**2
++            values.append(float(np.mean(squared) + squared[-1]))
++        result = float(np.mean(values))
++        if not np.isfinite(result):
++            raise ValueError('nonfinite assembly loss')
++        return result

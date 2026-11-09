@@ -1,0 +1,398 @@
+[
+  {
+    "variant": "original",
+    "direct": 0,
+    "dataset": "full_measured",
+    "mean_point_percent": 0.7220284560521146,
+    "mean_tip_mm": 51.67977885788114,
+    "samples": [
+      {
+        "radius": 2000,
+        "tip_mm": 20.23355015412519
+      },
+      {
+        "radius": 1500,
+        "tip_mm": 24.609670101845882
+      },
+      {
+        "radius": 1000,
+        "tip_mm": 24.68054782623894
+      },
+      {
+        "radius": 800,
+        "tip_mm": 35.45896873466331
+      },
+      {
+        "radius": 600,
+        "tip_mm": 38.08622613783085
+      },
+      {
+        "radius": 400,
+        "tip_mm": 71.70052287003577
+      },
+      {
+        "radius": 300,
+        "tip_mm": 83.4759999879991
+      },
+      {
+        "radius": 200,
+        "tip_mm": 115.19274505031007
+      }
+    ]
+  },
+  {
+    "variant": "original",
+    "direct": 0,
+    "dataset": "end15_synthetic_upstream",
+    "mean_point_percent": 1.2579090308352725,
+    "mean_tip_mm": 127.3152986414469,
+    "samples": [
+      {
+        "radius": 100,
+        "tip_mm": 147.82016715644036
+      },
+      {
+        "radius": 75,
+        "tip_mm": 164.08656251634602
+      },
+      {
+        "radius": 50,
+        "tip_mm": 154.59309588161267
+      },
+      {
+        "radius": 30,
+        "tip_mm": 42.76136901138856
+      }
+    ]
+  },
+  {
+    "variant": "original",
+    "direct": 120,
+    "dataset": "full_measured",
+    "mean_point_percent": 0.5878915862686614,
+    "mean_tip_mm": 34.563427241928245,
+    "samples": [
+      {
+        "radius": 2000,
+        "tip_mm": 1.0598855038467292
+      },
+      {
+        "radius": 1500,
+        "tip_mm": 2.229481117226342
+      },
+      {
+        "radius": 1000,
+        "tip_mm": 4.657390838776785
+      },
+      {
+        "radius": 800,
+        "tip_mm": 11.683007129781567
+      },
+      {
+        "radius": 600,
+        "tip_mm": 4.827397183340977
+      },
+      {
+        "radius": 400,
+        "tip_mm": 64.86874348832659
+      },
+      {
+        "radius": 300,
+        "tip_mm": 62.78939134954734
+      },
+      {
+        "radius": 200,
+        "tip_mm": 124.39212132457966
+      }
+    ]
+  },
+  {
+    "variant": "original",
+    "direct": 120,
+    "dataset": "end15_synthetic_upstream",
+    "mean_point_percent": 0.7040003507741228,
+    "mean_tip_mm": 76.26976376096047,
+    "samples": [
+      {
+        "radius": 100,
+        "tip_mm": 91.60688996774239
+      },
+      {
+        "radius": 75,
+        "tip_mm": 93.86525562073555
+      },
+      {
+        "radius": 50,
+        "tip_mm": 86.58510770495847
+      },
+      {
+        "radius": 30,
+        "tip_mm": 33.021801750405494
+      }
+    ]
+  },
+  {
+    "variant": "original",
+    "direct": 240,
+    "dataset": "full_measured",
+    "mean_point_percent": 1.1091942275657303,
+    "mean_tip_mm": 57.79727800787279,
+    "samples": [
+      {
+        "radius": 2000,
+        "tip_mm": 19.76028465376777
+      },
+      {
+        "radius": 1500,
+        "tip_mm": 25.206285494035484
+      },
+      {
+        "radius": 1000,
+        "tip_mm": 31.435558549467487
+      },
+      {
+        "radius": 800,
+        "tip_mm": 45.719824954570235
+      },
+      {
+        "radius": 600,
+        "tip_mm": 50.305588041461654
+      },
+      {
+        "radius": 400,
+        "tip_mm": 76.91087381609626
+      },
+      {
+        "radius": 300,
+        "tip_mm": 95.05748586841582
+      },
+      {
+        "radius": 200,
+        "tip_mm": 117.9823226851676
+      }
+    ]
+  },
+  {
+    "variant": "original",
+    "direct": 240,
+    "dataset": "end15_synthetic_upstream",
+    "mean_point_percent": 1.2131665620793601,
+    "mean_tip_mm": 122.77806970522344,
+    "samples": [
+      {
+        "radius": 100,
+        "tip_mm": 135.86854394062806
+      },
+      {
+        "radius": 75,
+        "tip_mm": 157.01793087385025
+      },
+      {
+        "radius": 50,
+        "tip_mm": 156.42354890627652
+      },
+      {
+        "radius": 30,
+        "tip_mm": 41.80225510013887
+      }
+    ]
+  },
+  {
+    "variant": "w10",
+    "direct": 0,
+    "dataset": "full_measured",
+    "mean_point_percent": 0.6230114432135685,
+    "mean_tip_mm": 34.85277419513468,
+    "samples": [
+      {
+        "radius": 2000,
+        "tip_mm": 20.116564837372582
+      },
+      {
+        "radius": 1500,
+        "tip_mm": 24.49446438718298
+      },
+      {
+        "radius": 1000,
+        "tip_mm": 24.003502379612563
+      },
+      {
+        "radius": 800,
+        "tip_mm": 33.58945781432522
+      },
+      {
+        "radius": 600,
+        "tip_mm": 33.50549440759093
+      },
+      {
+        "radius": 400,
+        "tip_mm": 60.794373968490774
+      },
+      {
+        "radius": 300,
+        "tip_mm": 39.538002450506326
+      },
+      {
+        "radius": 200,
+        "tip_mm": 42.78033331599605
+      }
+    ]
+  },
+  {
+    "variant": "w10",
+    "direct": 0,
+    "dataset": "end15_synthetic_upstream",
+    "mean_point_percent": 1.32846179916901,
+    "mean_tip_mm": 136.66362445372062,
+    "samples": [
+      {
+        "radius": 100,
+        "tip_mm": 165.23905864799892
+      },
+      {
+        "radius": 75,
+        "tip_mm": 178.3852721440178
+      },
+      {
+        "radius": 50,
+        "tip_mm": 159.91212629745002
+      },
+      {
+        "radius": 30,
+        "tip_mm": 43.118040725415746
+      }
+    ]
+  },
+  {
+    "variant": "w10",
+    "direct": 120,
+    "dataset": "full_measured",
+    "mean_point_percent": 0.4841422304944476,
+    "mean_tip_mm": 18.05314279165327,
+    "samples": [
+      {
+        "radius": 2000,
+        "tip_mm": 1.0824024073623437
+      },
+      {
+        "radius": 1500,
+        "tip_mm": 2.2212491575750812
+      },
+      {
+        "radius": 1000,
+        "tip_mm": 4.13273456013284
+      },
+      {
+        "radius": 800,
+        "tip_mm": 11.037156005382666
+      },
+      {
+        "radius": 600,
+        "tip_mm": 4.300327123298552
+      },
+      {
+        "radius": 400,
+        "tip_mm": 57.09931831671246
+      },
+      {
+        "radius": 300,
+        "tip_mm": 22.70272110075683
+      },
+      {
+        "radius": 200,
+        "tip_mm": 41.849233662005375
+      }
+    ]
+  },
+  {
+    "variant": "w10",
+    "direct": 120,
+    "dataset": "end15_synthetic_upstream",
+    "mean_point_percent": 0.5633545337756735,
+    "mean_tip_mm": 58.25340811994409,
+    "samples": [
+      {
+        "radius": 100,
+        "tip_mm": 62.80966057812883
+      },
+      {
+        "radius": 75,
+        "tip_mm": 61.021889043603245
+      },
+      {
+        "radius": 50,
+        "tip_mm": 76.66883296774398
+      },
+      {
+        "radius": 30,
+        "tip_mm": 32.5132498903003
+      }
+    ]
+  },
+  {
+    "variant": "w10",
+    "direct": 240,
+    "dataset": "full_measured",
+    "mean_point_percent": 0.9741384809936053,
+    "mean_tip_mm": 37.93853876721262,
+    "samples": [
+      {
+        "radius": 2000,
+        "tip_mm": 17.755103289036104
+      },
+      {
+        "radius": 1500,
+        "tip_mm": 23.857873283899615
+      },
+      {
+        "radius": 1000,
+        "tip_mm": 29.99081885177174
+      },
+      {
+        "radius": 800,
+        "tip_mm": 42.462254299946565
+      },
+      {
+        "radius": 600,
+        "tip_mm": 44.433776328029346
+      },
+      {
+        "radius": 400,
+        "tip_mm": 51.504838947691894
+      },
+      {
+        "radius": 300,
+        "tip_mm": 50.8560463054982
+      },
+      {
+        "radius": 200,
+        "tip_mm": 42.64759883182752
+      }
+    ]
+  },
+  {
+    "variant": "w10",
+    "direct": 240,
+    "dataset": "end15_synthetic_upstream",
+    "mean_point_percent": 1.2957635159905045,
+    "mean_tip_mm": 133.53603087738713,
+    "samples": [
+      {
+        "radius": 100,
+        "tip_mm": 153.15552567805238
+      },
+      {
+        "radius": 75,
+        "tip_mm": 176.6584467546071
+      },
+      {
+        "radius": 50,
+        "tip_mm": 162.17388247877696
+      },
+      {
+        "radius": 30,
+        "tip_mm": 42.15626859811206
+      }
+    ]
+  }
+]

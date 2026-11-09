@@ -1,0 +1,50 @@
+[
+  {
+    "variant": "original",
+    "direct": 0,
+    "region": "end15cm",
+    "max_phase_error_deg": 83.09172496068753
+  },
+  {
+    "variant": "original",
+    "direct": 0,
+    "region": "end5cm",
+    "max_phase_error_deg": 116.1490829233003
+  },
+  {
+    "variant": "original",
+    "direct": 120,
+    "region": "end15cm",
+    "max_phase_error_deg": 114.71893114562387
+  },
+  {
+    "variant": "original",
+    "direct": 120,
+    "region": "end5cm",
+    "max_phase_error_deg": 174.89099976674197
+  },
+  {
+    "variant": "original",
+    "direct": 240,
+    "region": "end15cm",
+    "max_phase_error_deg": 68.8155495502482
+  },
+  {
+    "variant": "original",
+    "direct": 240,
+    "region": "end5cm",
+    "max_phase_error_deg": 46.779519252860645
+  },
+  {
+    "variant": "w1",
+    "direct": 120,
+    "region": "end15cm",
+    "max_phase_error_deg": 114.57761838554251
+  },
+  {
+    "variant": "w1",
+    "direct": 120,
+    "region": "end5cm",
+    "max_phase_error_deg": 174.18907362565625
+  }
+]

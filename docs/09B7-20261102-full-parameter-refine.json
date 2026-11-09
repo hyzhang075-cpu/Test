@@ -1,0 +1,96 @@
+{
+  "source": "C:\\Users\\hyzha\\Desktop\\shape-sensing-integrate-1\\params\\09B7_20261102_full9_seed.json",
+  "production_optimizer_modified": false,
+  "basis": "unchanged production standalone full recon; each mean normalized by full evaluation length",
+  "search": "minimize max(mean point ratio, mean end ratio); first-segment slope offset and uniform weight multiplier, then six per-level weight factors if needed",
+  "rot_ang": -31.4,
+  "directions": {
+    "0": {
+      "before": {
+        "point_ratio": 0.002895662753547742,
+        "end_ratio": 0.0077060901086353
+      },
+      "after": {
+        "point_ratio": 0.002895662753547742,
+        "end_ratio": 0.0077060901086353
+      },
+      "first_segment_slope_offset_rad_per_m": 0.0,
+      "weight_multiplier": 1.0,
+      "per_level_weight_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "evaluations": 0,
+      "point_and_end_within_1pct": true
+    },
+    "120": {
+      "before": {
+        "point_ratio": 0.0038378327438998686,
+        "end_ratio": 0.010578508347057633
+      },
+      "after": {
+        "point_ratio": 0.004740752226211555,
+        "end_ratio": 0.009724226205965253
+      },
+      "first_segment_slope_offset_rad_per_m": -0.04982310920458097,
+      "weight_multiplier": 1.003323441524552,
+      "per_level_weight_multipliers": [
+        0.98158946845468,
+        1.039769579954479,
+        0.9520510011146035,
+        1.0448272979062598,
+        0.9933953353583052,
+        0.9996135010602794
+      ],
+      "evaluations": 1103,
+      "point_and_end_within_1pct": true
+    },
+    "240": {
+      "before": {
+        "point_ratio": 0.007035223392769427,
+        "end_ratio": 0.017914433654408188
+      },
+      "after": {
+        "point_ratio": 0.005030357063616816,
+        "end_ratio": 0.00503035707001233
+      },
+      "first_segment_slope_offset_rad_per_m": -0.8343427896570601,
+      "weight_multiplier": 1.001568410367702,
+      "per_level_weight_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "evaluations": 314,
+      "point_and_end_within_1pct": true
+    }
+  },
+  "all_directions_within_1pct": true,
+  "formal_main_recon": {
+    "all_directions_within_1pct": true,
+    "directions": {
+      "0": {
+        "log": "09B7_20261102_full_under1_recon_direct0.log",
+        "point_ratio": 0.002895662753547742,
+        "end_ratio": 0.0077060901086353
+      },
+      "120": {
+        "log": "09B7_20261102_full_under1_recon_direct120.log",
+        "point_ratio": 0.004740752226211555,
+        "end_ratio": 0.009724226205965253
+      },
+      "240": {
+        "log": "09B7_20261102_full_under1_recon_direct240.log",
+        "point_ratio": 0.005030357063616816,
+        "end_ratio": 0.00503035707001233
+      }
+    }
+  }
+}

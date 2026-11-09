@@ -1,0 +1,87 @@
+--- pasted
+
++++ current
+
+@@ -353,5 +353,4 @@
+
+         namespace._full_segmentation_explicit = True
+ 
+-
+ def build_argument_parser():
+     """创建主程序参数解析器，集中定义硬件、定标、优化和展示参数。"""
+@@ -363,14 +362,14 @@
+
+     parser.add_argument('--use_full_transported_phase', type=_str2bool, default=False,
+                         help='局部优化使用非零弯曲状态的固定上游相位；区域跨界固定使用full第0档slope')
+-    parser.add_argument('--end15cm_point_calib', type=_str2bool, default=False,
++    parser.add_argument('--end15cm_point_calib', type=_str2bool, default=True,
+                         help='仅end15cm：使用真实点方向一致性优化slopes、已知半径曲率优化weights；默认沿用几何优化')
+-    parser.add_argument('--end5cm_point_calib', type=_str2bool, default=False,
++    parser.add_argument('--end5cm_point_calib', type=_str2bool, default=True,
+                         help='仅end5cm：固定区域相位后优化真实点方向一致性，再按真实radii优化曲率幅值；默认沿用几何优化')
+-    parser.add_argument('--end5cm_independent_weights', type=_str2bool, default=False,
++    parser.add_argument('--end5cm_independent_weights', type=_str2bool, default=True,
+                         help='仅end5cm：19–20普通组、21独立组、22独立组；weights为三组，旧布局默认不变')
+     parser.add_argument('--end5cm_independent_weight_score', '--end5cm_groupwise_weight_score',
+-                        dest='end5cm_independent_weight_score', type=_str2bool, default=False,
++                        dest='end5cm_independent_weight_score', type=_str2bool, default=True,
+                         help='仅end5cm独立三组weights：19–20用组内base曲率均值，21/22各自评分；旧groupwise名称为兼容别名')
+-    parser.add_argument('--end5cm_coverage_aware_weights', type=_str2bool, default=False,
++    parser.add_argument('--end5cm_coverage_aware_weights', type=_str2bool, default=True,
+                         help='仅end5cm真实点+独立组均值评分：只优化有实测覆盖的weight档位，其他档位由相邻自由档位对数插值')
+     parser.add_argument('--end5cm_min_weight_effective_samples', type=_finite_nonnegative_float, default=1.0,
+@@ -390,7 +389,7 @@
+
+                         help='区域模式下optim/score依次处理的区域列表')
+     parser.add_argument('--full_segmentation', type=ast.literal_eval, action=_StoreFullSegmentation,
+-                        default=[3, 4, 8, 3, 2, 2],
++                        default=[2, 5, 2, 4, 2, 2, 2, 3],
+                         help='全长真实点分段列表；局部区域必须由其完整空间段组成')
+-    parser.add_argument('--calibration_data_root', type=str, default="./0917-08B5+镍钛管全身打孔固定全段加末段测试",
++    parser.add_argument('--calibration_data_root', type=str, default="./09B7",
+                         help='定标数据根目录；相对路径以main.py所在目录为基准')
+     parser.add_argument('--calibration_regions', type=ast.literal_eval, default={
+@@ -407,7 +406,7 @@
+
+             'folder_path': '末端测试/15cm',
+             'radii': {'circ': [0, 2000, 1500, 1000, 800, 600, 400, 300, 200, 100, 75, 50, 30]},
+-            'thresholds': [0.8, 1.2, 2.0, 3.0, 4.0, 10.0, 20],
++            'thresholds': [0.8, 1.2, 2.0, 3.0, 4.0, 10.0, 20.0, 33.0],
+             'end_weights': False, 'end_start': -5,
+-            'segmentation': [3, 2, 2],
++            'segmentation': [2, 2, 3],
+             'weights': None, 'slopes': None,
+         },
+@@ -418,7 +417,7 @@
+
+             # score(0/120/240) 显示 20/15 mm 在 35 m^-1 最高档饱和；
+             # 45 m^-1 用于下一轮重新优化，不得与旧 9 组参数混用。
+-            'thresholds': [0.8, 1.2, 2.0, 3.0, 4.0, 10.0, 20, 35, 45],
++            'thresholds': [0.8, 1.2, 2.0, 3.0, 4.0, 10.0, 20.0, 35.0, 45.0, 70.0],
+             'end_weights': True, 'end_start': -1,
+-            'segmentation': [2, 2],
++            'segmentation': [2, 3],
+             'weights': None, 'slopes': None,
+         },
+@@ -427,7 +426,7 @@
+
+                         help='批量优化/评分诊断输出目录，按传感器、本地时间和优化角度创建新目录')
+     # 硬件参数
+-    parser.add_argument('--sensor_id', type=str, default='08B5', help='传感器编号')
+-    parser.add_argument('--start_value', type=float, default=-11.0, help='传感器第一个传感点到固定件的距离, 单位为mm')
+-    parser.add_argument('--end_value', type=float, default=6.0, help='传感器最后一个传感点到末端的距离, 单位为mm')
++    parser.add_argument('--sensor_id', type=str, default='09B7', help='传感器编号')
++    parser.add_argument('--start_value', type=float, default=19.7, help='传感器第一个传感点到固定件的距离, 单位为mm')
++    parser.add_argument('--end_value', type=float, default=5.0, help='传感器最后一个传感点到末端的距离, 单位为mm')
+     # parser.add_argument('--R', type=float, default=0.235e-3, help='传感器半径, 单位为m') #肠镜
+     parser.add_argument('--R', type=float, default=0.1e-3, help='传感器半径, 单位为m') # 支气管镜
+@@ -436,6 +435,6 @@
+
+     # parser.add_argument('--samp_dist_preset', type=list, default=[510, 540, 570, 630, 710, 810, 910, 1010, 1110, 1210, 1310, 1410, 1510, 1610, 1710, 1815], help='FBG传感点位置(A组及中心), 单位为mm') #肠镜
+     # parser.add_argument('--samp_dist_preset', type=list, default=[510, 520, 530, 540, 550, 580, 610, 640, 670, 720, 770, 850, 930, 1010, 1110, 1230], help='FBG传感点位置, 单位为mm')# 16点支气管镜
+-    # parser.add_argument('--samp_dist_preset', type=ast.literal_eval, default=[510, 521, 532, 543, 554, 588, 622, 656, 707, 758, 809, 860, 911, 962, 1013, 1064, 1115, 1166, 1217, 1268, 1319, 1370], help='FBG传感点位置, 单位为mm')# 22点支气管镜
+-    parser.add_argument('--samp_dist_preset', type=ast.literal_eval, default=[510, 521, 533, 543, 577, 611, 645, 696, 746, 797, 847, 899, 950, 1001, 1053, 1104, 1155, 1207, 1257, 1308, 1359, 1410], help='FBG传感点位置, 单位为mm')# 22点支气管镜位置错误版本
++    parser.add_argument('--samp_dist_preset', type=ast.literal_eval, default=[510, 521, 532, 543, 554, 588, 622, 656, 707, 758, 809, 860, 911, 962, 1013, 1064, 1115, 1166, 1217, 1268, 1319, 1370], help='FBG传感点位置, 单位为mm')# 22点支气管镜
++    # parser.add_argument('--samp_dist_preset', type=ast.literal_eval, default=[510, 521, 533, 543, 577, 611, 645, 696, 746, 797, 847, 899, 950, 1001, 1053, 1104, 1155, 1207, 1257, 1308, 1359, 1410], help='FBG传感点位置, 单位为mm')# 22点支气管镜位置错误版本
+     # parser.add_argument('--samp_dist_preset', type=list, default=[510, 521, 532, 543, 554, 579, 604, 629, 654, 696, 738, 780, 822, 864, 906, 948, 990, 1032, 1074, 1116, 1158, 1200], help='FBG传感点位置, 单位为mm')# 22点支气管镜，69cm
+     parser.add_argument('--samp_dist_preset_sub', type=ast.literal_eval, default=[120, 160, 200, 295, 445, 595, 745, 895], help='FBG传感点位置(B组), 单位为mm')

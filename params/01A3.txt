@@ -1,0 +1,45 @@
+    parser = argparse.ArgumentParser()
+    # 实验参数
+    parser.add_argument('--interrogator', type=str, default='FiberTecc', choices=['FiberTecc', 'Hippo', 'LUNA'], help='解调仪器')
+    parser.add_argument('--sensor_id', type=str, default="01A3", help='传感器编号')
+    parser.add_argument('--start_value', type=float, default=162.0, help='传感器第一个传感点到固定件的距离, 单位为mm')
+    parser.add_argument('--active_channels', type=list, default=[1, 3, 4], help='传感器连接解调仪的通道以及其顺序')
+    parser.add_argument('--folder_path', type=str, default="./FBG/0128-01A3肠镜FBG+不锈钢管/第二次测试", help='数据存储路径')
+    parser.add_argument('--rot_dir', type=int, default=1, choices=[1, -1], help='标定按逆(1)还是顺(-1)时针调整的方向')
+    parser.add_argument('--exp_directs', type=list, default=[0, 120, 240], help='实验使用的方向')
+    parser.add_argument('--radii', type=list, default=[0, 2000, 1500, 1000, 800, 600, 400, 300, 200], help='标定形状半径')
+    # 选择任务
+    parser.add_argument('--task', type=str, required=True, choices=['ang', 'init', 'optim', 'recon', 'demo'], help='选择运行目的为初始化、优化参数还是纯重构')
+    # 需手动调整的参数
+    parser.add_argument('--segmentation', type=list, default=[2, 10], help='对扭转角度-传感点位置曲线的分段方法')
+    parser.add_argument('--sensing_ranges', type=dict, default={1: (583, 1048), 3: (678, 1146), 4: (749, 1215)}, help='LUNA各通道使用的传感点范围')
+    # 初始化时连带优化的参数
+    parser.add_argument('--rot_ang', type=float, default=0.0, help='绕x轴旋转角度, 初始为0.0')
+    parser.add_argument('--ang_step', type=float, default=0.1, help='旋转角度搜索步长, 初始为0.1')
+    parser.add_argument('--ang_range', type=float, default=180, help='旋转角度搜索距离, 初始为180.0')
+    # 自动优化的参数的初始值
+    parser.add_argument('--weights', default={0: np.array([0.6979243189329088, 0.6923343572006779, 0.7303331029148317, 0.7021173347835394, 0.7121331915001875, 0.7207339630854958]),
+                                            120: np.array([0.7194815853313021, 0.644193759160354, 0.7661093154037961, 0.734463193324267, 0.766372507258842, 0.7669645573611544]),
+                                            240: np.array([0.7121380135293761, 0.7456176716076799, 0.719310824219931, 0.7464163730400085, 0.7606724289668035, 0.753647687344861])}, help='曲率权重')
+    parser.add_argument('--slopes', default={0: np.array([[2.0574070299170573, -0.1058854469001691, 0.2469671896405728], [1.898756839792154, -0.09118240845180264, 0.24754273249652659], [1.9972660239873001, -0.050612692323022075, 0.0704752113477725], [2.157524112091346, -0.15784271420864784, 0.35908521717885544], [1.9120755220409729, -0.0702206800475585, 0.2295900034951772], [2.1864086583177005, -0.10039047030697024, 0.12368893742280673]]),
+                                            120: np.array([[2.0286464753021045, -1.0518045170070252, 1.451463607327062], [-2.448462588824768, 0.7840491534347703, -1.669848727584269], [-1.5227675326659214, -1.6413912639049433, 1.8972701264044667], [-8.965626542045772, 0.8904698282010832, -2.075949036209215], [-10.386933036554577, 0.3407896790473365, -1.6894573160149604], [-13.180184750541398, 0.3197647313927343, -1.7081178901771612]]),
+                                            240: np.array([[2.983049089899745, 0.20861487492497277, -0.03882651821848513], [7.370136383272063, -1.1318692465092484, 1.6289843379757873], [6.513187950244301, 0.3378220042574001, -0.3215024676723552], [16.222081948018705, -1.4374223112260873, 3.2414839376493463], [15.957010391855594, -0.7278896594201337, 2.0239454357565525], [19.19686224825014, -0.9554436100342023, 2.2799296244161535]])}, help='扭转系数')
+    # 曲率权重与扭转系数优化需做的准备
+    parser.add_argument('--direct', type=int, default=0, choices=[0, 120, 240], help='优化曲率权重与扭转系数的标定方向')
+    parser.add_argument('--init_loss', type=float, default=np.inf, help='当前优化使用的初始误差')
+    # 优化使用的超参
+    parser.add_argument('--bounds', type=tuple, default=(0.5, 1.0), help='曲率权重范围')
+    parser.add_argument('--thresholds', type=list, default=[0.8, 1.5, 2.0, 3.0, 4.0], help='各曲率分级的阈值')
+    parser.add_argument('--max_iter', type=int, default=5, help='优化的最大轮次')
+    parser.add_argument('--k', type=float, default=0.0, help='优化目标中末端误差的权重, 0.0时只以每点误差作为优化目标')
+    parser.add_argument('--method', type=str, default="Powell", help='优化算法, 用于输入scipy.optimize.minimimze')
+    parser.add_argument('--hyper_params', type=dict, default=[10000, 1e-6, 1e-6], help='优化算法使用的超参数')
+    parser.add_argument('--min_loss_diff', type=float, default=1e-6, help='收敛判定')
+    # 动态展示参数
+    parser.add_argument('--IP', type=str, default='192.168.1.75', help='解调仪IP')
+    parser.add_argument('--PORT', type=int, default=26546)
+    parser.add_argument('--data_freq', type=int, default=100, help='解调仪频率')
+    parser.add_argument('--total_scale', type=float, default=1.0, help='动态显示大小')
+    parser.add_argument('--imu', type=bool, default=False, help='是否启用IMU')
+    parser.add_argument('--imu_com', type=str, default='COM6', help='IMU接口')
+    args = parser.parse_args()

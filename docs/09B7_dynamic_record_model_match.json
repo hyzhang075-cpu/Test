@@ -1,0 +1,107 @@
+[
+  {
+    "file": "params/09B7_dynamic_smooth_score_trial.json",
+    "mode": "both_full",
+    "median_deg": 9.148290735488358,
+    "max_deg": 66.42511968119389,
+    "curvature_max_diff": 0.46403000948015016
+  },
+  {
+    "file": "params/09B7_absolute_assembly_dynamic_candidate.json",
+    "mode": "both_full",
+    "median_deg": 9.148290735488407,
+    "max_deg": 66.4251196811939,
+    "curvature_max_diff": 1.4210854715202004e-14
+  },
+  {
+    "file": "params/09B7_absolute_assembly_reoptim_round2.json",
+    "mode": "both_full",
+    "median_deg": 9.148290735488407,
+    "max_deg": 66.4251196811939,
+    "curvature_max_diff": 1.4210854715202004e-14
+  },
+  {
+    "file": "params/09B7_absolute_assembly_reoptim_candidate.json",
+    "mode": "both_full",
+    "median_deg": 9.148290735488358,
+    "max_deg": 71.39731002622295,
+    "curvature_max_diff": 7.300285487232827e-07
+  },
+  {
+    "file": "params/09B7_NeTi_new.json",
+    "mode": "current",
+    "median_deg": 31.430868336665448,
+    "max_deg": 79.18356703064102,
+    "curvature_max_diff": 0.11441446864685778
+  },
+  {
+    "file": "params/09B7_NeTi_new.json",
+    "mode": "both_full",
+    "median_deg": 31.430868336665448,
+    "max_deg": 84.99719158391298,
+    "curvature_max_diff": 0.11441446864685778
+  },
+  {
+    "file": "params/09B7_absolute_assembly_reoptim_candidate.json",
+    "mode": "current",
+    "median_deg": 9.148290735488358,
+    "max_deg": 88.78994258590502,
+    "curvature_max_diff": 7.300285487232827e-07
+  },
+  {
+    "file": "params/09B7_absolute_assembly_dynamic_candidate.json",
+    "mode": "current",
+    "median_deg": 9.148290735488407,
+    "max_deg": 90.00807492155846,
+    "curvature_max_diff": 1.4210854715202004e-14
+  },
+  {
+    "file": "params/09B7_absolute_assembly_reoptim_round2.json",
+    "mode": "current",
+    "median_deg": 9.148290735488407,
+    "max_deg": 90.00807492155846,
+    "curvature_max_diff": 1.4210854715202004e-14
+  },
+  {
+    "file": "params/09B7_dynamic_smooth_score_trial.json",
+    "mode": "current",
+    "median_deg": 9.148290735488358,
+    "max_deg": 90.27724629630146,
+    "curvature_max_diff": 0.46403000948015016
+  },
+  {
+    "file": "params/09B7_dynamic_smooth_score_trial.json",
+    "mode": "legacy",
+    "median_deg": 45.629285867154124,
+    "max_deg": 90.54861854215345,
+    "curvature_max_diff": 0.4640300094801506
+  },
+  {
+    "file": "params/09B7_absolute_assembly_dynamic_candidate.json",
+    "mode": "legacy",
+    "median_deg": 45.769150994645784,
+    "max_deg": 90.54866550680471,
+    "curvature_max_diff": 1.4210854715202004e-14
+  },
+  {
+    "file": "params/09B7_absolute_assembly_reoptim_round2.json",
+    "mode": "legacy",
+    "median_deg": 45.769150994645784,
+    "max_deg": 90.54866550680471,
+    "curvature_max_diff": 1.4210854715202004e-14
+  },
+  {
+    "file": "params/09B7_absolute_assembly_reoptim_candidate.json",
+    "mode": "legacy",
+    "median_deg": 17.200424920974182,
+    "max_deg": 90.57143803915406,
+    "curvature_max_diff": 7.30028545170569e-07
+  },
+  {
+    "file": "params/09B7_NeTi_new.json",
+    "mode": "legacy",
+    "median_deg": 13.911059323353907,
+    "max_deg": 138.5334758388483,
+    "curvature_max_diff": 0.11441446864685789
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "checks": "AST, sum identity, candidate sensitivity, disabled identity, deterministic repeat, no owner mutation, full-only upstream ownership, phase false, four invalid combinations rejected",
+  "components": {
+    "real_point_direction_loss": 0.010268152842312172,
+    "assembly_geometry_loss": 0.003895315008461039,
+    "coefficient": 1.0,
+    "total": 0.014163467850773211
+  },
+  "perturbed_components": {
+    "real_point_direction_loss": 0.010273124694893625,
+    "assembly_geometry_loss": 0.003898577250116601,
+    "coefficient": 1.0,
+    "total": 0.014171701945010226
+  },
+  "initialization_and_first_eval_seconds": 19.284075499977916,
+  "cached_eval_seconds": 0.022485399967990816,
+  "radii": [
+    2000,
+    1500,
+    1000,
+    800,
+    600,
+    400,
+    300,
+    200
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "note": "Diagnostic final slope/weight map substitution; each map retains its source scoring. No optimization or package modification. Eight nonzero full circles.",
+  "rows": [
+    {
+      "mode": "full",
+      "direct": 0,
+      "mean_tip_mm": 11.692762530908217
+    },
+    {
+      "mode": "full",
+      "direct": 120,
+      "mean_tip_mm": 10.305939056835847
+    },
+    {
+      "mode": "full",
+      "direct": 240,
+      "mean_tip_mm": 17.85376567907407
+    },
+    {
+      "mode": "end15_weights",
+      "direct": 0,
+      "mean_tip_mm": 11.956462204665767
+    },
+    {
+      "mode": "end15_weights",
+      "direct": 120,
+      "mean_tip_mm": 10.67004964026045
+    },
+    {
+      "mode": "end15_weights",
+      "direct": 240,
+      "mean_tip_mm": 18.06527976366614
+    },
+    {
+      "mode": "end15_slopes",
+      "direct": 0,
+      "mean_tip_mm": 53.95120100637002
+    },
+    {
+      "mode": "end15_slopes",
+      "direct": 120,
+      "mean_tip_mm": 34.317274375929514
+    },
+    {
+      "mode": "end15_slopes",
+      "direct": 240,
+      "mean_tip_mm": 59.174567746151155
+    },
+    {
+      "mode": "end15_both",
+      "direct": 0,
+      "mean_tip_mm": 53.434201481578036
+    },
+    {
+      "mode": "end15_both",
+      "direct": 120,
+      "mean_tip_mm": 34.03820470139248
+    },
+    {
+      "mode": "end15_both",
+      "direct": 240,
+      "mean_tip_mm": 58.72544164394358
+    }
+  ]
+}

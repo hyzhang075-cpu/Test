@@ -1,0 +1,243 @@
+{
+  "package": "params/09B7_corrected_end15_assembly_w10_candidate.json",
+  "basis": "actual assembled candidate slope_map; circular difference at first supported real point from stored local global phase; local data inserted into full straight frame",
+  "rows": [
+    {
+      "direct": 0,
+      "region": "end15cm",
+      "max_phase_error_deg": 102.24687324696107,
+      "pass_30deg": false,
+      "samples": [
+        {
+          "radius": 100,
+          "predicted_phase_rad": -4.184292374640086,
+          "local_phase_rad": -2.3997477866113104,
+          "phase_error_deg": 102.24687324696107,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": true
+        },
+        {
+          "radius": 75,
+          "predicted_phase_rad": -4.113285361027619,
+          "local_phase_rad": -2.3997477866113104,
+          "phase_error_deg": 98.1784710511387,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": true
+        },
+        {
+          "radius": 50,
+          "predicted_phase_rad": -3.9460467356233284,
+          "local_phase_rad": -2.3997477866113104,
+          "phase_error_deg": 88.59640364390351,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": true
+        },
+        {
+          "radius": 30,
+          "predicted_phase_rad": -3.8831694031446284,
+          "local_phase_rad": -2.3997477866113104,
+          "phase_error_deg": 84.99379786583314,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "direct": 0,
+      "region": "end5cm",
+      "max_phase_error_deg": 132.31228938566284,
+      "pass_30deg": false,
+      "samples": [
+        {
+          "radius": 30,
+          "predicted_phase_rad": -4.145589308249665,
+          "local_phase_rad": -1.8600645997914176,
+          "phase_error_deg": 130.9509197675255,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": false
+        },
+        {
+          "radius": 20,
+          "predicted_phase_rad": -4.16934969042278,
+          "local_phase_rad": -1.8600645997914176,
+          "phase_error_deg": 132.31228938566284,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": false
+        },
+        {
+          "radius": 15,
+          "predicted_phase_rad": -4.165961879069554,
+          "local_phase_rad": -1.8600645997914176,
+          "phase_error_deg": 132.11818209333651,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "direct": 120,
+      "region": "end15cm",
+      "max_phase_error_deg": 112.4084820169973,
+      "pass_30deg": false,
+      "samples": [
+        {
+          "radius": 100,
+          "predicted_phase_rad": -0.8827259527223024,
+          "local_phase_rad": -2.3997477866113104,
+          "phase_error_deg": 86.9189485110364,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": true
+        },
+        {
+          "radius": 75,
+          "predicted_phase_rad": -0.8803782133769456,
+          "local_phase_rad": -2.3997477866113104,
+          "phase_error_deg": 87.05346406692215,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": true
+        },
+        {
+          "radius": 50,
+          "predicted_phase_rad": -0.5745081839569863,
+          "local_phase_rad": -2.3997477866113104,
+          "phase_error_deg": 104.57852583222814,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": true
+        },
+        {
+          "radius": 30,
+          "predicted_phase_rad": -0.437849668245871,
+          "local_phase_rad": -2.3997477866113104,
+          "phase_error_deg": 112.4084820169973,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "direct": 120,
+      "region": "end5cm",
+      "max_phase_error_deg": 163.622710337671,
+      "pass_30deg": false,
+      "samples": [
+        {
+          "radius": 30,
+          "predicted_phase_rad": 0.8210257236505885,
+          "local_phase_rad": -1.8600645997914176,
+          "phase_error_deg": 153.61516002659172,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": false
+        },
+        {
+          "radius": 20,
+          "predicted_phase_rad": 0.9320531607633518,
+          "local_phase_rad": -1.8600645997914176,
+          "phase_error_deg": 159.97656358330727,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": false
+        },
+        {
+          "radius": 15,
+          "predicted_phase_rad": 0.9956904266379043,
+          "local_phase_rad": -1.8600645997914176,
+          "phase_error_deg": 163.622710337671,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "direct": 240,
+      "region": "end15cm",
+      "max_phase_error_deg": 86.09753428550515,
+      "pass_30deg": false,
+      "samples": [
+        {
+          "radius": 100,
+          "predicted_phase_rad": -3.9024332377420787,
+          "local_phase_rad": -2.3997477866113104,
+          "phase_error_deg": 86.09753428550515,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": true
+        },
+        {
+          "radius": 75,
+          "predicted_phase_rad": -3.9022795266956,
+          "local_phase_rad": -2.3997477866113104,
+          "phase_error_deg": 86.08872729127738,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": true
+        },
+        {
+          "radius": 50,
+          "predicted_phase_rad": -3.715408849157585,
+          "local_phase_rad": -2.3997477866113104,
+          "phase_error_deg": 75.38182615359898,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": true
+        },
+        {
+          "radius": 30,
+          "predicted_phase_rad": -3.618290027353319,
+          "local_phase_rad": -2.3997477866113104,
+          "phase_error_deg": 69.81732755293142,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "direct": 240,
+      "region": "end5cm",
+      "max_phase_error_deg": 122.97075630966839,
+      "pass_30deg": false,
+      "samples": [
+        {
+          "radius": 30,
+          "predicted_phase_rad": -4.006309181062723,
+          "local_phase_rad": -1.8600645997914176,
+          "phase_error_deg": 122.97075630966839,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": false
+        },
+        {
+          "radius": 20,
+          "predicted_phase_rad": -3.9339133571489264,
+          "local_phase_rad": -1.8600645997914176,
+          "phase_error_deg": 118.8227811450356,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": false
+        },
+        {
+          "radius": 15,
+          "predicted_phase_rad": -3.9109721922029093,
+          "local_phase_rad": -1.8600645997914176,
+          "phase_error_deg": 117.50834921651534,
+          "tolerance_deg": 30.0,
+          "within_30_deg": false,
+          "blocking": false
+        }
+      ]
+    }
+  ]
+}

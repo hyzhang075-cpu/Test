@@ -1,0 +1,72 @@
+[
+  {
+    "file": "params/09B7_absolute_assembly_dynamic_candidate.json",
+    "mode": "level0_interval",
+    "median_deg": 9.148290735488358,
+    "max_deg": 9.185085595234112,
+    "curvature_max_diff": 1.4210854715202004e-14
+  },
+  {
+    "file": "params/09B7_absolute_assembly_reoptim_candidate.json",
+    "mode": "level0_interval",
+    "median_deg": 2.0926248554607434,
+    "max_deg": 9.185085595234112,
+    "curvature_max_diff": 7.300285487232827e-07
+  },
+  {
+    "file": "params/09B7_absolute_assembly_reoptim_round2.json",
+    "mode": "level0_interval",
+    "median_deg": 9.148290735488358,
+    "max_deg": 9.185085595234112,
+    "curvature_max_diff": 1.4210854715202004e-14
+  },
+  {
+    "file": "params/09B7_dynamic_smooth_score_trial.json",
+    "mode": "level0_interval",
+    "median_deg": 8.940337722839104,
+    "max_deg": 9.278534971373931,
+    "curvature_max_diff": 0.46403000948015016
+  },
+  {
+    "file": "params/09B7_absolute_assembly_reoptim_candidate.json",
+    "mode": "full_interval",
+    "median_deg": 8.940109133999417,
+    "max_deg": 16.029097804227472,
+    "curvature_max_diff": 7.300285487232827e-07
+  },
+  {
+    "file": "params/09B7_absolute_assembly_dynamic_candidate.json",
+    "mode": "full_interval",
+    "median_deg": 9.148290735488407,
+    "max_deg": 16.047014017425337,
+    "curvature_max_diff": 1.4210854715202004e-14
+  },
+  {
+    "file": "params/09B7_absolute_assembly_reoptim_round2.json",
+    "mode": "full_interval",
+    "median_deg": 9.148290735488407,
+    "max_deg": 16.047014017425337,
+    "curvature_max_diff": 1.4210854715202004e-14
+  },
+  {
+    "file": "params/09B7_dynamic_smooth_score_trial.json",
+    "mode": "full_interval",
+    "median_deg": 9.148290735488358,
+    "max_deg": 16.14501073126967,
+    "curvature_max_diff": 0.46403000948015016
+  },
+  {
+    "file": "params/09B7_NeTi_new.json",
+    "mode": "level0_interval",
+    "median_deg": 12.330477990075833,
+    "max_deg": 33.218788282437124,
+    "curvature_max_diff": 0.11441446864685778
+  },
+  {
+    "file": "params/09B7_NeTi_new.json",
+    "mode": "full_interval",
+    "median_deg": 19.196953749971577,
+    "max_deg": 40.08526404233287,
+    "curvature_max_diff": 0.11441446864685778
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "started": "2026-11-06 17:22:14",
+  "stages": [
+    "init_full",
+    "init_end15cm",
+    "init_end5cm"
+  ],
+  "score": "calibration_results\\09B8-20261106T172648+0800-direct0-949aa7\\results.json",
+  "initial_rot_ang": 8.0
+}

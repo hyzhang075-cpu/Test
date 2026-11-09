@@ -1,0 +1,9 @@
+{
+  "maximum_angle_difference_vs_single_full_rad": 8.881784197001252e-16,
+  "frames": 24,
+  "maximum_anchor_error_rad": 8.881784197001252e-16,
+  "local_internal_slopes_unchanged": true,
+  "weights_unchanged": true,
+  "mode": "full_mixed_end15_anchor_then_end15_mixed_bridge_to_end5",
+  "end5_upstream_slope_and_phase_increment_assertions_passed": true
+}

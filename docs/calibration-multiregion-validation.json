@@ -1,0 +1,1159 @@
+{
+  "basis": "full 22-point reconstruction with region-owned point parameters",
+  "global_phases_set": -0.7058749485849114,
+  "rot_ang": 0.0,
+  "directions": {
+    "0": {
+      "full": {
+        "2000": {
+          "mean_point_error_mm": 4.5065894850737696,
+          "max_point_error_mm": 15.544483696749761,
+          "tip_position_error_mm": 15.544483696749761,
+          "tip_tangent_error_deg": 8.3077460250839,
+          "pose_error_mm": 128.10931697457377,
+          "evaluated_region_point_error_mm": 4.5065894850737696,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.5281187160316417,
+              "slope_jump": 8.08193390599115,
+              "base_curvature_jump_m_inv": 0.3807802808018532,
+              "phase_jump_rad": 0.7150249971685572,
+              "curvature_vector_jump_m_inv": 0.9481064686103677
+            },
+            "18->19": {
+              "weight_jump": 0.34763546024534464,
+              "slope_jump": 100.43551553447534,
+              "base_curvature_jump_m_inv": 0.037554074136437354,
+              "phase_jump_rad": 0.8231495280459118,
+              "curvature_vector_jump_m_inv": 0.5019983110933364
+            }
+          }
+        },
+        "1500": {
+          "mean_point_error_mm": 4.645530448700968,
+          "max_point_error_mm": 19.122178612547376,
+          "tip_position_error_mm": 19.122178612547376,
+          "tip_tangent_error_deg": 9.33060496564835,
+          "pose_error_mm": 144.09356797965415,
+          "evaluated_region_point_error_mm": 4.645530448700968,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.3734235337345423,
+              "slope_jump": 6.229595212094948,
+              "base_curvature_jump_m_inv": 0.3674103541469316,
+              "phase_jump_rad": 0.6451560878252702,
+              "curvature_vector_jump_m_inv": 0.8203147328302721
+            },
+            "18->19": {
+              "weight_jump": 0.2021043312337798,
+              "slope_jump": 101.44511673925479,
+              "base_curvature_jump_m_inv": 0.09363370848443592,
+              "phase_jump_rad": 0.8433223838694006,
+              "curvature_vector_jump_m_inv": 0.6214839776254347
+            }
+          }
+        },
+        "1000": {
+          "mean_point_error_mm": 6.278956307042913,
+          "max_point_error_mm": 19.092354884563353,
+          "tip_position_error_mm": 19.092354884563353,
+          "tip_tangent_error_deg": 9.34463203227682,
+          "pose_error_mm": 144.3022502119664,
+          "evaluated_region_point_error_mm": 6.278956307042913,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.11668142332433218,
+              "slope_jump": 1.93308197507044,
+              "base_curvature_jump_m_inv": 0.47092023745545397,
+              "phase_jump_rad": 0.4738392512107983,
+              "curvature_vector_jump_m_inv": 0.7513927269253363
+            },
+            "18->19": {
+              "weight_jump": 0.19203075903025169,
+              "slope_jump": 91.77276947502611,
+              "base_curvature_jump_m_inv": 0.18840565417217897,
+              "phase_jump_rad": 0.7831300955515896,
+              "curvature_vector_jump_m_inv": 0.6739719750591752
+            }
+          }
+        },
+        "800": {
+          "mean_point_error_mm": 6.834771819300181,
+          "max_point_error_mm": 23.78828993249603,
+          "tip_position_error_mm": 23.78828993249603,
+          "tip_tangent_error_deg": 8.932549770522511,
+          "pose_error_mm": 138.77990230689107,
+          "evaluated_region_point_error_mm": 6.834771819300181,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.08485493950021183,
+              "slope_jump": 0.6411627282376973,
+              "base_curvature_jump_m_inv": 0.6956453849221744,
+              "phase_jump_rad": 0.41927271869300275,
+              "curvature_vector_jump_m_inv": 1.0034222682305134
+            },
+            "18->19": {
+              "weight_jump": 0.37695199067395735,
+              "slope_jump": 80.17767260075512,
+              "base_curvature_jump_m_inv": 0.22066367258516562,
+              "phase_jump_rad": 0.6952526985649992,
+              "curvature_vector_jump_m_inv": 0.6788799843837782
+            }
+          }
+        },
+        "600": {
+          "mean_point_error_mm": 8.401264463785056,
+          "max_point_error_mm": 26.102803490410544,
+          "tip_position_error_mm": 26.102803490410544,
+          "tip_tangent_error_deg": 9.930104468489741,
+          "pose_error_mm": 154.21965837071195,
+          "evaluated_region_point_error_mm": 8.401264463785056,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.10377319023865517,
+              "slope_jump": 0.9145912054467793,
+              "base_curvature_jump_m_inv": 0.6620251473857826,
+              "phase_jump_rad": 0.42143608912417374,
+              "curvature_vector_jump_m_inv": 1.1263300183755303
+            },
+            "18->19": {
+              "weight_jump": 0.4329741410760366,
+              "slope_jump": 28.43897618951539,
+              "base_curvature_jump_m_inv": 0.18000642605363648,
+              "phase_jump_rad": 0.22424474172434827,
+              "curvature_vector_jump_m_inv": 0.6400699981570723
+            }
+          }
+        },
+        "400": {
+          "mean_point_error_mm": 11.067176297399879,
+          "max_point_error_mm": 34.283464672563504,
+          "tip_position_error_mm": 34.283464672563504,
+          "tip_tangent_error_deg": 13.436743816703157,
+          "pose_error_mm": 208.5049591689642,
+          "evaluated_region_point_error_mm": 11.067176297399879,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.049258555899195366,
+              "slope_jump": 2.0207349369157956,
+              "base_curvature_jump_m_inv": 0.7324601572882088,
+              "phase_jump_rad": 0.3346425397082742,
+              "curvature_vector_jump_m_inv": 1.5500980979179242
+            },
+            "18->19": {
+              "weight_jump": 0.11322228815093549,
+              "slope_jump": 18.1992284421117,
+              "base_curvature_jump_m_inv": 0.10875280150340672,
+              "phase_jump_rad": 0.060143886253938295,
+              "curvature_vector_jump_m_inv": 0.254131315331504
+            }
+          }
+        },
+        "300": {
+          "mean_point_error_mm": 12.84224376799303,
+          "max_point_error_mm": 35.155906730548026,
+          "tip_position_error_mm": 35.155906730548026,
+          "tip_tangent_error_deg": 13.939258204742822,
+          "pose_error_mm": 216.23343218519074,
+          "evaluated_region_point_error_mm": 12.84224376799303,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.03296909595996167,
+              "slope_jump": 3.9038018901324865,
+              "base_curvature_jump_m_inv": 0.8199923346419933,
+              "phase_jump_rad": 0.26832267773940555,
+              "curvature_vector_jump_m_inv": 2.1604136844095576
+            },
+            "18->19": {
+              "weight_jump": 0.14128416659418452,
+              "slope_jump": 14.225890511580324,
+              "base_curvature_jump_m_inv": 0.3066213258805126,
+              "phase_jump_rad": 0.03671422700746518,
+              "curvature_vector_jump_m_inv": 0.25809977919975774
+            }
+          }
+        },
+        "200": {
+          "mean_point_error_mm": 14.56981241385264,
+          "max_point_error_mm": 30.134633446975823,
+          "tip_position_error_mm": 30.134633446975823,
+          "tip_tangent_error_deg": 12.111787914093975,
+          "pose_error_mm": 187.81237323627082,
+          "evaluated_region_point_error_mm": 14.56981241385264,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.04548400334372882,
+              "slope_jump": 4.396559043845973,
+              "base_curvature_jump_m_inv": 0.6755439831938812,
+              "phase_jump_rad": 0.24329649162470357,
+              "curvature_vector_jump_m_inv": 3.074169843264577
+            },
+            "18->19": {
+              "weight_jump": 0.35283710662486645,
+              "slope_jump": 44.77846798475019,
+              "base_curvature_jump_m_inv": 0.5322816093851612,
+              "phase_jump_rad": 0.4220982084690523,
+              "curvature_vector_jump_m_inv": 2.6891566425633724
+            }
+          }
+        }
+      },
+      "end15cm": {
+        "100": {
+          "mean_point_error_mm": 1.670638646685055,
+          "max_point_error_mm": 17.349960372863016,
+          "tip_position_error_mm": 17.349960372863016,
+          "tip_tangent_error_deg": 26.678125055224626,
+          "pose_error_mm": 408.7025219342538,
+          "evaluated_region_point_error_mm": 8.348575701074152,
+          "isolated_calibration_point_error_mm": 15.293203833468358,
+          "merged_minus_isolated_point_error_mm": -6.944628132394206,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.0521521307099293,
+              "slope_jump": 7.786305233227207,
+              "base_curvature_jump_m_inv": 10.545652933177804,
+              "phase_jump_rad": 0.14242078909566303,
+              "curvature_vector_jump_m_inv": 9.966469441209254
+            },
+            "18->19": {
+              "weight_jump": 0.3665650980573335,
+              "slope_jump": 64.98931878720043,
+              "base_curvature_jump_m_inv": 0.8514543285592797,
+              "phase_jump_rad": 0.6851190857119203,
+              "curvature_vector_jump_m_inv": 8.21882963332399
+            }
+          }
+        },
+        "75": {
+          "mean_point_error_mm": 1.8155353039087048,
+          "max_point_error_mm": 18.31268358844115,
+          "tip_position_error_mm": 18.31268358844115,
+          "tip_tangent_error_deg": 38.367284775117085,
+          "pose_error_mm": 587.5157920842821,
+          "evaluated_region_point_error_mm": 9.176567643317277,
+          "isolated_calibration_point_error_mm": 17.281173556379755,
+          "merged_minus_isolated_point_error_mm": -8.104605913062478,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.052152054112286295,
+              "slope_jump": 7.786314777243763,
+              "base_curvature_jump_m_inv": 14.704731703135726,
+              "phase_jump_rad": 0.14242046459909963,
+              "curvature_vector_jump_m_inv": 13.894218666623345
+            },
+            "18->19": {
+              "weight_jump": 0.3859350797244202,
+              "slope_jump": 66.79151218533188,
+              "base_curvature_jump_m_inv": 0.9735323397478837,
+              "phase_jump_rad": 0.7049434740664697,
+              "curvature_vector_jump_m_inv": 11.75139571959433
+            }
+          }
+        },
+        "50": {
+          "mean_point_error_mm": 2.67782510060057,
+          "max_point_error_mm": 25.3018532808931,
+          "tip_position_error_mm": 25.3018532808931,
+          "tip_tangent_error_deg": 61.84554021335926,
+          "pose_error_mm": 946.8342931209895,
+          "evaluated_region_point_error_mm": 14.103960152137159,
+          "isolated_calibration_point_error_mm": 16.234973829899104,
+          "merged_minus_isolated_point_error_mm": -2.1310136777619455,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.0533816825260538,
+              "slope_jump": 6.21262664439155,
+              "base_curvature_jump_m_inv": 20.377977113141117,
+              "phase_jump_rad": 0.1959258611160748,
+              "curvature_vector_jump_m_inv": 19.276639802046443
+            },
+            "18->19": {
+              "weight_jump": 0.3907656346536087,
+              "slope_jump": 76.8638832556613,
+              "base_curvature_jump_m_inv": 1.0300924328465335,
+              "phase_jump_rad": 0.771589797942902,
+              "curvature_vector_jump_m_inv": 19.57516092061228
+            }
+          }
+        },
+        "30": {
+          "mean_point_error_mm": 2.578731721990327,
+          "max_point_error_mm": 50.04903460922661,
+          "tip_position_error_mm": 50.04903460922661,
+          "tip_tangent_error_deg": 91.40588467154393,
+          "pose_error_mm": 1399.40821771976,
+          "evaluated_region_point_error_mm": 13.537699987568798,
+          "isolated_calibration_point_error_mm": 37.14775941133356,
+          "merged_minus_isolated_point_error_mm": -23.61005942376476,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.05347197842615192,
+              "slope_jump": 6.097065239955153,
+              "base_curvature_jump_m_inv": 34.517092995233085,
+              "phase_jump_rad": 0.19985494886691235,
+              "curvature_vector_jump_m_inv": 32.64994275836154
+            },
+            "18->19": {
+              "weight_jump": 0.5021886807058402,
+              "slope_jump": 84.25222058330468,
+              "base_curvature_jump_m_inv": 1.9769363929673816,
+              "phase_jump_rad": 0.8528245999160067,
+              "curvature_vector_jump_m_inv": 37.403660916281034
+            }
+          }
+        }
+      },
+      "end5cm": {
+        "30": {
+          "mean_point_error_mm": 0.8512975582152724,
+          "max_point_error_mm": 16.873647085258852,
+          "tip_position_error_mm": 16.873647085258852,
+          "tip_tangent_error_deg": 25.35424234162153,
+          "pose_error_mm": 388.3966876629877,
+          "evaluated_region_point_error_mm": 9.741099848927096,
+          "isolated_calibration_point_error_mm": 43.297391426092574,
+          "merged_minus_isolated_point_error_mm": -33.55629157716548,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 1.2716118850697342,
+              "slope_jump": 13.693603605863343,
+              "base_curvature_jump_m_inv": 0.0011718622660810253,
+              "phase_jump_rad": 0.9060226253377137,
+              "curvature_vector_jump_m_inv": 0.014037672839756099
+            },
+            "18->19": {
+              "weight_jump": 0.35638454393014996,
+              "slope_jump": 83.97852617696792,
+              "base_curvature_jump_m_inv": 29.0019895355667,
+              "phase_jump_rad": 0.8385353735551524,
+              "curvature_vector_jump_m_inv": 39.33790003215676
+            }
+          }
+        },
+        "20": {
+          "mean_point_error_mm": 1.0653102099364198,
+          "max_point_error_mm": 20.182773783452205,
+          "tip_position_error_mm": 20.182773783452205,
+          "tip_tangent_error_deg": 33.795962290755554,
+          "pose_error_mm": 517.5260252617528,
+          "evaluated_region_point_error_mm": 13.427930933061656,
+          "isolated_calibration_point_error_mm": 90.13875366684262,
+          "merged_minus_isolated_point_error_mm": -76.71082273378096,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 1.2716118850697342,
+              "slope_jump": 13.693603605863343,
+              "base_curvature_jump_m_inv": 0.0011718622660810253,
+              "phase_jump_rad": 0.9060226253377137,
+              "curvature_vector_jump_m_inv": 0.014037672839756099
+            },
+            "18->19": {
+              "weight_jump": 0.645113521716243,
+              "slope_jump": 88.02676369683392,
+              "base_curvature_jump_m_inv": 40.31759497560648,
+              "phase_jump_rad": 0.8830659862736785,
+              "curvature_vector_jump_m_inv": 66.3238606336485
+            }
+          }
+        },
+        "15": {
+          "mean_point_error_mm": 1.0413601004492192,
+          "max_point_error_mm": 19.366684615188028,
+          "tip_position_error_mm": 19.366684615188028,
+          "tip_tangent_error_deg": 68.6488160940992,
+          "pose_error_mm": 1050.352528010796,
+          "evaluated_region_point_error_mm": 13.022294057190544,
+          "isolated_calibration_point_error_mm": 90.62734058371797,
+          "merged_minus_isolated_point_error_mm": -77.60504652652742,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 1.2716118850697342,
+              "slope_jump": 13.693603605863343,
+              "base_curvature_jump_m_inv": 0.0011718622660810253,
+              "phase_jump_rad": 0.9060226253377137,
+              "curvature_vector_jump_m_inv": 0.014037672839756099
+            },
+            "18->19": {
+              "weight_jump": 0.6451136340670046,
+              "slope_jump": 88.0267652720917,
+              "base_curvature_jump_m_inv": 50.28053476286205,
+              "phase_jump_rad": 0.8830660036015141,
+              "curvature_vector_jump_m_inv": 82.70884528477315
+            }
+          }
+        }
+      }
+    },
+    "120": {
+      "full": {
+        "2000": {
+          "mean_point_error_mm": 2.758049832639588,
+          "max_point_error_mm": 4.340482087942119,
+          "tip_position_error_mm": 4.08229200322854,
+          "tip_tangent_error_deg": 1.3608458041337173,
+          "pose_error_mm": 21.226086370902294,
+          "evaluated_region_point_error_mm": 2.758049832639588,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.14487952238174662,
+              "slope_jump": 15.107831271469994,
+              "base_curvature_jump_m_inv": 0.2055051468928787,
+              "phase_jump_rad": 0.11787308854177392,
+              "curvature_vector_jump_m_inv": 0.6927667713791362
+            },
+            "18->19": {
+              "weight_jump": 0.4430609299703281,
+              "slope_jump": 47.32091924417214,
+              "base_curvature_jump_m_inv": 0.03283749364419053,
+              "phase_jump_rad": 0.4783543943991746,
+              "curvature_vector_jump_m_inv": 0.30464541683789687
+            }
+          }
+        },
+        "1500": {
+          "mean_point_error_mm": 1.822557304693965,
+          "max_point_error_mm": 6.267599704699203,
+          "tip_position_error_mm": 6.267599704699203,
+          "tip_tangent_error_deg": 2.3063704299782257,
+          "pose_error_mm": 35.85456766740259,
+          "evaluated_region_point_error_mm": 1.822557304693965,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.04698820252941127,
+              "slope_jump": 11.345353324272793,
+              "base_curvature_jump_m_inv": 0.23667068184645246,
+              "phase_jump_rad": 0.0010500626818233938,
+              "curvature_vector_jump_m_inv": 0.7055136805365053
+            },
+            "18->19": {
+              "weight_jump": 0.23018712510632577,
+              "slope_jump": 5.12470879977084,
+              "base_curvature_jump_m_inv": 0.31731566093666164,
+              "phase_jump_rad": 0.016917141527807544,
+              "curvature_vector_jump_m_inv": 0.20554074764360827
+            }
+          }
+        },
+        "1000": {
+          "mean_point_error_mm": 2.3795517136747177,
+          "max_point_error_mm": 4.44017088668812,
+          "tip_position_error_mm": 3.7358547178507284,
+          "tip_tangent_error_deg": 2.5991277895501166,
+          "pose_error_mm": 39.958578828563056,
+          "evaluated_region_point_error_mm": 2.3795517136747177,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.022327216423335017,
+              "slope_jump": 11.261381101401936,
+              "base_curvature_jump_m_inv": 0.224177670927437,
+              "phase_jump_rad": 0.002735136293408047,
+              "curvature_vector_jump_m_inv": 0.8755243688543017
+            },
+            "18->19": {
+              "weight_jump": 0.22799585217411933,
+              "slope_jump": 5.189974822864405,
+              "base_curvature_jump_m_inv": 0.19145418902326905,
+              "phase_jump_rad": 0.10014083678318197,
+              "curvature_vector_jump_m_inv": 0.17290123373320485
+            }
+          }
+        },
+        "800": {
+          "mean_point_error_mm": 3.2396230929569887,
+          "max_point_error_mm": 7.827812324763085,
+          "tip_position_error_mm": 7.827812324763085,
+          "tip_tangent_error_deg": 3.1838553689066154,
+          "pose_error_mm": 49.35829495194173,
+          "evaluated_region_point_error_mm": 3.2396230929569887,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.08603497142110217,
+              "slope_jump": 10.194204752590771,
+              "base_curvature_jump_m_inv": 0.35546515612171303,
+              "phase_jump_rad": 0.04554313794547138,
+              "curvature_vector_jump_m_inv": 1.11267630626589
+            },
+            "18->19": {
+              "weight_jump": 0.21692286058240506,
+              "slope_jump": 7.034326602507991,
+              "base_curvature_jump_m_inv": 0.023352969845713556,
+              "phase_jump_rad": 0.1023543021072042,
+              "curvature_vector_jump_m_inv": 0.2685252965130357
+            }
+          }
+        },
+        "600": {
+          "mean_point_error_mm": 6.652797393143939,
+          "max_point_error_mm": 16.56893601827451,
+          "tip_position_error_mm": 16.42673359089437,
+          "tip_tangent_error_deg": 4.300161398029776,
+          "pose_error_mm": 67.83901610138133,
+          "evaluated_region_point_error_mm": 6.652797393143939,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.09103868094596879,
+              "slope_jump": 9.385537460155046,
+              "base_curvature_jump_m_inv": 0.49437206372810305,
+              "phase_jump_rad": 0.07910818837167977,
+              "curvature_vector_jump_m_inv": 1.4646582117809563
+            },
+            "18->19": {
+              "weight_jump": 0.28768904900893144,
+              "slope_jump": 0.3065472685384658,
+              "base_curvature_jump_m_inv": 0.03534509348331927,
+              "phase_jump_rad": 0.02277120585671044,
+              "curvature_vector_jump_m_inv": 0.5433739458415462
+            }
+          }
+        },
+        "400": {
+          "mean_point_error_mm": 6.900971173390992,
+          "max_point_error_mm": 15.661353668890536,
+          "tip_position_error_mm": 15.661353668890536,
+          "tip_tangent_error_deg": 8.4828928252777,
+          "pose_error_mm": 130.78299603610876,
+          "evaluated_region_point_error_mm": 6.900971173390992,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.15435743977228267,
+              "slope_jump": 7.085559963840036,
+              "base_curvature_jump_m_inv": 0.616231801300894,
+              "phase_jump_rad": 0.15950656631875004,
+              "curvature_vector_jump_m_inv": 1.6770456004780503
+            },
+            "18->19": {
+              "weight_jump": 0.2667497989025365,
+              "slope_jump": 9.17939201226493,
+              "base_curvature_jump_m_inv": 0.4778656099377687,
+              "phase_jump_rad": 0.0566064808734712,
+              "curvature_vector_jump_m_inv": 0.9229391377394901
+            }
+          }
+        },
+        "300": {
+          "mean_point_error_mm": 8.61010872984606,
+          "max_point_error_mm": 16.505282535395335,
+          "tip_position_error_mm": 12.470482009659863,
+          "tip_tangent_error_deg": 9.99730430287392,
+          "pose_error_mm": 153.52756977882868,
+          "evaluated_region_point_error_mm": 8.61010872984606,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.10648181314578065,
+              "slope_jump": 6.387364076778912,
+              "base_curvature_jump_m_inv": 0.8746176832323878,
+              "phase_jump_rad": 0.17576292947096572,
+              "curvature_vector_jump_m_inv": 2.329305444406252
+            },
+            "18->19": {
+              "weight_jump": 0.11604850667239752,
+              "slope_jump": 38.18102205017021,
+              "base_curvature_jump_m_inv": 0.36019398967829686,
+              "phase_jump_rad": 0.3590984279779219,
+              "curvature_vector_jump_m_inv": 0.9476045082866232
+            }
+          }
+        },
+        "200": {
+          "mean_point_error_mm": 8.515118530606095,
+          "max_point_error_mm": 14.865157379004588,
+          "tip_position_error_mm": 8.037185433664199,
+          "tip_tangent_error_deg": 12.805057122130412,
+          "pose_error_mm": 196.15472451746666,
+          "evaluated_region_point_error_mm": 8.515118530606095,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.022033633021104615,
+              "slope_jump": 5.9299148893733,
+              "base_curvature_jump_m_inv": 1.1322378108503797,
+              "phase_jump_rad": 0.18502593573170145,
+              "curvature_vector_jump_m_inv": 3.3045345809464703
+            },
+            "18->19": {
+              "weight_jump": 0.14115667213416128,
+              "slope_jump": 51.83644408925215,
+              "base_curvature_jump_m_inv": 0.7326952168569125,
+              "phase_jump_rad": 0.5065762890325098,
+              "curvature_vector_jump_m_inv": 2.916238513360172
+            }
+          }
+        }
+      },
+      "end15cm": {
+        "100": {
+          "mean_point_error_mm": 2.4644726220063213,
+          "max_point_error_mm": 26.406283308818473,
+          "tip_position_error_mm": 26.406283308818473,
+          "tip_tangent_error_deg": 15.448281418573272,
+          "pose_error_mm": 237.92057661168826,
+          "evaluated_region_point_error_mm": 13.180415160580745,
+          "isolated_calibration_point_error_mm": 6.354426102046948,
+          "merged_minus_isolated_point_error_mm": 6.825989058533797,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.05980605809469419,
+              "slope_jump": 6.842475836236016,
+              "base_curvature_jump_m_inv": 11.13709965870652,
+              "phase_jump_rad": 0.16254773192686311,
+              "curvature_vector_jump_m_inv": 9.798437362238088
+            },
+            "18->19": {
+              "weight_jump": 0.15251449499673841,
+              "slope_jump": 53.74529115110113,
+              "base_curvature_jump_m_inv": 0.2705720301183785,
+              "phase_jump_rad": 0.5422579199097877,
+              "curvature_vector_jump_m_inv": 5.954449633308269
+            }
+          }
+        },
+        "75": {
+          "mean_point_error_mm": 3.1424158610167408,
+          "max_point_error_mm": 31.859980594563638,
+          "tip_position_error_mm": 31.859980594563638,
+          "tip_tangent_error_deg": 25.678416380892106,
+          "pose_error_mm": 394.31013799246585,
+          "evaluated_region_point_error_mm": 17.05440731818333,
+          "isolated_calibration_point_error_mm": 10.362931818931997,
+          "merged_minus_isolated_point_error_mm": 6.691475499251332,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.059806065276866605,
+              "slope_jump": 6.842475938948,
+              "base_curvature_jump_m_inv": 14.725283824530049,
+              "phase_jump_rad": 0.1625477284346557,
+              "curvature_vector_jump_m_inv": 12.955425211500732
+            },
+            "18->19": {
+              "weight_jump": 0.15175448486663012,
+              "slope_jump": 53.74442559679983,
+              "base_curvature_jump_m_inv": 0.2126513902685616,
+              "phase_jump_rad": 0.5422586407977539,
+              "curvature_vector_jump_m_inv": 9.084831616190677
+            }
+          }
+        },
+        "50": {
+          "mean_point_error_mm": 8.506041106812841,
+          "max_point_error_mm": 92.34646349660909,
+          "tip_position_error_mm": 92.34646349660909,
+          "tip_tangent_error_deg": 139.8549197742544,
+          "pose_error_mm": 2142.3580986981806,
+          "evaluated_region_point_error_mm": 47.70396103083424,
+          "isolated_calibration_point_error_mm": 290.0829026252237,
+          "merged_minus_isolated_point_error_mm": -242.37894159438946,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 1.3727056435815184,
+              "slope_jump": 8.815518281754358,
+              "base_curvature_jump_m_inv": 20.86232917383127,
+              "phase_jump_rad": 0.0954642887792394,
+              "curvature_vector_jump_m_inv": 48.25799940471754
+            },
+            "18->19": {
+              "weight_jump": 1.9726184103142899,
+              "slope_jump": 51.56455334582853,
+              "base_curvature_jump_m_inv": 0.6774101463572215,
+              "phase_jump_rad": 0.5474190630350964,
+              "curvature_vector_jump_m_inv": 54.59179720335906
+            }
+          }
+        },
+        "30": {
+          "mean_point_error_mm": 11.519324838673036,
+          "max_point_error_mm": 105.85360077789431,
+          "tip_position_error_mm": 104.02508704421446,
+          "tip_tangent_error_deg": 119.73491012474625,
+          "pose_error_mm": 1834.8990309497503,
+          "evaluated_region_point_error_mm": 64.92240819799753,
+          "isolated_calibration_point_error_mm": 443.6230040894898,
+          "merged_minus_isolated_point_error_mm": -378.7005958914923,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.13971539834285507,
+              "slope_jump": 15.23357380753327,
+              "base_curvature_jump_m_inv": 0.35727747109479796,
+              "phase_jump_rad": 0.10189589758074458,
+              "curvature_vector_jump_m_inv": 0.382036840863544
+            },
+            "18->19": {
+              "weight_jump": 1.1033300206295134,
+              "slope_jump": 52.62960049946289,
+              "base_curvature_jump_m_inv": 9.159741024647893,
+              "phase_jump_rad": 0.548179252402444,
+              "curvature_vector_jump_m_inv": 27.004536040479575
+            }
+          }
+        }
+      },
+      "end5cm": {
+        "30": {
+          "mean_point_error_mm": 1.3671812393389913,
+          "max_point_error_mm": 44.63826131444121,
+          "tip_position_error_mm": 44.63826131444121,
+          "tip_tangent_error_deg": 91.72410970680794,
+          "pose_error_mm": 1404.486634182966,
+          "evaluated_region_point_error_mm": 20.15259481671408,
+          "isolated_calibration_point_error_mm": 105.7255127367943,
+          "merged_minus_isolated_point_error_mm": -85.57291792008022,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.2829134961145836,
+              "slope_jump": 21.528119539698054,
+              "base_curvature_jump_m_inv": 0.0033820574463732326,
+              "phase_jump_rad": 0.3139701501932213,
+              "curvature_vector_jump_m_inv": 0.0006424193681841699
+            },
+            "18->19": {
+              "weight_jump": 0.5286120463760826,
+              "slope_jump": 52.90045527607534,
+              "base_curvature_jump_m_inv": 33.057256953853056,
+              "phase_jump_rad": 0.5474391845850963,
+              "curvature_vector_jump_m_inv": 35.55184744855256
+            }
+          }
+        },
+        "20": {
+          "mean_point_error_mm": 1.6943004525419065,
+          "max_point_error_mm": 50.76262672265575,
+          "tip_position_error_mm": 50.76262672265575,
+          "tip_tangent_error_deg": 76.98398020401355,
+          "pose_error_mm": 1179.0713881517172,
+          "evaluated_region_point_error_mm": 25.739538103705655,
+          "isolated_calibration_point_error_mm": 173.55066122993333,
+          "merged_minus_isolated_point_error_mm": -147.81112312622767,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.2829134961145836,
+              "slope_jump": 21.528119539698054,
+              "base_curvature_jump_m_inv": 0.0033820574463732326,
+              "phase_jump_rad": 0.3139701501932213,
+              "curvature_vector_jump_m_inv": 0.0006424193681841699
+            },
+            "18->19": {
+              "weight_jump": 0.1984894662722707,
+              "slope_jump": 53.05502432056511,
+              "base_curvature_jump_m_inv": 45.82384832250094,
+              "phase_jump_rad": 0.5491394440744837,
+              "curvature_vector_jump_m_inv": 64.42450774381918
+            }
+          }
+        },
+        "15": {
+          "mean_point_error_mm": 1.6943047405998588,
+          "max_point_error_mm": 46.80695300703175,
+          "tip_position_error_mm": 46.80695300703175,
+          "tip_tangent_error_deg": 58.297529561815026,
+          "pose_error_mm": 893.0498203710594,
+          "evaluated_region_point_error_mm": 25.724117476575945,
+          "isolated_calibration_point_error_mm": 185.62692544222116,
+          "merged_minus_isolated_point_error_mm": -159.90280796564522,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.2829134961145836,
+              "slope_jump": 21.528119539698054,
+              "base_curvature_jump_m_inv": 0.0033820574463732326,
+              "phase_jump_rad": 0.3139701501932213,
+              "curvature_vector_jump_m_inv": 0.0006424193681841699
+            },
+            "18->19": {
+              "weight_jump": 0.1984894662722707,
+              "slope_jump": 53.05502432056511,
+              "base_curvature_jump_m_inv": 58.27731629244257,
+              "phase_jump_rad": 0.5491394440744837,
+              "curvature_vector_jump_m_inv": 81.93425057572723
+            }
+          }
+        }
+      }
+    },
+    "240": {
+      "full": {
+        "2000": {
+          "mean_point_error_mm": 27.981016200436656,
+          "max_point_error_mm": 113.87531218149194,
+          "tip_position_error_mm": 113.87531218149194,
+          "tip_tangent_error_deg": 20.92591568361656,
+          "pose_error_mm": 339.9436476487435,
+          "evaluated_region_point_error_mm": 27.981016200436656,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.0,
+              "slope_jump": 15.436258972134857,
+              "base_curvature_jump_m_inv": 0.4011164934502529,
+              "phase_jump_rad": 0.6299436790374029,
+              "curvature_vector_jump_m_inv": 0.42539432051947057
+            },
+            "18->19": {
+              "weight_jump": 0.08626350206909494,
+              "slope_jump": 65.43616660887398,
+              "base_curvature_jump_m_inv": 0.157126140262214,
+              "phase_jump_rad": 0.5499996291324203,
+              "curvature_vector_jump_m_inv": 0.7804125411503775
+            }
+          }
+        },
+        "1500": {
+          "mean_point_error_mm": 36.10808255724434,
+          "max_point_error_mm": 155.13395970130227,
+          "tip_position_error_mm": 155.13395970130227,
+          "tip_tangent_error_deg": 32.01318101395048,
+          "pose_error_mm": 513.9813229988771,
+          "evaluated_region_point_error_mm": 36.10808255724434,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.0,
+              "slope_jump": 8.262108265329738,
+              "base_curvature_jump_m_inv": 0.12024755986768199,
+              "phase_jump_rad": 0.38602255500602856,
+              "curvature_vector_jump_m_inv": 0.25073315349340325
+            },
+            "18->19": {
+              "weight_jump": 0.18956412719951876,
+              "slope_jump": 63.739498354441466,
+              "base_curvature_jump_m_inv": 0.2941561157932032,
+              "phase_jump_rad": 0.5499996233169813,
+              "curvature_vector_jump_m_inv": 0.2197703746426965
+            }
+          }
+        },
+        "1000": {
+          "mean_point_error_mm": 55.737370809048514,
+          "max_point_error_mm": 230.0220833421642,
+          "tip_position_error_mm": 230.0220833421642,
+          "tip_tangent_error_deg": 45.69569503946837,
+          "pose_error_mm": 736.2936065961118,
+          "evaluated_region_point_error_mm": 55.737370809048514,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.0,
+              "slope_jump": 11.865845645372783,
+              "base_curvature_jump_m_inv": 0.5141070757085799,
+              "phase_jump_rad": 0.5085496259274924,
+              "curvature_vector_jump_m_inv": 0.6389293111597497
+            },
+            "18->19": {
+              "weight_jump": 0.13733056752156514,
+              "slope_jump": 67.79754853443103,
+              "base_curvature_jump_m_inv": 0.7273730227909353,
+              "phase_jump_rad": 0.5499996258921973,
+              "curvature_vector_jump_m_inv": 0.779197135456861
+            }
+          }
+        },
+        "800": {
+          "mean_point_error_mm": 70.37258562853592,
+          "max_point_error_mm": 293.2590248541654,
+          "tip_position_error_mm": 293.2590248541654,
+          "tip_tangent_error_deg": 58.49230451566899,
+          "pose_error_mm": 942.11650980264,
+          "evaluated_region_point_error_mm": 70.37258562853592,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.0,
+              "slope_jump": 10.596377264625815,
+              "base_curvature_jump_m_inv": 0.4537968110547119,
+              "phase_jump_rad": 0.46538770098209525,
+              "curvature_vector_jump_m_inv": 0.7099513055005742
+            },
+            "18->19": {
+              "weight_jump": 0.1694595615761898,
+              "slope_jump": 66.37543712337506,
+              "base_curvature_jump_m_inv": 0.9004399061398773,
+              "phase_jump_rad": 0.5499996240165159,
+              "curvature_vector_jump_m_inv": 0.8593928065988278
+            }
+          }
+        },
+        "600": {
+          "mean_point_error_mm": 94.81860369304108,
+          "max_point_error_mm": 382.7485176647702,
+          "tip_position_error_mm": 382.7485176647702,
+          "tip_tangent_error_deg": 78.244940976068,
+          "pose_error_mm": 1257.3248494320687,
+          "evaluated_region_point_error_mm": 94.81860369304108,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.0,
+              "slope_jump": 10.48157573386295,
+              "base_curvature_jump_m_inv": 0.5259254859646592,
+              "phase_jump_rad": 0.46148444893615803,
+              "curvature_vector_jump_m_inv": 0.854038440903411
+            },
+            "18->19": {
+              "weight_jump": 0.19709492501405368,
+              "slope_jump": 64.77198473849808,
+              "base_curvature_jump_m_inv": 0.8221406819137448,
+              "phase_jump_rad": 0.5499996232372575,
+              "curvature_vector_jump_m_inv": 0.8526243639158756
+            }
+          }
+        },
+        "400": {
+          "mean_point_error_mm": 133.64564918022668,
+          "max_point_error_mm": 514.5722120868205,
+          "tip_position_error_mm": 514.5722120868205,
+          "tip_tangent_error_deg": 106.00714166659553,
+          "pose_error_mm": 1702.2186366310966,
+          "evaluated_region_point_error_mm": 133.64564918022668,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.0,
+              "slope_jump": 8.289262994972875,
+              "base_curvature_jump_m_inv": 0.4152775633816326,
+              "phase_jump_rad": 0.3869458158138954,
+              "curvature_vector_jump_m_inv": 1.256044704548757
+            },
+            "18->19": {
+              "weight_jump": 0.10076624671984669,
+              "slope_jump": 61.1331105464548,
+              "base_curvature_jump_m_inv": 0.9286494619564563,
+              "phase_jump_rad": 0.5499996288676521,
+              "curvature_vector_jump_m_inv": 1.5420914326077713
+            }
+          }
+        },
+        "300": {
+          "mean_point_error_mm": 163.43018476549236,
+          "max_point_error_mm": 591.7956241314696,
+          "tip_position_error_mm": 591.7956241314696,
+          "tip_tangent_error_deg": 108.9969223883057,
+          "pose_error_mm": 1770.1766785738528,
+          "evaluated_region_point_error_mm": 163.43018476549236,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.0,
+              "slope_jump": 12.418186908968334,
+              "base_curvature_jump_m_inv": 0.4563730853541359,
+              "phase_jump_rad": 0.5273292288897409,
+              "curvature_vector_jump_m_inv": 1.0315071167209195
+            },
+            "18->19": {
+              "weight_jump": 0.12678922474051935,
+              "slope_jump": 63.280447250148995,
+              "base_curvature_jump_m_inv": 0.8416210291388402,
+              "phase_jump_rad": 0.54999963321743,
+              "curvature_vector_jump_m_inv": 2.1013038793527397
+            }
+          }
+        },
+        "200": {
+          "mean_point_error_mm": 187.31438273495542,
+          "max_point_error_mm": 576.3101075652455,
+          "tip_position_error_mm": 576.3101075652455,
+          "tip_tangent_error_deg": 68.02448914540075,
+          "pose_error_mm": 1190.020380042796,
+          "evaluated_region_point_error_mm": 187.31438273495542,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.0,
+              "slope_jump": 13.262976002873465,
+              "base_curvature_jump_m_inv": 0.033856149951216885,
+              "phase_jump_rad": 0.5560520580825155,
+              "curvature_vector_jump_m_inv": 1.2674208338511643
+            },
+            "18->19": {
+              "weight_jump": 0.35683360774062556,
+              "slope_jump": 69.14421924478106,
+              "base_curvature_jump_m_inv": 0.7099378498483615,
+              "phase_jump_rad": 0.5499996329674421,
+              "curvature_vector_jump_m_inv": 3.689343230699148
+            }
+          }
+        }
+      },
+      "end15cm": {
+        "100": {
+          "mean_point_error_mm": 10.682939400885065,
+          "max_point_error_mm": 159.33309871167248,
+          "tip_position_error_mm": 159.33309871167248,
+          "tip_tangent_error_deg": 117.45726423901381,
+          "pose_error_mm": 1804.8419967960417,
+          "evaluated_region_point_error_mm": 60.13171540475497,
+          "isolated_calibration_point_error_mm": 25.802307784611973,
+          "merged_minus_isolated_point_error_mm": 34.329407620143,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.0,
+              "slope_jump": 16.51326146998065,
+              "base_curvature_jump_m_inv": 10.479125644898982,
+              "phase_jump_rad": 0.6665617639641601,
+              "curvature_vector_jump_m_inv": 10.482790253367085
+            },
+            "18->19": {
+              "weight_jump": 0.2038768576279948,
+              "slope_jump": 70.2455387128113,
+              "base_curvature_jump_m_inv": 0.05475321180647974,
+              "phase_jump_rad": 0.5391724266369567,
+              "curvature_vector_jump_m_inv": 7.656301079077698
+            }
+          }
+        },
+        "75": {
+          "mean_point_error_mm": 13.288896543745032,
+          "max_point_error_mm": 188.31272348539306,
+          "tip_position_error_mm": 188.31272348539306,
+          "tip_tangent_error_deg": 113.88984348679496,
+          "pose_error_mm": 1753.282813725337,
+          "evaluated_region_point_error_mm": 75.02288356480943,
+          "isolated_calibration_point_error_mm": 40.348819355031324,
+          "merged_minus_isolated_point_error_mm": 34.67406420977811,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.0,
+              "slope_jump": 16.513272105048788,
+              "base_curvature_jump_m_inv": 13.783770572661865,
+              "phase_jump_rad": 0.6665621255564766,
+              "curvature_vector_jump_m_inv": 13.786711056359348
+            },
+            "18->19": {
+              "weight_jump": 0.2039071747388792,
+              "slope_jump": 70.2453887657292,
+              "base_curvature_jump_m_inv": 0.09007497651364638,
+              "phase_jump_rad": 0.5391707761812787,
+              "curvature_vector_jump_m_inv": 9.183363924169916
+            }
+          }
+        },
+        "50": {
+          "mean_point_error_mm": 14.428259832833024,
+          "max_point_error_mm": 156.74405756076715,
+          "tip_position_error_mm": 156.74405756076715,
+          "tip_tangent_error_deg": 45.66768254241421,
+          "pose_error_mm": 716.2679799559207,
+          "evaluated_region_point_error_mm": 81.5334804462492,
+          "isolated_calibration_point_error_mm": 51.24545790221911,
+          "merged_minus_isolated_point_error_mm": 30.288022544030092,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.0,
+              "slope_jump": 19.699474156485337,
+              "base_curvature_jump_m_inv": 20.404995941600777,
+              "phase_jump_rad": 0.7748929953053194,
+              "curvature_vector_jump_m_inv": 20.408051396388633
+            },
+            "18->19": {
+              "weight_jump": 0.3008939421440937,
+              "slope_jump": 31.455606541417172,
+              "base_curvature_jump_m_inv": 0.10313388044789917,
+              "phase_jump_rad": 0.07455158879818047,
+              "curvature_vector_jump_m_inv": 6.598486119318222
+            }
+          }
+        },
+        "30": {
+          "mean_point_error_mm": 12.170456156724972,
+          "max_point_error_mm": 112.63828112292555,
+          "tip_position_error_mm": 72.49419679122768,
+          "tip_tangent_error_deg": 127.1670549229648,
+          "pose_error_mm": 1947.0100645705538,
+          "evaluated_region_point_error_mm": 68.63143024636452,
+          "isolated_calibration_point_error_mm": 106.70307631211105,
+          "merged_minus_isolated_point_error_mm": -38.071646065746535,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.0,
+              "slope_jump": 19.90425169615347,
+              "base_curvature_jump_m_inv": 32.67925366263181,
+              "phase_jump_rad": 0.7818554316540358,
+              "curvature_vector_jump_m_inv": 32.680670325102746
+            },
+            "18->19": {
+              "weight_jump": 0.48909632249775825,
+              "slope_jump": 3.3004950503565134,
+              "base_curvature_jump_m_inv": 0.8180723821783857,
+              "phase_jump_rad": 0.3079090614110058,
+              "curvature_vector_jump_m_inv": 20.316489058181944
+            }
+          }
+        }
+      },
+      "end5cm": {
+        "30": {
+          "mean_point_error_mm": 2.148678865584258,
+          "max_point_error_mm": 69.9929547517945,
+          "tip_position_error_mm": 69.9929547517945,
+          "tip_tangent_error_deg": 141.64347831067374,
+          "pose_error_mm": 2168.889833864269,
+          "evaluated_region_point_error_mm": 33.111982983766765,
+          "isolated_calibration_point_error_mm": 69.1486351053159,
+          "merged_minus_isolated_point_error_mm": -36.03665212154914,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.0,
+              "slope_jump": 0.3119931254283501,
+              "base_curvature_jump_m_inv": 0.007664894531406499,
+              "phase_jump_rad": 0.09450310772025317,
+              "curvature_vector_jump_m_inv": 0.012263319086469434
+            },
+            "18->19": {
+              "weight_jump": 0.3554795020154462,
+              "slope_jump": 2.2915689241529655,
+              "base_curvature_jump_m_inv": 29.744034970055544,
+              "phase_jump_rad": 0.18694283100383124,
+              "curvature_vector_jump_m_inv": 40.357171140512435
+            }
+          }
+        },
+        "20": {
+          "mean_point_error_mm": 2.625853997668548,
+          "max_point_error_mm": 77.74606481258049,
+          "tip_position_error_mm": 77.74606481258049,
+          "tip_tangent_error_deg": 96.030590746436,
+          "pose_error_mm": 1471.4770777910805,
+          "evaluated_region_point_error_mm": 41.27140320044463,
+          "isolated_calibration_point_error_mm": 156.6124036960428,
+          "merged_minus_isolated_point_error_mm": -115.34100049559817,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.0,
+              "slope_jump": 0.3119931254283501,
+              "base_curvature_jump_m_inv": 0.007664894531406499,
+              "phase_jump_rad": 0.09450310772025317,
+              "curvature_vector_jump_m_inv": 0.012263319086469434
+            },
+            "18->19": {
+              "weight_jump": 0.6228295738147938,
+              "slope_jump": 19.71187363911167,
+              "base_curvature_jump_m_inv": 43.192674822803845,
+              "phase_jump_rad": 0.42898069919974224,
+              "curvature_vector_jump_m_inv": 70.1426572294316
+            }
+          }
+        },
+        "15": {
+          "mean_point_error_mm": 2.6817212870887928,
+          "max_point_error_mm": 70.65557506608333,
+          "tip_position_error_mm": 70.65557506608333,
+          "tip_tangent_error_deg": 58.91812733467006,
+          "pose_error_mm": 904.0812648756493,
+          "evaluated_region_point_error_mm": 42.2141567051833,
+          "isolated_calibration_point_error_mm": 172.34669928725137,
+          "merged_minus_isolated_point_error_mm": -130.13254258206808,
+          "boundaries": {
+            "15->16": {
+              "weight_jump": 0.0,
+              "slope_jump": 0.3119931254283501,
+              "base_curvature_jump_m_inv": 0.007664894531406499,
+              "phase_jump_rad": 0.09450310772025317,
+              "curvature_vector_jump_m_inv": 0.012263319086469434
+            },
+            "18->19": {
+              "weight_jump": 0.6228295747686814,
+              "slope_jump": 19.711873717618534,
+              "base_curvature_jump_m_inv": 57.0430619339829,
+              "phase_jump_rad": 0.4289807000633177,
+              "curvature_vector_jump_m_inv": 92.62162604230836
+            }
+          }
+        }
+      }
+    }
+  },
+  "quality_gates": {
+    "phase_reference_verified": false,
+    "rot_ang_verified": false,
+    "full_geometry_verified": false,
+    "reason": "max full mean point error=187.314 mm; max local-test tip tangent error=141.643 deg; max region-boundary phase jump=0.906 rad; source optimization gates include divergence and independent pose ground truth is unavailable"
+  }
+}

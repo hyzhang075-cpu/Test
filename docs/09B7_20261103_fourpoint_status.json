@@ -1,0 +1,18 @@
+{
+  "started": "2026-11-03 16:58:28",
+  "stages": [
+    "init_full",
+    "init_end15cm",
+    "init_end5cm"
+  ],
+  "score": "calibration_results\\09B7-20261103T170330+0800-direct0-52cf8c\\results.json",
+  "initial_rot_ang": -60.0,
+  "optim_results": {
+    "240": "calibration_results\\09B7-20261103T170540+0800-direct240-a3dc6f\\results.json",
+    "120": "calibration_results\\09B7-20261103T170540+0800-direct120-a892da\\results.json",
+    "0": "calibration_results\\09B7-20261103T170540+0800-direct0-9016d3\\results.json"
+  },
+  "stage": "first_pass_complete_requires_review",
+  "error": "merge failed (1): C:\\Users\\hyzha\\Desktop\\shape-sensing-integrate-1\\09B7_20261103_fourpoint_merge.log",
+  "candidate": "params/09B7_20261103_fourpoint_candidate.json"
+}

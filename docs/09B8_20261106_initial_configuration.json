@@ -1,0 +1,259 @@
+{
+  "sensor_id": "09B8",
+  "hardware_note": "CH1 center, CH2/3/4 peripheral; physical first grating excluded by negative start",
+  "argv": [
+    "--sensor_id",
+    "09B8",
+    "--calibration_data_root",
+    "./09B8数据",
+    "--start_value",
+    "-32",
+    "--end_value",
+    "9",
+    "--full_segmentation",
+    "[3, 4, 2, 4, 2, 3, 2, 2]",
+    "--calibration_regions",
+    "{'full': {'length_m': None, 'folder_path': '全段测试', 'radii': {'circ': [0, 2000, 1500, 1000, 800, 600, 400, 300, 200]}, 'thresholds': [0.8, 1.2, 2.0, 3.0, 4.0], 'end_weights': False, 'end_start': -5, 'segmentation': [3, 4, 2, 4, 2, 3, 2, 2], 'weights': None, 'slopes': None}, 'end15cm': {'length_m': 0.15, 'folder_path': '末端测试/15cm', 'radii': {'circ': [0, 2000, 1500, 1000, 800, 600, 400, 300, 200, 100, 75, 50, 30]}, 'thresholds': [0.8, 1.2, 2.0, 3.0, 4.0, 10.0, 20.0], 'end_weights': False, 'end_start': -5, 'segmentation': [3, 2, 2], 'weights': None, 'slopes': None}, 'end5cm': {'length_m': 0.05, 'folder_path': '末端测试/5cm', 'radii': {'circ': [0, 2000, 1500, 1000, 800, 600, 400, 300, 200, 100, 75, 50, 30, 20, 15]}, 'thresholds': [0.8, 1.2, 2.0, 3.0, 4.0, 10.0, 20.0, 35.0, 45.0, 70.0], 'end_weights': True, 'end_start': -1, 'segmentation': [2, 2], 'weights': None, 'slopes': None}}",
+    "--weights",
+    "None",
+    "--slopes",
+    "None",
+    "--global_phases_set",
+    "0",
+    "--rot_ang",
+    "0",
+    "--use_stored_zero",
+    "False",
+    "--use_full_transported_phase",
+    "False",
+    "--multi_region_calib",
+    "True",
+    "--exp_directs",
+    "[0,120,240]"
+  ],
+  "regions": {
+    "full": {
+      "length_m": null,
+      "folder_path": "全段测试",
+      "radii": {
+        "circ": [
+          0,
+          2000,
+          1500,
+          1000,
+          800,
+          600,
+          400,
+          300,
+          200
+        ]
+      },
+      "thresholds": [
+        0.8,
+        1.2,
+        2.0,
+        3.0,
+        4.0
+      ],
+      "end_weights": false,
+      "end_start": -5,
+      "segmentation": [
+        3,
+        4,
+        2,
+        4,
+        2,
+        3,
+        2,
+        2
+      ],
+      "weights": null,
+      "slopes": null
+    },
+    "end15cm": {
+      "length_m": 0.15,
+      "folder_path": "末端测试/15cm",
+      "radii": {
+        "circ": [
+          0,
+          2000,
+          1500,
+          1000,
+          800,
+          600,
+          400,
+          300,
+          200,
+          100,
+          75,
+          50,
+          30
+        ]
+      },
+      "thresholds": [
+        0.8,
+        1.2,
+        2.0,
+        3.0,
+        4.0,
+        10.0,
+        20.0
+      ],
+      "end_weights": false,
+      "end_start": -5,
+      "segmentation": [
+        3,
+        2,
+        2
+      ],
+      "weights": null,
+      "slopes": null
+    },
+    "end5cm": {
+      "length_m": 0.05,
+      "folder_path": "末端测试/5cm",
+      "radii": {
+        "circ": [
+          0,
+          2000,
+          1500,
+          1000,
+          800,
+          600,
+          400,
+          300,
+          200,
+          100,
+          75,
+          50,
+          30,
+          20,
+          15
+        ]
+      },
+      "thresholds": [
+        0.8,
+        1.2,
+        2.0,
+        3.0,
+        4.0,
+        10.0,
+        20.0,
+        35.0,
+        45.0,
+        70.0
+      ],
+      "end_weights": true,
+      "end_start": -1,
+      "segmentation": [
+        2,
+        2
+      ],
+      "weights": null,
+      "slopes": null
+    }
+  },
+  "geometry": {
+    "full": {
+      "global_point_ids": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "sample_dist_m": [
+        0.019,
+        0.07,
+        0.121,
+        0.172,
+        0.223,
+        0.274,
+        0.325,
+        0.376,
+        0.427,
+        0.478,
+        0.529,
+        0.58,
+        0.631,
+        0.682,
+        0.716,
+        0.75,
+        0.784,
+        0.795,
+        0.806,
+        0.817,
+        0.828
+      ],
+      "segmentation": [
+        2,
+        4,
+        2,
+        4,
+        2,
+        3,
+        2,
+        2
+      ]
+    },
+    "end15cm": {
+      "global_point_ids": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "sample_dist_m": [
+        0.029000000000000026,
+        0.06300000000000006,
+        0.09700000000000009,
+        0.1080000000000001,
+        0.1190000000000001,
+        0.13,
+        0.14100000000000001
+      ],
+      "segmentation": [
+        3,
+        2,
+        2
+      ]
+    },
+    "end5cm": {
+      "global_point_ids": [
+        19,
+        20,
+        21,
+        22
+      ],
+      "sample_dist_m": [
+        0.008000000000000118,
+        0.019000000000000128,
+        0.030000000000000027,
+        0.041000000000000036
+      ],
+      "segmentation": [
+        2,
+        2
+      ]
+    }
+  }
+}

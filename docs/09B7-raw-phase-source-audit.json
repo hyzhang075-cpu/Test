@@ -1,0 +1,14 @@
+{
+  "full": {
+    "measured_phase_rad": -2.2794405900872987,
+    "inherited_phase_disabled": true
+  },
+  "end15cm": {
+    "measured_phase_rad": -0.3344734700185776,
+    "inherited_phase_disabled": true
+  },
+  "end5cm": {
+    "measured_phase_rad": 0.13690886258469726,
+    "inherited_phase_disabled": true
+  }
+}

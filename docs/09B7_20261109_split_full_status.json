@@ -1,0 +1,10 @@
+{
+  "started": "2026-11-09 11:06:49",
+  "stage": "merged_requires_validation",
+  "results": {
+    "0": "calibration_results\\09B7-20261109T110658+0800-direct0-febfc6\\results.json",
+    "240": "calibration_results\\09B7-20261109T110658+0800-direct240-2139b2\\results.json",
+    "120": "calibration_results\\09B7-20261109T110658+0800-direct120-312473\\results.json"
+  },
+  "candidate": "params/09B7_20261109_split_full_candidate.json"
+}

@@ -1,0 +1,637 @@
+{
+  "source": "params/09B7_20261029_all_regions_candidate.json",
+  "raw": {
+    "full": {
+      "0": {
+        "point_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "median_adjacent_slope_rad_per_m": [
+          -6.3518631569410715,
+          -32.642979005082935,
+          -16.94921931344038,
+          6.742893247292431,
+          -5.140403200078161,
+          -10.463162869967796,
+          59.122439724212825,
+          25.395326579421223,
+          -29.356138888860166,
+          -23.170592921324015,
+          -7.023575169043022,
+          -0.015012302235812056,
+          12.102464093709848,
+          -40.30554331287064,
+          -20.756381813434416,
+          16.348238611611883,
+          -1.0984773921317412,
+          -33.70047767575555,
+          -13.165183109664746,
+          -12.69509562933985,
+          -4.90724977784787
+        ],
+        "common_radii": [
+          1000,
+          800,
+          600,
+          400,
+          300,
+          200
+        ]
+      },
+      "120": {
+        "point_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "median_adjacent_slope_rad_per_m": [
+          -5.798759276964534,
+          -33.1409080925182,
+          -17.533952702449966,
+          6.730790167009419,
+          -6.1964987412532295,
+          -8.586262368183881,
+          55.50155740654265,
+          25.726897635720853,
+          -26.702199166714106,
+          -24.48481039807583,
+          -6.581438236816027,
+          -0.14516975200667465,
+          15.420056330982312,
+          -42.47567225011207,
+          -16.302841348851853,
+          8.12431771082406,
+          0.48558923140301097,
+          -27.526203542097647,
+          -12.826215915265518,
+          -14.048599089606274,
+          -10.922644391033328
+        ],
+        "common_radii": [
+          1000,
+          800,
+          600,
+          400,
+          300,
+          200
+        ]
+      },
+      "240": {
+        "point_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "median_adjacent_slope_rad_per_m": [
+          -5.78596035494515,
+          -30.072871936169193,
+          -18.09310516769869,
+          4.500156749724983,
+          -6.261221394564102,
+          -7.467726244323081,
+          60.29206060464063,
+          22.862880113158738,
+          -29.861478089701286,
+          -22.67194100804773,
+          -6.883254672138461,
+          -0.27613913939703166,
+          14.577131440046116,
+          -44.76132514483302,
+          -10.08129416612731,
+          8.209559418275019,
+          -4.693689058257293,
+          -18.013414785019524,
+          -9.126131900911465,
+          -3.6596112079423744,
+          -11.182450367067553
+        ],
+        "common_radii": [
+          1000,
+          800,
+          600,
+          400,
+          300,
+          200
+        ]
+      }
+    },
+    "end15cm": {
+      "0": {
+        "point_ids": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "median_adjacent_slope_rad_per_m": [
+          19.742440904448955,
+          1.0686302583424352,
+          -32.120172456854775,
+          -11.015770173412255,
+          -6.614683776083546,
+          -7.137385370398807
+        ],
+        "common_radii": [
+          1000,
+          800,
+          600,
+          400,
+          300,
+          200
+        ]
+      },
+      "120": {
+        "point_ids": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "median_adjacent_slope_rad_per_m": [
+          15.459211162605804,
+          -0.4960210136516301,
+          -29.172170451475438,
+          -17.729046687678014,
+          -17.24022031147388,
+          -14.862774109399044
+        ],
+        "common_radii": [
+          1000,
+          800,
+          600,
+          400,
+          300,
+          200
+        ]
+      },
+      "240": {
+        "point_ids": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "median_adjacent_slope_rad_per_m": [
+          12.753115668699365,
+          -1.213360741483668,
+          -19.45253345886109,
+          -8.582639388265626,
+          -2.5019869884633055,
+          -7.446715188431181
+        ],
+        "common_radii": [
+          1000,
+          800,
+          600,
+          400,
+          300,
+          200
+        ]
+      }
+    },
+    "end5cm": {
+      "0": {
+        "point_ids": [
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "median_adjacent_slope_rad_per_m": [
+          -31.35583928877519,
+          -8.642943658184139,
+          -3.7642564800035023,
+          -2.7009827086677265
+        ],
+        "common_radii": [
+          1000,
+          800,
+          600,
+          400,
+          300,
+          200
+        ]
+      },
+      "120": {
+        "point_ids": [
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "median_adjacent_slope_rad_per_m": [
+          -3.086590874784939,
+          -10.184045397504647,
+          -7.087239609512533,
+          -7.878161745683618
+        ],
+        "common_radii": [
+          1000,
+          800,
+          600,
+          400,
+          300,
+          200
+        ]
+      },
+      "240": {
+        "point_ids": [
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "median_adjacent_slope_rad_per_m": [
+          2.942462556328147,
+          -2.4919661488902634,
+          -4.725850621818644,
+          -9.51937143220396
+        ],
+        "common_radii": [
+          1000,
+          800,
+          600,
+          400,
+          300,
+          200
+        ]
+      }
+    }
+  },
+  "tail_fits": [
+    {
+      "dataset": "end15cm",
+      "direct": 0,
+      "tail_partition": [
+        5
+      ],
+      "angle_fit_rmse_deg": 4.491298788877273
+    },
+    {
+      "dataset": "end15cm",
+      "direct": 0,
+      "tail_partition": [
+        3,
+        2
+      ],
+      "angle_fit_rmse_deg": 2.2577892852770662
+    },
+    {
+      "dataset": "end15cm",
+      "direct": 0,
+      "tail_partition": [
+        2,
+        3
+      ],
+      "angle_fit_rmse_deg": 0.10380721119223602
+    },
+    {
+      "dataset": "end15cm",
+      "direct": 120,
+      "tail_partition": [
+        5
+      ],
+      "angle_fit_rmse_deg": 2.7751008216747954
+    },
+    {
+      "dataset": "end15cm",
+      "direct": 120,
+      "tail_partition": [
+        3,
+        2
+      ],
+      "angle_fit_rmse_deg": 1.507958436733115
+    },
+    {
+      "dataset": "end15cm",
+      "direct": 120,
+      "tail_partition": [
+        2,
+        3
+      ],
+      "angle_fit_rmse_deg": 0.2993937793341392
+    },
+    {
+      "dataset": "end15cm",
+      "direct": 240,
+      "tail_partition": [
+        5
+      ],
+      "angle_fit_rmse_deg": 2.83645835334894
+    },
+    {
+      "dataset": "end15cm",
+      "direct": 240,
+      "tail_partition": [
+        3,
+        2
+      ],
+      "angle_fit_rmse_deg": 1.3891430470098398
+    },
+    {
+      "dataset": "end15cm",
+      "direct": 240,
+      "tail_partition": [
+        2,
+        3
+      ],
+      "angle_fit_rmse_deg": 0.6150993117931818
+    },
+    {
+      "dataset": "end5cm",
+      "direct": 0,
+      "tail_partition": [
+        5
+      ],
+      "angle_fit_rmse_deg": 6.7934209611585645
+    },
+    {
+      "dataset": "end5cm",
+      "direct": 0,
+      "tail_partition": [
+        3,
+        2
+      ],
+      "angle_fit_rmse_deg": 3.288353245325159
+    },
+    {
+      "dataset": "end5cm",
+      "direct": 0,
+      "tail_partition": [
+        2,
+        3
+      ],
+      "angle_fit_rmse_deg": 0.5254361940991962
+    },
+    {
+      "dataset": "end5cm",
+      "direct": 120,
+      "tail_partition": [
+        5
+      ],
+      "angle_fit_rmse_deg": 2.987158139298956
+    },
+    {
+      "dataset": "end5cm",
+      "direct": 120,
+      "tail_partition": [
+        3,
+        2
+      ],
+      "angle_fit_rmse_deg": 1.2430786927741566
+    },
+    {
+      "dataset": "end5cm",
+      "direct": 120,
+      "tail_partition": [
+        2,
+        3
+      ],
+      "angle_fit_rmse_deg": 0.9246834222483956
+    },
+    {
+      "dataset": "end5cm",
+      "direct": 240,
+      "tail_partition": [
+        5
+      ],
+      "angle_fit_rmse_deg": 2.2129255705739475
+    },
+    {
+      "dataset": "end5cm",
+      "direct": 240,
+      "tail_partition": [
+        3,
+        2
+      ],
+      "angle_fit_rmse_deg": 0.8761519594932906
+    },
+    {
+      "dataset": "end5cm",
+      "direct": 240,
+      "tail_partition": [
+        2,
+        3
+      ],
+      "angle_fit_rmse_deg": 0.6338491854084403
+    }
+  ],
+  "scoring_counterfactuals": [
+    {
+      "variant": "original",
+      "direct": 0,
+      "region": "end15cm",
+      "max_phase_error_deg": 160.0246783931636
+    },
+    {
+      "variant": "original",
+      "direct": 0,
+      "region": "end5cm",
+      "max_phase_error_deg": 156.1712286214281
+    },
+    {
+      "variant": "original",
+      "direct": 120,
+      "region": "end15cm",
+      "max_phase_error_deg": 179.1928490084607
+    },
+    {
+      "variant": "original",
+      "direct": 120,
+      "region": "end5cm",
+      "max_phase_error_deg": 178.40019985937323
+    },
+    {
+      "variant": "original",
+      "direct": 240,
+      "region": "end15cm",
+      "max_phase_error_deg": 87.21540467472813
+    },
+    {
+      "variant": "original",
+      "direct": 240,
+      "region": "end5cm",
+      "max_phase_error_deg": 57.92207271010613
+    },
+    {
+      "variant": "local_nearest",
+      "direct": 0,
+      "region": "end15cm",
+      "max_phase_error_deg": 161.46065349383048
+    },
+    {
+      "variant": "local_nearest",
+      "direct": 0,
+      "region": "end5cm",
+      "max_phase_error_deg": 155.53584007363622
+    },
+    {
+      "variant": "local_nearest",
+      "direct": 120,
+      "region": "end15cm",
+      "max_phase_error_deg": 178.8666083440975
+    },
+    {
+      "variant": "local_nearest",
+      "direct": 120,
+      "region": "end5cm",
+      "max_phase_error_deg": 179.30669463295703
+    },
+    {
+      "variant": "local_nearest",
+      "direct": 240,
+      "region": "end15cm",
+      "max_phase_error_deg": 89.98143223263183
+    },
+    {
+      "variant": "local_nearest",
+      "direct": 240,
+      "region": "end5cm",
+      "max_phase_error_deg": 58.04832268484471
+    },
+    {
+      "variant": "local_window1",
+      "direct": 0,
+      "region": "end15cm",
+      "max_phase_error_deg": 161.4606534652361
+    },
+    {
+      "variant": "local_window1",
+      "direct": 0,
+      "region": "end5cm",
+      "max_phase_error_deg": 156.23092083526697
+    },
+    {
+      "variant": "local_window1",
+      "direct": 120,
+      "region": "end15cm",
+      "max_phase_error_deg": 179.378120448778
+    },
+    {
+      "variant": "local_window1",
+      "direct": 120,
+      "region": "end5cm",
+      "max_phase_error_deg": 170.73114131632374
+    },
+    {
+      "variant": "local_window1",
+      "direct": 240,
+      "region": "end15cm",
+      "max_phase_error_deg": 89.7677591466355
+    },
+    {
+      "variant": "local_window1",
+      "direct": 240,
+      "region": "end5cm",
+      "max_phase_error_deg": 31.521168850280606
+    },
+    {
+      "variant": "all_nearest",
+      "direct": 0,
+      "region": "end15cm",
+      "max_phase_error_deg": 161.46065349383048
+    },
+    {
+      "variant": "all_nearest",
+      "direct": 0,
+      "region": "end5cm",
+      "max_phase_error_deg": 155.53584007363622
+    },
+    {
+      "variant": "all_nearest",
+      "direct": 120,
+      "region": "end15cm",
+      "max_phase_error_deg": 178.8666083440975
+    },
+    {
+      "variant": "all_nearest",
+      "direct": 120,
+      "region": "end5cm",
+      "max_phase_error_deg": 179.30669463295703
+    },
+    {
+      "variant": "all_nearest",
+      "direct": 240,
+      "region": "end15cm",
+      "max_phase_error_deg": 89.98143223263183
+    },
+    {
+      "variant": "all_nearest",
+      "direct": 240,
+      "region": "end5cm",
+      "max_phase_error_deg": 58.04832268484471
+    }
+  ],
+  "note": "All are diagnostics with fixed existing calibration parameters. Extra segments lower training fit residual by construction; not proof of improved reconstruction."
+}

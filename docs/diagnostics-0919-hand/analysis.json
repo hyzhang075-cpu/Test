@@ -1,0 +1,832 @@
+{
+  "records": 5317,
+  "duration_s": 80.58657622337341,
+  "sensor_length_m": 0.877,
+  "tail_curvature_integral_deg_percentiles": [
+    0.0,
+    1.1919249830524123,
+    1.7698998480894275,
+    113.766233874982,
+    355.1546201936913,
+    462.35423144015294
+  ],
+  "maximum_frame": 4734,
+  "maximum_frame_metrics": [
+    71.69281077384949,
+    462.35423144015294,
+    80.24626553052205,
+    41.85374665230919,
+    103.46703992369281,
+    163.00619155664762,
+    273.1425365912293,
+    137.94188554848978
+  ],
+  "examples": [
+    {
+      "frame": 0,
+      "elapsed_s": 0.0,
+      "recorded_tail_deg": 0.0,
+      "recorded_virtual_deg": 0.0,
+      "magnitude_replay_max_error": 0.0,
+      "angle_replay_max_error_rad": 0.0,
+      "interpolation_replay_max_error": 0.0,
+      "nonfinite_raw_point_ids": [],
+      "base_curvature_tail": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "weights_tail": [
+        1.8102350687145035,
+        1.8011147391762585,
+        0.6793317983028101,
+        0.6007171209861873
+      ],
+      "slopes_tail": [
+        -82.26233866660634,
+        -82.24208580838834,
+        -82.30129800109168,
+        -82.30181438313542
+      ],
+      "curvature_tail": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "angle_tail_deg": [
+        -180.0,
+        -180.0,
+        -180.0,
+        -180.0
+      ],
+      "raw_bending_angle_tail_deg": [
+        -180.0,
+        -180.0,
+        -180.0,
+        -180.0
+      ],
+      "interpolated_angle_tail_deg": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "counterfactuals": {
+        "copied_weighted_tip": {
+          "tail_integrated_curvature_deg": 0.0,
+          "virtual_segment_deg": 0.0
+        },
+        "virtual_tip_zero": {
+          "tail_integrated_curvature_deg": 0.0,
+          "virtual_segment_deg": 0.0
+        },
+        "virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 0.0,
+          "virtual_segment_deg": 0.0
+        },
+        "true_and_virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 0.0,
+          "virtual_segment_deg": 0.0
+        }
+      }
+    },
+    {
+      "frame": 500,
+      "elapsed_s": 7.861910104751587,
+      "recorded_tail_deg": 0.06509842950971576,
+      "recorded_virtual_deg": 0.004499338309520571,
+      "magnitude_replay_max_error": 0.0,
+      "angle_replay_max_error_rad": 0.0,
+      "interpolation_replay_max_error": 0.0029976056964067755,
+      "nonfinite_raw_point_ids": [],
+      "base_curvature_tail": [
+        0.017510933261189788,
+        0.015462239583333327,
+        0.055981066152082794,
+        0.013690270053109316
+      ],
+      "weights_tail": [
+        1.8087626599678301,
+        1.7969081212334939,
+        0.6797389236691128,
+        0.6008515103418476
+      ],
+      "slopes_tail": [
+        -82.25901372118311,
+        -82.23254342636373,
+        -82.30106397692184,
+        -82.30162013929802
+      ],
+      "curvature_tail": [
+        0.03167312222402878,
+        0.02778422387974964,
+        0.038052509652066156,
+        0.008225819438398497
+      ],
+      "angle_tail_deg": [
+        13.89107973575481,
+        -35.62963327956936,
+        139.40220479887594,
+        22.637237774522593
+      ],
+      "raw_bending_angle_tail_deg": [
+        -62.30664143120186,
+        -60.00000000000002,
+        166.90237784689705,
+        102.00830111432118
+      ],
+      "interpolated_angle_tail_deg": [
+        1.25715587479848,
+        -18.916005908654917,
+        -35.2776729535983,
+        139.38912452220515,
+        131.97315991930722,
+        72.11245445491893,
+        22.637237774522593
+      ],
+      "counterfactuals": {
+        "copied_weighted_tip": {
+          "tail_integrated_curvature_deg": 0.06509842950971576,
+          "virtual_segment_deg": 0.004499338309520571
+        },
+        "virtual_tip_zero": {
+          "tail_integrated_curvature_deg": 0.06299433504467161,
+          "virtual_segment_deg": 0.002308871498850234
+        },
+        "virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 0.06674788880568183,
+          "virtual_segment_deg": 0.00637138259903782
+        },
+        "true_and_virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 0.069143314918882,
+          "virtual_segment_deg": 0.007898197250576743
+        }
+      }
+    },
+    {
+      "frame": 1100,
+      "elapsed_s": 17.012968063354492,
+      "recorded_tail_deg": 1.6508161523734832,
+      "recorded_virtual_deg": 0.09285287439499847,
+      "magnitude_replay_max_error": 0.0,
+      "angle_replay_max_error_rad": 0.0,
+      "interpolation_replay_max_error": 2.220446049250313e-16,
+      "nonfinite_raw_point_ids": [],
+      "base_curvature_tail": [
+        0.7430628026527668,
+        0.5970645765476122,
+        0.5123897227086882,
+        0.2674030309624069
+      ],
+      "weights_tail": [
+        1.5207752818660096,
+        1.43994030522167,
+        0.7081642585988791,
+        0.6053772025149722
+      ],
+      "slopes_tail": [
+        -81.31869656458194,
+        -81.09003801858468,
+        -82.2858869773395,
+        -82.29494706611308
+      ],
+      "curvature_tail": [
+        1.1300315431484083,
+        0.8597373485910158,
+        0.36285608809568337,
+        0.16187969882804637
+      ],
+      "angle_tail_deg": [
+        -75.96314649691801,
+        -169.6797309890992,
+        125.12227867070466,
+        81.45155509298326
+      ],
+      "raw_bending_angle_tail_deg": [
+        -154.55419184280473,
+        162.8365099942373,
+        149.49949406425387,
+        157.69545505008128
+      ],
+      "interpolated_angle_tail_deg": [
+        -71.09002113819449,
+        -114.59648946829549,
+        -154.928928393478,
+        -192.17528528034393,
+        -225.25473265710562,
+        -264.6543756117959,
+        -278.54844490701674
+      ],
+      "counterfactuals": {
+        "copied_weighted_tip": {
+          "tail_integrated_curvature_deg": 1.6508161523734834,
+          "virtual_segment_deg": 0.09285287439499847
+        },
+        "virtual_tip_zero": {
+          "tail_integrated_curvature_deg": 1.6112438741808632,
+          "virtual_segment_deg": 0.053027949607623096
+        },
+        "virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 1.678554935020915,
+          "virtual_segment_deg": 0.12199520602571914
+        },
+        "true_and_virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 1.7454915065002647,
+          "virtual_segment_deg": 0.15244098453686228
+        }
+      }
+    },
+    {
+      "frame": 1700,
+      "elapsed_s": 25.962822675704956,
+      "recorded_tail_deg": 1.6095481931760753,
+      "recorded_virtual_deg": 0.07908095175921295,
+      "magnitude_replay_max_error": 0.0,
+      "angle_replay_max_error_rad": 0.0,
+      "interpolation_replay_max_error": 2.220446049250313e-16,
+      "nonfinite_raw_point_ids": [],
+      "base_curvature_tail": [
+        0.744948132847927,
+        0.6097767475554756,
+        0.44133515662232503,
+        0.2275795743620887
+      ],
+      "weights_tail": [
+        1.5145782300333346,
+        1.4537630077060986,
+        0.7053267953020295,
+        0.6039947621599646
+      ],
+      "slopes_tail": [
+        -81.29337460425123,
+        -81.12910380205886,
+        -82.28738530839385,
+        -82.29701474102802
+      ],
+      "curvature_tail": [
+        1.1282822245154507,
+        0.8864708785554906,
+        0.31128551167454377,
+        0.13745687088929573
+      ],
+      "angle_tail_deg": [
+        -76.30004068899754,
+        -170.6407156575128,
+        119.3833359204221,
+        73.3012432226912
+      ],
+      "raw_bending_angle_tail_deg": [
+        -150.15647895686223,
+        166.6347537535266,
+        148.52072407017718,
+        154.30661909550145
+      ],
+      "interpolated_angle_tail_deg": [
+        -70.67428541774517,
+        -115.8573059012711,
+        -153.19304556399862,
+        -189.84883747847488,
+        -228.71455264519992,
+        -271.94755197335587,
+        -286.6987567773088
+      ],
+      "counterfactuals": {
+        "copied_weighted_tip": {
+          "tail_integrated_curvature_deg": 1.6095481931760753,
+          "virtual_segment_deg": 0.07908095175921295
+        },
+        "virtual_tip_zero": {
+          "tail_integrated_curvature_deg": 1.575506176590474,
+          "virtual_segment_deg": 0.04565495258627098
+        },
+        "virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 1.6339738973633953,
+          "virtual_segment_deg": 0.10467968317322554
+        },
+        "true_and_virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 1.6907969634357414,
+          "virtual_segment_deg": 0.13056445217491466
+        }
+      }
+    },
+    {
+      "frame": 2300,
+      "elapsed_s": 35.00351905822754,
+      "recorded_tail_deg": 0.9955135091145322,
+      "recorded_virtual_deg": 0.00856411373792496,
+      "magnitude_replay_max_error": 0.0,
+      "angle_replay_max_error_rad": 0.0,
+      "interpolation_replay_max_error": 4.440892098500626e-16,
+      "nonfinite_raw_point_ids": [],
+      "base_curvature_tail": [
+        0.5739889802498911,
+        0.20738225647525318,
+        0.1926907368092284,
+        0.021283686247757203
+      ],
+      "weights_tail": [
+        1.6938630928140377,
+        1.6721647414352434,
+        0.682360537613034,
+        0.6012975821821349
+      ],
+      "slopes_tail": [
+        -81.94407241824366,
+        -81.89328352083885,
+        -82.29957610515837,
+        -82.3009732219391
+      ],
+      "curvature_tail": [
+        0.9722587493272562,
+        0.34677729727719914,
+        0.1314845547621967,
+        0.012797829080699558
+      ],
+      "angle_tail_deg": [
+        -36.749439047524966,
+        -127.35988638971389,
+        109.66177378647525,
+        10.195592414748754
+      ],
+      "raw_bending_angle_tail_deg": [
+        -105.71187518873366,
+        -144.70878785258697,
+        144.18247435555642,
+        96.58677555362944
+      ],
+      "interpolated_angle_tail_deg": [
+        -18.518205096151142,
+        -33.19251434087907,
+        -80.10638240153874,
+        -170.33861942466237,
+        -188.18238663804334,
+        -289.21309101092095,
+        -349.80440758525083
+      ],
+      "counterfactuals": {
+        "copied_weighted_tip": {
+          "tail_integrated_curvature_deg": 0.9955135091145322,
+          "virtual_segment_deg": 0.008564113737924962
+        },
+        "virtual_tip_zero": {
+          "tail_integrated_curvature_deg": 0.9914147721417926,
+          "virtual_segment_deg": 0.005454849014515131
+        },
+        "virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 0.998607345299589,
+          "virtual_segment_deg": 0.011008601777836762
+        },
+        "true_and_virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 1.0005567991506779,
+          "virtual_segment_deg": 0.013369103220076057
+        }
+      }
+    },
+    {
+      "frame": 2900,
+      "elapsed_s": 44.28530263900757,
+      "recorded_tail_deg": 83.5389242406281,
+      "recorded_virtual_deg": 12.412482766781167,
+      "magnitude_replay_max_error": 0.0,
+      "angle_replay_max_error_rad": 0.0,
+      "interpolation_replay_max_error": 7.105427357601002e-15,
+      "nonfinite_raw_point_ids": [],
+      "base_curvature_tail": [
+        35.12675038090867,
+        29.67677104335304,
+        16.154598666549486,
+        6.094895768655184
+      ],
+      "weights_tail": [
+        1.178688100249025,
+        1.1745200045325288,
+        1.5120144119820893,
+        3.55861638798562
+      ],
+      "slopes_tail": [
+        -12.526558163955265,
+        -12.63345409884126,
+        -36.00863157169864,
+        -45.42300067464443
+      ],
+      "curvature_tail": [
+        41.403482674394965,
+        34.85596126034984,
+        24.42598600360946,
+        21.68939596540055
+      ],
+      "angle_tail_deg": [
+        33.94327450148303,
+        30.3553097634022,
+        10.91480136518973,
+        -13.901043949160952
+      ],
+      "raw_bending_angle_tail_deg": [
+        3.372475921029457,
+        7.746790788843023,
+        11.000851156729038,
+        14.813014388625568
+      ],
+      "interpolated_angle_tail_deg": [
+        33.58622968053613,
+        31.07069573158717,
+        24.89568414544002,
+        14.613078934841983,
+        1.9713424853197088,
+        -7.9899000187884,
+        -13.901043949160949
+      ],
+      "counterfactuals": {
+        "copied_weighted_tip": {
+          "tail_integrated_curvature_deg": 83.5389242406281,
+          "virtual_segment_deg": 12.412482766781165
+        },
+        "virtual_tip_zero": {
+          "tail_integrated_curvature_deg": 78.06891736893526,
+          "virtual_segment_deg": 6.9920533578055055
+        },
+        "virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 79.60029242795139,
+          "virtual_segment_deg": 8.477373050103779
+        },
+        "true_and_virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 69.7685186066609,
+          "virtual_segment_deg": 3.6303003654224133
+        }
+      }
+    },
+    {
+      "frame": 3500,
+      "elapsed_s": 53.188793897628784,
+      "recorded_tail_deg": 133.81186180251458,
+      "recorded_virtual_deg": 20.799930689107356,
+      "magnitude_replay_max_error": 0.0,
+      "angle_replay_max_error_rad": 0.0,
+      "interpolation_replay_max_error": 1.4210854715202004e-14,
+      "nonfinite_raw_point_ids": [],
+      "base_curvature_tail": [
+        32.16666180811567,
+        42.56377060042876,
+        33.617330934360034,
+        9.834240991383574
+      ],
+      "weights_tail": [
+        1.2044221216484348,
+        1.201041460371989,
+        2.086325817609774,
+        3.642381721137382
+      ],
+      "slopes_tail": [
+        -14.439555537125939,
+        -14.783633066073202,
+        -22.385550316147693,
+        -38.31448597728825
+      ],
+      "curvature_tail": [
+        38.742239061278354,
+        51.120853200877285,
+        70.13670544748705,
+        35.820059628275494
+      ],
+      "angle_tail_deg": [
+        -138.4544157766317,
+        -147.37734870890023,
+        -155.8070260733689,
+        -162.79276322523845
+      ],
+      "raw_bending_angle_tail_deg": [
+        -169.1901572670178,
+        -168.79565261316986,
+        -163.11675687051542,
+        -145.95465227455523
+      ],
+      "interpolated_angle_tail_deg": [
+        -138.97558955313036,
+        -145.46462035262374,
+        -150.8027721832948,
+        -154.57499747735505,
+        -156.11931685194594,
+        -160.64230761382723,
+        -162.79276322523845
+      ],
+      "counterfactuals": {
+        "copied_weighted_tip": {
+          "tail_integrated_curvature_deg": 133.81186180251456,
+          "virtual_segment_deg": 20.799930689107356
+        },
+        "virtual_tip_zero": {
+          "tail_integrated_curvature_deg": 124.66811664039368,
+          "virtual_segment_deg": 10.472897459784901
+        },
+        "virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 127.11814022797058,
+          "virtual_segment_deg": 13.083555606289137
+        },
+        "true_and_virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 110.76838064955618,
+          "virtual_segment_deg": 6.234758927556284
+        }
+      }
+    },
+    {
+      "frame": 4100,
+      "elapsed_s": 62.146066188812256,
+      "recorded_tail_deg": 28.204180262558967,
+      "recorded_virtual_deg": 10.820349205905453,
+      "magnitude_replay_max_error": 0.0,
+      "angle_replay_max_error_rad": 0.0,
+      "interpolation_replay_max_error": 1.7763568394002505e-15,
+      "nonfinite_raw_point_ids": [],
+      "base_curvature_tail": [
+        6.396618298915411,
+        4.133208328197488,
+        3.0119903525546543,
+        5.787448538525556
+      ],
+      "weights_tail": [
+        1.1802486016575413,
+        1.2270750443964726,
+        1.6248334834345484,
+        3.288822795719409
+      ],
+      "slopes_tail": [
+        -13.074751790946282,
+        -9.007203247339634,
+        -48.300473720818516,
+        -55.96423478929694
+      ],
+      "curvature_tail": [
+        7.549599802631955,
+        5.071756792822802,
+        4.893982776612631,
+        19.033892682555827
+      ],
+      "angle_tail_deg": [
+        131.18807359045604,
+        134.57136714183648,
+        148.0146263119957,
+        115.92127349523349
+      ],
+      "raw_bending_angle_tail_deg": [
+        94.67037782019734,
+        103.73049341575778,
+        147.61529880545694,
+        150.79360501685997
+      ],
+      "interpolated_angle_tail_deg": [
+        131.91437146532414,
+        135.46619189782677,
+        134.38673766235473,
+        125.36235653705508,
+        120.2694468856602,
+        119.04656624931644,
+        115.92127349523349
+      ],
+      "counterfactuals": {
+        "copied_weighted_tip": {
+          "tail_integrated_curvature_deg": 28.204180262558967,
+          "virtual_segment_deg": 10.820349205905453
+        },
+        "virtual_tip_zero": {
+          "tail_integrated_curvature_deg": 23.521017349583506,
+          "virtual_segment_deg": 6.231891142461273
+        },
+        "virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 24.976103521929268,
+          "virtual_segment_deg": 7.638964586464209
+        },
+        "true_and_virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 16.42538526900735,
+          "virtual_segment_deg": 3.334958197814287
+        }
+      }
+    },
+    {
+      "frame": 4700,
+      "elapsed_s": 71.20423197746277,
+      "recorded_tail_deg": 392.68280966806714,
+      "recorded_virtual_deg": 62.321932271457136,
+      "magnitude_replay_max_error": 0.0,
+      "angle_replay_max_error_rad": 0.0,
+      "interpolation_replay_max_error": 2.842170943040401e-14,
+      "nonfinite_raw_point_ids": [],
+      "base_curvature_tail": [
+        57.45312848375115,
+        79.56893415739279,
+        55.77622745126878,
+        26.43732493417511
+      ],
+      "weights_tail": [
+        1.6282286175092693,
+        1.8036251918086883,
+        4.22892226927895,
+        4.036739026094363
+      ],
+      "slopes_tail": [
+        -16.329633690093377,
+        -14.560628556843257,
+        50.74992317234861,
+        12.130217523150455
+      ],
+      "curvature_tail": [
+        93.54682796268055,
+        143.51253413164045,
+        235.8733303650384,
+        106.72058130732225
+      ],
+      "angle_tail_deg": [
+        -43.090814387261574,
+        -52.429847835552295,
+        -19.095542335177306,
+        -13.554690542391652
+      ],
+      "raw_bending_angle_tail_deg": [
+        -79.49631649205456,
+        -79.65846174333267,
+        -78.30947673523399,
+        -80.41373789762206
+      ],
+      "interpolated_angle_tail_deg": [
+        -48.86942677645604,
+        -39.316022846777706,
+        -31.52151217177298,
+        -27.60841039001456,
+        -23.522336541424508,
+        -15.284220418622885,
+        -13.554690542391654
+      ],
+      "counterfactuals": {
+        "copied_weighted_tip": {
+          "tail_integrated_curvature_deg": 392.68280966806714,
+          "virtual_segment_deg": 62.321932271457136
+        },
+        "virtual_tip_zero": {
+          "tail_integrated_curvature_deg": 365.2603413445074,
+          "virtual_segment_deg": 30.91145287993759
+        },
+        "virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 371.8199925162077,
+          "virtual_segment_deg": 38.02484449436582
+        },
+        "true_and_virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 321.5951652719773,
+          "virtual_segment_deg": 17.297134497574593
+        }
+      }
+    },
+    {
+      "frame": 4734,
+      "elapsed_s": 71.69281077384949,
+      "recorded_tail_deg": 462.35423144015294,
+      "recorded_virtual_deg": 80.24626553052205,
+      "magnitude_replay_max_error": 0.0,
+      "angle_replay_max_error_rad": 0.0,
+      "interpolation_replay_max_error": 2.842170943040401e-14,
+      "nonfinite_raw_point_ids": [],
+      "base_curvature_tail": [
+        63.54576919423526,
+        90.37697648987915,
+        64.52436424774609,
+        34.184640676879475
+      ],
+      "weights_tail": [
+        1.6282286175092693,
+        1.8036251918086883,
+        4.233168970754648,
+        4.035200687125716
+      ],
+      "slopes_tail": [
+        -16.329633690093377,
+        -14.560628556843257,
+        50.78855780447522,
+        12.238499282001143
+      ],
+      "curvature_tail": [
+        103.46703992369281,
+        163.00619155664762,
+        273.1425365912293,
+        137.94188554848978
+      ],
+      "angle_tail_deg": [
+        -41.8076720410647,
+        -50.69699307203874,
+        -15.82602046260194,
+        -8.843246419729542
+      ],
+      "raw_bending_angle_tail_deg": [
+        -83.28872516851096,
+        -83.00115800247241,
+        -80.13985550031478,
+        -80.87043937820047
+      ],
+      "interpolated_angle_tail_deg": [
+        -47.38976342059813,
+        -37.03344731328276,
+        -28.5918779424371,
+        -23.914796038309685,
+        -19.46731256288411,
+        -10.890108480198784,
+        -8.843246419729539
+      ],
+      "counterfactuals": {
+        "copied_weighted_tip": {
+          "tail_integrated_curvature_deg": 462.35423144015294,
+          "virtual_segment_deg": 80.24626553052205
+        },
+        "virtual_tip_zero": {
+          "tail_integrated_curvature_deg": 427.122476483502,
+          "virtual_segment_deg": 40.486293790768194
+        },
+        "virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 435.62100025221315,
+          "virtual_segment_deg": 49.520414644475615
+        },
+        "true_and_virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 370.4835569077017,
+          "virtual_segment_deg": 22.029469427194012
+        }
+      }
+    },
+    {
+      "frame": 5300,
+      "elapsed_s": 80.24603033065796,
+      "recorded_tail_deg": 58.596962672711925,
+      "recorded_virtual_deg": 22.650973402155735,
+      "magnitude_replay_max_error": 0.0,
+      "angle_replay_max_error_rad": 0.0,
+      "interpolation_replay_max_error": 7.105427357601002e-15,
+      "nonfinite_raw_point_ids": [],
+      "base_curvature_tail": [
+        1.8234985875961394,
+        10.546913523662523,
+        14.176051570131952,
+        10.063089298186298
+      ],
+      "weights_tail": [
+        1.0881238735205518,
+        1.141163403201425,
+        1.6285252215295647,
+        3.9368459794480892
+      ],
+      "slopes_tail": [
+        -26.8326600866506,
+        -7.958760163237655,
+        -43.78484584913344,
+        -45.45993567185606
+      ],
+      "curvature_tail": [
+        1.9841923464943665,
+        12.03575172993386,
+        23.086057523663673,
+        39.61683264439183
+      ],
+      "angle_tail_deg": [
+        -176.4217077087596,
+        170.19438936229895,
+        151.90475700405364,
+        142.22832778061883
+      ],
+      "raw_bending_angle_tail_deg": [
+        107.90809901140764,
+        99.5402331250802,
+        108.84615637848364,
+        127.82101411531814
+      ],
+      "interpolated_angle_tail_deg": [
+        173.2616279714718,
+        163.60159412544206,
+        157.25353248319266,
+        150.38375579606264,
+        146.00724810586888,
+        143.79558366922083,
+        142.22832778061883
+      ],
+      "counterfactuals": {
+        "copied_weighted_tip": {
+          "tail_integrated_curvature_deg": 58.596962672711925,
+          "virtual_segment_deg": 22.650973402155735
+        },
+        "virtual_tip_zero": {
+          "tail_integrated_curvature_deg": 48.74215608973337,
+          "virtual_segment_deg": 13.046117853880517
+        },
+        "virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 51.27314794836226,
+          "virtual_segment_deg": 15.493500584439468
+        },
+        "true_and_virtual_tip_unweighted": {
+          "tail_integrated_curvature_deg": 32.37207153511417,
+          "virtual_segment_deg": 5.845323931425167
+        }
+      }
+    }
+  ],
+  "frames_over_180_fraction": 0.2100808726725597,
+  "nonfinite_raw_frames": 0,
+  "note": "Integrated curvature measures accumulated tangent turning, not a signed planar angle. Virtual tip alternatives are diagnostics only."
+}
