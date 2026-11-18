@@ -1,0 +1,11 @@
+{
+  "stage": "merged_requires_validation",
+  "started": "2026-11-10 10:58:36",
+  "results": {
+    "0": "calibration_results\\09B8-20261110T110023+0800-direct0-bdc828\\results.json",
+    "120": "calibration_results\\09B8-20261110T110023+0800-direct120-dc02f6\\results.json",
+    "240": "calibration_results\\09B8-20261110T110023+0800-direct240-9ae29d\\results.json"
+  },
+  "score": "calibration_results\\09B8-20261110T105844+0800-direct0-5688c9\\results.json",
+  "candidate": "params/09B8_20261110_split_candidate.json"
+}

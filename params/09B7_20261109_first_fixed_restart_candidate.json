@@ -235,11 +235,12 @@
       "full_segmentation": [
         2,
         5,
-        6,
+        2,
+        4,
         2,
         2,
-        3,
-        2
+        2,
+        3
       ],
       "calibration_data_root": "./09B7",
       "calibration_output_dir": "./calibration_results",

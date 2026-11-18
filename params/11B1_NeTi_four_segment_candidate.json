@@ -1,0 +1,2211 @@
+{
+  "sensor_id": "11B1_NeTi",
+  "format_version": 2,
+  "shared_parameters": {
+    "hardware_parameters": {
+      "start_value": 19.7,
+      "end_value": 5.0,
+      "R": 0.0001,
+      "ideal_len": null,
+      "samp_dist_preset": [
+        510,
+        521,
+        532,
+        543,
+        554,
+        588,
+        622,
+        656,
+        707,
+        758,
+        809,
+        860,
+        911,
+        962,
+        1013,
+        1064,
+        1115,
+        1166,
+        1217,
+        1268,
+        1319,
+        1370
+      ],
+      "samp_dist_preset_sub": [
+        120,
+        160,
+        200,
+        295,
+        445,
+        595,
+        745,
+        895
+      ],
+      "centre_fibre": true,
+      "interlaced_grating": false,
+      "interlaced_offset": 1.0471975511965976
+    },
+    "calibration_experiment_parameters": {
+      "interrogator": "FiberTecc",
+      "active_channels": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "channel_change": false,
+      "channel_layout": [
+        [
+          5,
+          [
+            2,
+            1,
+            4,
+            3,
+            7,
+            5,
+            6
+          ]
+        ],
+        [
+          7,
+          [
+            5,
+            1,
+            4,
+            3,
+            2,
+            7,
+            6
+          ]
+        ],
+        [
+          4,
+          [
+            7,
+            1,
+            4,
+            3,
+            2,
+            5,
+            6
+          ]
+        ]
+      ],
+      "active_angles": null,
+      "rot_dir": {
+        "0": -1,
+        "120": -1,
+        "240": -1
+      },
+      "exp_directs": [
+        0,
+        120,
+        240
+      ],
+      "end_len": 0.05,
+      "ss": 0.0026
+    },
+    "optimization_hyperparameters": {
+      "freeze": null,
+      "weight_bounds": [
+        0.6,
+        5.0
+      ],
+      "slope_upper_bound": 50.0,
+      "max_iter": 20,
+      "k_point": 1.0,
+      "k_end": 0.5,
+      "k_pitch": 1.0,
+      "k_radius": 1.0,
+      "method": "Powell",
+      "hyper_params": [
+        20000,
+        1e-06,
+        1e-06
+      ],
+      "min_loss_diff": 0.0001
+    },
+    "dynamic_display_parameters": {
+      "IP": "192.168.1.75",
+      "PORT": 26546,
+      "maxsize": 10,
+      "data_freq": 100,
+      "use_stored_zero": true,
+      "zero_reference_path": "./params/06B6_NeTi_v2_ftube_zero_reference.json",
+      "wavelength_jump_guard_enabled": true,
+      "wavelength_jump_threshold_pm": 12000.0,
+      "total_scale": 1.0,
+      "imu": false,
+      "imu_com": "COM6",
+      "imu_maxlen": 10,
+      "demo_recorder": true,
+      "unwrap_threshold": 0.65,
+      "align_threshold": 0.2,
+      "direction_blend_enabled": false,
+      "direction_reference_direct": 240,
+      "direction_min_curvature": 0.5,
+      "direction_min_consecutive": 3,
+      "direction_consistency_threshold": 0.6,
+      "direction_smooth_alpha": 0.15,
+      "demo_kalman_enabled": true,
+      "demo_kalman_Rk": 0.0001,
+      "demo_kalman_Bk": 1e-05,
+      "anchor_translation_enabled": false,
+      "anchor_rotation_enabled": false,
+      "anchor_constraint_enabled": null,
+      "anchor_offset_m": 0.06
+    },
+    "reconstruction_parameters": {
+      "soft": true,
+      "reverse": false,
+      "discont": 3.141592653589793,
+      "frame_rule": "TNN",
+      "straight_threshold": 2.0,
+      "rot_threshold": 4.0,
+      "min_consecutive": 3,
+      "move_filter": 3,
+      "move_filter_for_vector": true,
+      "kalman_params": {
+        "angle": {
+          "Rk": 0.001,
+          "Bk": 0.001
+        },
+        "magnitude": {
+          "Rk": 0.0001,
+          "Bk": 0.01
+        }
+      },
+      "smoothing_params": {
+        "window_length": 21,
+        "polyorder": 3
+      },
+      "interp_num": 120,
+      "curvature_interp": "vector_pchip",
+      "nonnegative_curvature": false,
+      "sharpness": 4.8,
+      "end_weights": null,
+      "end_start": null,
+      "TNB_threshold": 0.0
+    },
+    "initialization_parameters": {
+      "connect": false,
+      "turn_threshold": 2.0,
+      "sensing_ranges": {
+        "1": [
+          583,
+          1048
+        ],
+        "3": [
+          678,
+          1146
+        ],
+        "4": [
+          749,
+          1215
+        ]
+      }
+    },
+    "angle_optimization_parameters": {
+      "ang_step": 0.1,
+      "ang_range": 1.0
+    },
+    "runtime_control_parameters": {
+      "phase_output": null,
+      "sensor_params": null,
+      "use_full_transported_phase": true,
+      "full_point_calib": true,
+      "full_absolute_direction": false,
+      "full_preserve_first_point": false,
+      "end15cm_point_calib": true,
+      "end5cm_point_calib": true,
+      "end5cm_independent_weights": false,
+      "end5cm_independent_weight_score": false,
+      "end5cm_coverage_aware_weights": false,
+      "end5cm_min_weight_effective_samples": 1.0,
+      "end5cm_min_weight_max_mass": 0.05,
+      "end5cm_uncovered_weight_policy": "interpolate_neutral_edges",
+      "multi_region_calib": false,
+      "optimization_region": "full",
+      "optimization_regions": [
+        "full",
+        "end15cm",
+        "end5cm"
+      ],
+      "full_segmentation": [
+        7,
+        7,
+        2,
+        2
+      ],
+      "calibration_data_root": "./09B7",
+      "calibration_output_dir": "./calibration_results",
+      "folder_path": null,
+      "radii": null,
+      "direct": 0,
+      "thresholds": null,
+      "straight_trim": null,
+      "segmentation": null,
+      "weights": null,
+      "slopes": null,
+      "task": null
+    }
+  },
+  "multi_region": {
+    "use_full_transported_phase": true,
+    "phase_reference_directions": [
+      0,
+      120,
+      240
+    ],
+    "region_order": [
+      "full",
+      "end15cm",
+      "end5cm"
+    ],
+    "directions": [
+      0,
+      120,
+      240
+    ],
+    "global_phases_set": -2.1182908509274143,
+    "rot_ang": 0.0,
+    "deployment_ready": false,
+    "shared_quality_gates": {
+      "score_thresholds_verified": false
+    },
+    "direction_deployment": {
+      "0": {
+        "deployment_ready": false,
+        "quality_gates": {
+          "optimization_usable": true,
+          "end15cm_phase_verified": false,
+          "full_geometry_verified": false
+        },
+        "failures": [
+          "0/end15cm transported phase is unverified",
+          "0/full geometry reconstruction is unverified"
+        ]
+      },
+      "120": {
+        "deployment_ready": false,
+        "quality_gates": {
+          "optimization_usable": true,
+          "end15cm_phase_verified": false,
+          "full_geometry_verified": false
+        },
+        "failures": [
+          "120/end15cm transported phase is unverified",
+          "120/full geometry reconstruction is unverified"
+        ]
+      },
+      "240": {
+        "deployment_ready": false,
+        "quality_gates": {
+          "optimization_usable": true,
+          "end15cm_phase_verified": false,
+          "full_geometry_verified": false
+        },
+        "failures": [
+          "240/end15cm transported phase is unverified",
+          "240/full geometry reconstruction is unverified"
+        ]
+      }
+    },
+    "available_deployment_directions": []
+  },
+  "regions": {
+    "full": {
+      "calibration_objective": "real_points",
+      "calibration_geometry": {
+        "optimization_region": "full",
+        "sample_dist_m": [
+          0.114,
+          0.314,
+          0.514,
+          0.614,
+          0.714,
+          0.734,
+          0.754,
+          0.774,
+          0.794,
+          0.814,
+          0.834,
+          0.845,
+          0.856,
+          0.867,
+          0.878,
+          0.889,
+          0.9,
+          0.911
+        ],
+        "crop_origin_m": 0.0,
+        "reconstruction_length_m": 0.919,
+        "ideal_len": 0.919,
+        "straight_trim": 0.0
+      },
+      "weight_group_ids": null,
+      "weight_score_mode": "spatial_window",
+      "length_m": null,
+      "folder_path": "全段测试",
+      "radii": {
+        "circ": [
+          0,
+          2000,
+          1500,
+          1000,
+          800,
+          600,
+          400,
+          300,
+          200
+        ]
+      },
+      "thresholds": [
+        0.8,
+        1.2,
+        2.0,
+        3.0,
+        4.0
+      ],
+      "end_weights": false,
+      "end_start": -5,
+      "sharpness": 4.8,
+      "score_window": 3,
+      "score_boundary_mode": "constant",
+      "local_segmentation": [
+        7,
+        7,
+        2,
+        2
+      ],
+      "global_segment_ids": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "support_point_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "owned_point_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "global_sample_dist_m": [
+        0.114,
+        0.314,
+        0.514,
+        0.614,
+        0.714,
+        0.734,
+        0.754,
+        0.774,
+        0.794,
+        0.814,
+        0.834,
+        0.845,
+        0.856,
+        0.867,
+        0.878,
+        0.889,
+        0.9,
+        0.911
+      ],
+      "weights": {
+        "0": [
+          1.1998032803172038,
+          0.6,
+          0.732265478239756,
+          0.7512421455172948,
+          0.8489358081180328,
+          0.804551330640597
+        ],
+        "120": [
+          1.233226963625984,
+          0.6,
+          0.8341600012610882,
+          0.8296208676513814,
+          0.8815720047423456,
+          0.8552399719803537
+        ],
+        "240": [
+          1.1013499108111156,
+          0.6,
+          0.8222060240102279,
+          0.8226350404985174,
+          0.831187038829211,
+          0.848928680731999
+        ]
+      },
+      "slopes": {
+        "0": [
+          [
+            -0.5103878384307314,
+            -17.619083408662288,
+            -4.939984933091063,
+            18.964898087965274
+          ],
+          [
+            -1.6442163408638393,
+            -1.2519623240451851,
+            -30.015570536513387,
+            29.77378686736467
+          ],
+          [
+            -1.007204430234407,
+            -7.543300918238353,
+            -20.246256063897214,
+            28.772114371705033
+          ],
+          [
+            -1.2582937555110068,
+            -3.282601398734513,
+            -24.89529335718639,
+            29.917680176628377
+          ],
+          [
+            -1.0443876245729418,
+            -6.792518913057657,
+            -22.74947027701745,
+            32.21296551957711
+          ],
+          [
+            -1.422443302199366,
+            -3.575131181078127,
+            -27.397750216064964,
+            28.196426471054618
+          ]
+        ],
+        "120": [
+          [
+            -10.444946043614388,
+            -8.891150518381975,
+            -26.715500633037664,
+            28.016564355641883
+          ],
+          [
+            -11.03807622467949,
+            -1.498519298615124,
+            -32.044097668785625,
+            24.897689778649653
+          ],
+          [
+            -10.665029639001252,
+            -7.15106345317708,
+            -22.765203149937648,
+            26.449960343772048
+          ],
+          [
+            -10.867014119242109,
+            -6.021389807717792,
+            -20.47155355450239,
+            23.333595028781744
+          ],
+          [
+            -10.734520134520697,
+            -6.290150456154136,
+            -23.702439313482696,
+            29.79310104089472
+          ],
+          [
+            -10.791696120812842,
+            -5.718965168111959,
+            -20.62268339763448,
+            23.448097729492705
+          ]
+        ],
+        "240": [
+          [
+            -10.80013876966742,
+            -7.2406193152226255,
+            -14.727337597255518,
+            17.898526718014207
+          ],
+          [
+            -10.530795718174375,
+            -6.5591121100742,
+            -11.637114515634929,
+            25.570569485505157
+          ],
+          [
+            -10.706034553081366,
+            -8.318473004821161,
+            -10.01472747057455,
+            21.9787029218004
+          ],
+          [
+            -10.69538024548551,
+            -7.299872307585711,
+            -14.636191598585349,
+            23.51926288783537
+          ],
+          [
+            -10.871398823741862,
+            -6.915293127596529,
+            -16.72468592779849,
+            24.27442362677742
+          ],
+          [
+            -10.804156793265143,
+            -6.153707519500038,
+            -17.79978375844546,
+            21.021388233761822
+          ]
+        ]
+      },
+      "errors": {
+        "0": {
+          "normal_weighted_loss": 0.19028275340653156,
+          "avg_point_err": {
+            "circ": 0.08327833715516515,
+            "calib": 0.08327833715516515
+          },
+          "avg_end_err": {
+            "circ": 0.21400883250273284,
+            "calib": 0.21400883250273284
+          },
+          "avg_pitch_err": 0,
+          "avg_radius_err": 0,
+          "point_errors_by_sample": {
+            "circ": {
+              "0": 0.004164944289744626,
+              "2000": 0.04403558134941459,
+              "1500": 0.04658968777384267,
+              "1000": 0.05378664295526516,
+              "800": 0.07207939012277848,
+              "600": 0.09730209431956996,
+              "400": 0.1409612121423498,
+              "300": 0.15032387683619847,
+              "200": 0.14026160460732262
+            }
+          },
+          "end_errors_by_sample": {
+            "circ": {
+              "0": 0.010361437406690752,
+              "2000": 0.12960903523840459,
+              "1500": 0.1382281294920016,
+              "1000": 0.1680938714262417,
+              "800": 0.22395110189550932,
+              "600": 0.2946721061840545,
+              "400": 0.38614448642029164,
+              "300": 0.36147182466703026,
+              "200": 0.2135474997943711
+            }
+          }
+        },
+        "120": {
+          "normal_weighted_loss": 0.3488074417225032,
+          "avg_point_err": {
+            "circ": 0.13489468679203082,
+            "calib": 0.13489468679203082
+          },
+          "avg_end_err": {
+            "circ": 0.42782550986094475,
+            "calib": 0.42782550986094475
+          },
+          "avg_pitch_err": 0,
+          "avg_radius_err": 0,
+          "point_errors_by_sample": {
+            "circ": {
+              "0": 0.00441167385342247,
+              "2000": 0.0400855011498556,
+              "1500": 0.049116400234113095,
+              "1000": 0.08313505215762958,
+              "800": 0.11078962577193247,
+              "600": 0.14951716407892626,
+              "400": 0.2091221389522676,
+              "300": 0.26554477895503414,
+              "200": 0.3023298459750961
+            }
+          },
+          "end_errors_by_sample": {
+            "circ": {
+              "0": 0.011110718558092529,
+              "2000": 0.1286050510076312,
+              "1500": 0.17238755621713484,
+              "1000": 0.2880148597987188,
+              "800": 0.3775560819583575,
+              "600": 0.49791234689084585,
+              "400": 0.6791504910419234,
+              "300": 0.8312664967146818,
+              "200": 0.8644259865611169
+            }
+          }
+        },
+        "240": {
+          "normal_weighted_loss": 0.31855014588128094,
+          "avg_point_err": {
+            "circ": 0.12364305300600015,
+            "calib": 0.12364305300600015
+          },
+          "avg_end_err": {
+            "circ": 0.38981418575056154,
+            "calib": 0.38981418575056154
+          },
+          "avg_pitch_err": 0,
+          "avg_radius_err": 0,
+          "point_errors_by_sample": {
+            "circ": {
+              "0": 0.0016291936187153742,
+              "2000": 0.042759886450626804,
+              "1500": 0.052633611761461925,
+              "1000": 0.07976395149209375,
+              "800": 0.10227357529649693,
+              "600": 0.13574971620616325,
+              "400": 0.18800091586552364,
+              "300": 0.2335153483026172,
+              "200": 0.2764612780603025
+            }
+          },
+          "end_errors_by_sample": {
+            "circ": {
+              "0": 0.0030769506332606984,
+              "2000": 0.13241463669647374,
+              "1500": 0.17114952990139548,
+              "1000": 0.2752488458313226,
+              "800": 0.3466166096739347,
+              "600": 0.45329621440038514,
+              "400": 0.6028094583977739,
+              "300": 0.7238485058424436,
+              "200": 0.7998669203780643
+            }
+          }
+        }
+      },
+      "optimization": {
+        "0": {
+          "objective": "real_points",
+          "loss_definitions": {
+            "slopes": "mean circular direction error to first real point (1-cos)",
+            "weights": "mean squared relative real-point curvature error"
+          },
+          "stages": {
+            "slopes": {
+              "status": "converge",
+              "start_loss": 0.2031594324125694,
+              "final_loss": 0.1123621020169947,
+              "source_sensor_params": null
+            },
+            "weights": {
+              "status": "converge",
+              "start_loss": 0.14721269434158019,
+              "final_loss": 0.07754993638233067
+            }
+          },
+          "parameter_bounds": {
+            "weights": {
+              "configured_bounds": [
+                0.6,
+                5.0
+              ],
+              "lower_bound_hits": 1,
+              "upper_bound_hits": 0,
+              "total": 6
+            },
+            "slopes": {
+              "configured_abs_upper_bound": 50.0,
+              "effective_abs_upper_bound": 50.0,
+              "configured_bound_exceedances": 0,
+              "effective_bound_hits": 0,
+              "total": 24
+            }
+          }
+        },
+        "120": {
+          "objective": "real_points",
+          "loss_definitions": {
+            "slopes": "mean circular direction error to first real point (1-cos)",
+            "weights": "mean squared relative real-point curvature error"
+          },
+          "stages": {
+            "slopes": {
+              "status": "converge",
+              "start_loss": 0.3098118562688636,
+              "final_loss": 0.24834856746757042,
+              "source_sensor_params": null
+            },
+            "weights": {
+              "status": "converge",
+              "start_loss": 0.10326095332961144,
+              "final_loss": 0.06940338896222509
+            }
+          },
+          "parameter_bounds": {
+            "weights": {
+              "configured_bounds": [
+                0.6,
+                5.0
+              ],
+              "lower_bound_hits": 1,
+              "upper_bound_hits": 0,
+              "total": 6
+            },
+            "slopes": {
+              "configured_abs_upper_bound": 50.0,
+              "effective_abs_upper_bound": 50.0,
+              "configured_bound_exceedances": 0,
+              "effective_bound_hits": 0,
+              "total": 24
+            }
+          }
+        },
+        "240": {
+          "objective": "real_points",
+          "loss_definitions": {
+            "slopes": "mean circular direction error to first real point (1-cos)",
+            "weights": "mean squared relative real-point curvature error"
+          },
+          "stages": {
+            "slopes": {
+              "status": "converge",
+              "start_loss": 0.28705139364935406,
+              "final_loss": 0.2369556227057491,
+              "source_sensor_params": null
+            },
+            "weights": {
+              "status": "converge",
+              "start_loss": 0.08929333662303804,
+              "final_loss": 0.04461268750690539
+            }
+          },
+          "parameter_bounds": {
+            "weights": {
+              "configured_bounds": [
+                0.6,
+                5.0
+              ],
+              "lower_bound_hits": 1,
+              "upper_bound_hits": 0,
+              "total": 6
+            },
+            "slopes": {
+              "configured_abs_upper_bound": 50.0,
+              "effective_abs_upper_bound": 50.0,
+              "configured_bound_exceedances": 0,
+              "effective_bound_hits": 0,
+              "total": 24
+            }
+          }
+        }
+      },
+      "phase_reference": {
+        "0": null,
+        "120": null,
+        "240": null
+      }
+    },
+    "end15cm": {
+      "calibration_objective": "real_points",
+      "calibration_geometry": {
+        "optimization_region": "end15cm",
+        "sample_dist_m": [
+          0.0050000000000000044,
+          0.025000000000000022,
+          0.04499999999999993,
+          0.06499999999999995,
+          0.07599999999999996,
+          0.08699999999999997,
+          0.09799999999999998,
+          0.10899999999999999,
+          0.12,
+          0.131,
+          0.14200000000000002
+        ],
+        "crop_origin_m": 0.769,
+        "reconstruction_length_m": 0.15,
+        "ideal_len": 0.919,
+        "straight_trim": -0.15
+      },
+      "weight_group_ids": null,
+      "weight_score_mode": "spatial_window",
+      "length_m": 0.15,
+      "folder_path": "末端测试/15cm",
+      "radii": {
+        "circ": [
+          0,
+          2000,
+          1500,
+          1000,
+          800,
+          600,
+          400,
+          300,
+          200,
+          100,
+          75,
+          50,
+          30
+        ]
+      },
+      "thresholds": [
+        0.8,
+        1.2,
+        2.0,
+        3.0,
+        4.0,
+        10.0,
+        20.0
+      ],
+      "end_weights": false,
+      "end_start": -5,
+      "sharpness": 4.8,
+      "score_window": 3,
+      "score_boundary_mode": "constant",
+      "local_segmentation": [
+        7,
+        2,
+        2
+      ],
+      "global_segment_ids": [
+        1,
+        2,
+        3
+      ],
+      "support_point_ids": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "owned_point_ids": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "global_sample_dist_m": [
+        0.774,
+        0.794,
+        0.814,
+        0.834,
+        0.845,
+        0.856,
+        0.867,
+        0.878,
+        0.889,
+        0.9,
+        0.911
+      ],
+      "weights": {
+        "0": [
+          0.9487735478697095,
+          0.9944851592532351,
+          0.875686064320241,
+          0.9253431577631602,
+          0.895039595559554,
+          0.8774730231011564,
+          0.8589260206612184,
+          0.887938177579787
+        ],
+        "120": [
+          1.3842234851947464,
+          0.6,
+          1.0714570150954286,
+          1.005521855753609,
+          0.9249449861435273,
+          0.9649905657358611,
+          0.8937548692294267,
+          0.9088689011499831
+        ],
+        "240": [
+          1.1271285351716858,
+          0.8934423631985723,
+          0.9163860166862057,
+          0.9287718247254859,
+          0.8677460805741867,
+          0.8743070448876573,
+          0.8543189960515698,
+          0.8707342968140049
+        ]
+      },
+      "slopes": {
+        "0": [
+          [
+            -1.9273979868473397,
+            -20.965905883188103,
+            -1.282728764997443
+          ],
+          [
+            -7.396778616326008,
+            -27.357334236549086,
+            33.847570559427695
+          ],
+          [
+            -5.983322427329181,
+            -22.984412973359927,
+            17.878527749925098
+          ],
+          [
+            -8.280850844340206,
+            -21.78881894987429,
+            26.95837417441316
+          ],
+          [
+            -7.9462614489672525,
+            -24.25316624664646,
+            32.230181512380696
+          ],
+          [
+            -8.130389682732964,
+            -23.018245785108775,
+            27.44009661097729
+          ],
+          [
+            -8.686407618285422,
+            -25.07648977648801,
+            27.83095072144861
+          ],
+          [
+            -15.827222916042572,
+            -14.136986695256864,
+            19.607573292097495
+          ]
+        ],
+        "120": [
+          [
+            -2.5166364015209552,
+            -5.170552365117295,
+            26.279151144812058
+          ],
+          [
+            -11.88285609475794,
+            -27.28611886704602,
+            -1.3789365453442168
+          ],
+          [
+            -4.728080303062504,
+            -24.211448275707244,
+            23.722122853745542
+          ],
+          [
+            -5.420251610657309,
+            -21.96567890851421,
+            18.6527942620566
+          ],
+          [
+            -6.998358916773946,
+            -16.46120231093433,
+            30.67038937532557
+          ],
+          [
+            -6.317570169533587,
+            -21.15607911851736,
+            19.128536957648066
+          ],
+          [
+            -4.807155349454933,
+            -17.88167058740683,
+            18.375751801739614
+          ],
+          [
+            -5.124617974787362,
+            -20.14013076343944,
+            22.376330817072095
+          ]
+        ],
+        "240": [
+          [
+            0.0035507574287429846,
+            -23.70632571233907,
+            25.666722086170026
+          ],
+          [
+            -4.5797162029094345,
+            -27.209107515861476,
+            23.300683903902826
+          ],
+          [
+            -2.591501615626,
+            -22.369302702549202,
+            13.269132031334044
+          ],
+          [
+            -0.14845244972696178,
+            -31.50658233307098,
+            34.539301640965775
+          ],
+          [
+            -3.839184725190999,
+            -18.21840073782461,
+            6.738601728131818
+          ],
+          [
+            -2.7681835146300444,
+            -24.59133835909727,
+            27.670310792319576
+          ],
+          [
+            -0.09318708089087485,
+            -24.208566936943477,
+            19.922082553685076
+          ],
+          [
+            -1.01594515130832,
+            -23.138252780445793,
+            20.79074310171313
+          ]
+        ]
+      },
+      "errors": {
+        "0": {
+          "normal_weighted_loss": 0.032619697408815485,
+          "avg_point_err": {
+            "circ": 0.017842844871760712,
+            "calib": 0.017842844871760712
+          },
+          "avg_end_err": {
+            "circ": 0.029553705074109544,
+            "calib": 0.029553705074109544
+          },
+          "avg_pitch_err": 0,
+          "avg_radius_err": 0,
+          "point_errors_by_sample": {
+            "circ": {
+              "0": 0.00021638116757938315,
+              "2000": 0.0048889481300295416,
+              "1500": 0.0023364503230184123,
+              "1000": 0.003082069971540457,
+              "800": 0.004695133644849899,
+              "600": 0.005415392444886892,
+              "400": 0.0025340354169407155,
+              "300": 0.01282651982515337,
+              "200": 0.014506477317585127,
+              "100": 0.018070567067813927,
+              "75": 0.025766226978607844,
+              "50": 0.042020262505890284,
+              "30": 0.09559851853899341
+            }
+          },
+          "end_errors_by_sample": {
+            "circ": {
+              "0": 0.00030524857556128856,
+              "2000": 0.011592635049248703,
+              "1500": 0.004746373855005922,
+              "1000": 0.006801040512322738,
+              "800": 0.009925227711999919,
+              "600": 0.010798929687722753,
+              "400": 0.004199398544521856,
+              "300": 0.02599313529132129,
+              "200": 0.030449440017234042,
+              "100": 0.03279137409642496,
+              "75": 0.04760772047499794,
+              "50": 0.15781176199528144,
+              "30": 0.041175880151781266
+            }
+          }
+        },
+        "120": {
+          "normal_weighted_loss": 0.012217937972504745,
+          "avg_point_err": {
+            "circ": 0.006162652132001912,
+            "calib": 0.006162652132001912
+          },
+          "avg_end_err": {
+            "circ": 0.012110571681005667,
+            "calib": 0.012110571681005667
+          },
+          "avg_pitch_err": 0,
+          "avg_radius_err": 0,
+          "point_errors_by_sample": {
+            "circ": {
+              "0": 0.0002940913443745799,
+              "2000": 0.006109594030680855,
+              "1500": 0.003447197163301492,
+              "1000": 0.0020082412667404436,
+              "800": 0.0026787445039665983,
+              "600": 0.004014920647112717,
+              "400": 0.002809853945304399,
+              "300": 0.008624330480512594,
+              "200": 0.01113913130922264,
+              "100": 0.005223887186233446,
+              "75": 0.0067223042471879265,
+              "50": 0.009474474140664288,
+              "30": 0.017567707450722878
+            }
+          },
+          "end_errors_by_sample": {
+            "circ": {
+              "0": 0.000950463735300869,
+              "2000": 0.015567894293095604,
+              "1500": 0.007848891884335995,
+              "1000": 0.007460011312665792,
+              "800": 0.004593563139660647,
+              "600": 0.009404517808054944,
+              "400": 0.004132036505676795,
+              "300": 0.018961389958318437,
+              "200": 0.022595556406167838,
+              "100": 0.012618421335149604,
+              "75": 0.011029361939266673,
+              "50": 0.02040863278600163,
+              "30": 0.021866690749378855
+            }
+          }
+        },
+        "240": {
+          "normal_weighted_loss": 0.0434549829817685,
+          "avg_point_err": {
+            "circ": 0.022765814944340847,
+            "calib": 0.022765814944340847
+          },
+          "avg_end_err": {
+            "circ": 0.04137833607485532,
+            "calib": 0.04137833607485532
+          },
+          "avg_pitch_err": 0,
+          "avg_radius_err": 0,
+          "point_errors_by_sample": {
+            "circ": {
+              "0": 0.0004254748332815609,
+              "2000": 0.003723277433869137,
+              "1500": 0.0006287771880977501,
+              "1000": 0.005004200277569116,
+              "800": 0.006555849439434771,
+              "600": 0.007335666228222541,
+              "400": 0.011627069103298264,
+              "300": 0.007910701688170272,
+              "200": 0.01655538196047044,
+              "100": 0.04151532505900323,
+              "75": 0.05506992615631165,
+              "50": 0.07725852856382213,
+              "30": 0.062345416344880146
+            }
+          },
+          "end_errors_by_sample": {
+            "circ": {
+              "0": 0.0012243934002873422,
+              "2000": 0.00917754580923468,
+              "1500": 0.0013122331212955633,
+              "1000": 0.011179059345805473,
+              "800": 0.015463395850219917,
+              "600": 0.014224817137977757,
+              "400": 0.026473492582094044,
+              "300": 0.01585384980973255,
+              "200": 0.036229581515522906,
+              "100": 0.08116994876542379,
+              "75": 0.10024365164783938,
+              "50": 0.10939407874520679,
+              "30": 0.11597232124247896
+            }
+          }
+        }
+      },
+      "optimization": {
+        "0": {
+          "objective": "real_points",
+          "loss_definitions": {
+            "slopes": "mean circular direction error to first real point (1-cos)",
+            "weights": "mean squared relative real-point curvature error"
+          },
+          "stages": {
+            "slopes": {
+              "status": "converge",
+              "start_loss": 0.07766089517255016,
+              "final_loss": 0.01631962558227906,
+              "source_sensor_params": null
+            },
+            "weights": {
+              "status": "converge",
+              "start_loss": 0.029811965650633914,
+              "final_loss": 0.0172234092950559
+            }
+          },
+          "parameter_bounds": {
+            "weights": {
+              "configured_bounds": [
+                0.6,
+                5.0
+              ],
+              "lower_bound_hits": 0,
+              "upper_bound_hits": 0,
+              "total": 8
+            },
+            "slopes": {
+              "configured_abs_upper_bound": 50.0,
+              "effective_abs_upper_bound": 50.0,
+              "configured_bound_exceedances": 0,
+              "effective_bound_hits": 0,
+              "total": 24
+            }
+          }
+        },
+        "120": {
+          "objective": "real_points",
+          "loss_definitions": {
+            "slopes": "mean circular direction error to first real point (1-cos)",
+            "weights": "mean squared relative real-point curvature error"
+          },
+          "stages": {
+            "slopes": {
+              "status": "converge",
+              "start_loss": 0.04047189945937636,
+              "final_loss": 0.009029271550805506,
+              "source_sensor_params": null
+            },
+            "weights": {
+              "status": "converge",
+              "start_loss": 0.055612821295682624,
+              "final_loss": 0.0459152695838721
+            }
+          },
+          "parameter_bounds": {
+            "weights": {
+              "configured_bounds": [
+                0.6,
+                5.0
+              ],
+              "lower_bound_hits": 1,
+              "upper_bound_hits": 0,
+              "total": 8
+            },
+            "slopes": {
+              "configured_abs_upper_bound": 50.0,
+              "effective_abs_upper_bound": 50.0,
+              "configured_bound_exceedances": 0,
+              "effective_bound_hits": 0,
+              "total": 24
+            }
+          }
+        },
+        "240": {
+          "objective": "real_points",
+          "loss_definitions": {
+            "slopes": "mean circular direction error to first real point (1-cos)",
+            "weights": "mean squared relative real-point curvature error"
+          },
+          "stages": {
+            "slopes": {
+              "status": "converge",
+              "start_loss": 0.029155615928010404,
+              "final_loss": 0.01052421190911522,
+              "source_sensor_params": null
+            },
+            "weights": {
+              "status": "converge",
+              "start_loss": 0.04148644356971456,
+              "final_loss": 0.027311218395334957
+            }
+          },
+          "parameter_bounds": {
+            "weights": {
+              "configured_bounds": [
+                0.6,
+                5.0
+              ],
+              "lower_bound_hits": 0,
+              "upper_bound_hits": 0,
+              "total": 8
+            },
+            "slopes": {
+              "configured_abs_upper_bound": 50.0,
+              "effective_abs_upper_bound": 50.0,
+              "configured_bound_exceedances": 0,
+              "effective_bound_hits": 0,
+              "total": 24
+            }
+          }
+        }
+      },
+      "phase_reference": {
+        "0": {
+          "mode": "assembled_absolute_direction_per_sample",
+          "direct": 0,
+          "source_radii_mm": [
+            2000,
+            1500,
+            1000,
+            800,
+            600,
+            400,
+            300,
+            200
+          ],
+          "phase_at_first_point_rad": -2.587349371250151,
+          "phase_at_crop_origin_rad": -2.587349371250151,
+          "crop_phase_is_display_seed_only": true,
+          "first_point_id": 8,
+          "per_sample_phase_during_optimization": true,
+          "source_kind": "current_batch",
+          "source_sensor_params": null
+        },
+        "120": {
+          "mode": "assembled_absolute_direction_per_sample",
+          "direct": 120,
+          "source_radii_mm": [
+            2000,
+            1500,
+            1000,
+            800,
+            600,
+            400,
+            300,
+            200
+          ],
+          "phase_at_first_point_rad": -2.6519705215146105,
+          "phase_at_crop_origin_rad": -2.6519705215146105,
+          "crop_phase_is_display_seed_only": true,
+          "first_point_id": 8,
+          "per_sample_phase_during_optimization": true,
+          "source_kind": "current_batch",
+          "source_sensor_params": null
+        },
+        "240": {
+          "mode": "assembled_absolute_direction_per_sample",
+          "direct": 240,
+          "source_radii_mm": [
+            2000,
+            1500,
+            1000,
+            800,
+            600,
+            400,
+            300,
+            200
+          ],
+          "phase_at_first_point_rad": -2.8847213697507885,
+          "phase_at_crop_origin_rad": -2.8847213697507885,
+          "crop_phase_is_display_seed_only": true,
+          "first_point_id": 8,
+          "per_sample_phase_during_optimization": true,
+          "source_kind": "current_batch",
+          "source_sensor_params": null
+        }
+      }
+    },
+    "end5cm": {
+      "calibration_objective": "real_points",
+      "calibration_geometry": {
+        "optimization_region": "end5cm",
+        "sample_dist_m": [
+          0.009000000000000008,
+          0.020000000000000018,
+          0.031000000000000028,
+          0.04200000000000004
+        ],
+        "crop_origin_m": 0.869,
+        "reconstruction_length_m": 0.05,
+        "ideal_len": 0.919,
+        "straight_trim": -0.05
+      },
+      "weight_group_ids": null,
+      "weight_score_mode": "spatial_window",
+      "length_m": 0.05,
+      "folder_path": "末端测试/5cm",
+      "radii": {
+        "circ": [
+          0,
+          2000,
+          1500,
+          1000,
+          800,
+          600,
+          400,
+          300,
+          200,
+          100,
+          75,
+          50,
+          30,
+          20,
+          15
+        ]
+      },
+      "thresholds": [
+        0.8,
+        1.2,
+        2.0,
+        3.0,
+        4.0,
+        10.0,
+        20.0,
+        35.0,
+        45.0,
+        70.0
+      ],
+      "end_weights": true,
+      "end_start": -1,
+      "sharpness": 4.8,
+      "score_window": 3,
+      "score_boundary_mode": "constant",
+      "local_segmentation": [
+        2,
+        2
+      ],
+      "global_segment_ids": [
+        2,
+        3
+      ],
+      "support_point_ids": [
+        15,
+        16,
+        17,
+        18
+      ],
+      "owned_point_ids": [
+        15,
+        16,
+        17,
+        18
+      ],
+      "global_sample_dist_m": [
+        0.878,
+        0.889,
+        0.9,
+        0.911
+      ],
+      "weights": {
+        "0": [
+          1.3482768088322854,
+          0.6,
+          1.6772288143625766,
+          1.1006722016065786,
+          1.5147443057773353,
+          1.0255818077949002,
+          0.8853732418806772,
+          0.9161352253574285,
+          0.9412024473213008,
+          1.0829709970046315,
+          1.0000002854637484,
+          2.3331973027835606,
+          1.804686507661183,
+          0.9259486776723383,
+          1.3943692668134633,
+          1.161201595993785,
+          1.0677239312565001,
+          1.0159153906183924,
+          0.9296953662577553,
+          0.9272850155264519,
+          1.0018321869233335,
+          1.0000002854637484
+        ],
+        "120": [
+          5.0,
+          0.6,
+          2.58367963879193,
+          0.8849916045700056,
+          1.4870606628049015,
+          1.05330163326348,
+          1.0712344361075152,
+          1.0577915266453968,
+          0.9357575094540203,
+          1.1443391000546872,
+          1.0,
+          4.247675054961091,
+          0.6,
+          0.6,
+          2.0664555840823082,
+          1.162878899393744,
+          1.0337183808033177,
+          1.0375505502770586,
+          0.9506290640054637,
+          0.7497540108736029,
+          1.1336112909210203,
+          1.0
+        ],
+        "240": [
+          1.7041806370433839,
+          2.2903685179907436,
+          0.6420504916742403,
+          1.3555152936843053,
+          0.9328413249446259,
+          1.1380325899176482,
+          0.8595606458573043,
+          0.9312298039813657,
+          0.9820818481107384,
+          1.074526619206733,
+          1.0,
+          1.8053251294000854,
+          2.0821977929349877,
+          0.6,
+          0.9440171899122478,
+          2.464662705143425,
+          0.6167017855019165,
+          1.032881680888668,
+          0.9369503213637802,
+          0.8779262187639482,
+          1.037820009268359,
+          1.0
+        ]
+      },
+      "slopes": {
+        "0": [
+          [
+            -50.0,
+            13.430189719782785
+          ],
+          [
+            -50.0,
+            18.76219771264001
+          ],
+          [
+            -35.22740421163289,
+            50.0
+          ],
+          [
+            -50.0,
+            -0.287559221364216
+          ],
+          [
+            -50.0,
+            50.0
+          ],
+          [
+            -50.0,
+            27.275955591985472
+          ],
+          [
+            -44.1742850244489,
+            24.87437442992472
+          ],
+          [
+            -50.0,
+            24.47766126022158
+          ],
+          [
+            -50.0,
+            12.468657061894476
+          ],
+          [
+            13.27637055429516,
+            33.50908850853063
+          ],
+          [
+            -16.852739938207986,
+            41.472511562238225
+          ]
+        ],
+        "120": [
+          [
+            50.0,
+            -50.0
+          ],
+          [
+            -50.0,
+            14.294810957076818
+          ],
+          [
+            -50.0,
+            50.0
+          ],
+          [
+            -50.0,
+            2.1576700435366023
+          ],
+          [
+            -47.93593424218506,
+            38.83710118906698
+          ],
+          [
+            -34.55064424577426,
+            26.34178596604469
+          ],
+          [
+            -35.88686655973219,
+            27.14962032558362
+          ],
+          [
+            -39.85636248619727,
+            27.34472232262461
+          ],
+          [
+            -50.0,
+            50.0
+          ],
+          [
+            -38.11969318807159,
+            23.131808619830103
+          ],
+          [
+            -15.182441003958102,
+            38.40556269521428
+          ]
+        ],
+        "240": [
+          [
+            -50.0,
+            -5.038576022064327
+          ],
+          [
+            -50.0,
+            -6.564474522770647
+          ],
+          [
+            -50.0,
+            50.0
+          ],
+          [
+            -50.0,
+            3.044717639488893
+          ],
+          [
+            -50.0,
+            47.537066332659926
+          ],
+          [
+            -50.0,
+            16.77959274315827
+          ],
+          [
+            -50.0,
+            20.006937087538958
+          ],
+          [
+            -50.0,
+            17.62672107691366
+          ],
+          [
+            -50.0,
+            8.072320546727516
+          ],
+          [
+            -50.0,
+            -6.552142292212871
+          ],
+          [
+            -17.516508578016275,
+            31.757667472071795
+          ]
+        ]
+      },
+      "errors": {
+        "0": {
+          "normal_weighted_loss": 0.03920069125135818,
+          "avg_point_err": {
+            "circ": 0.02004864726222455,
+            "calib": 0.02004864726222455
+          },
+          "avg_end_err": {
+            "circ": 0.03830408797826726,
+            "calib": 0.03830408797826726
+          },
+          "avg_pitch_err": 0,
+          "avg_radius_err": 0,
+          "point_errors_by_sample": {
+            "circ": {
+              "0": 0.0007737674761842929,
+              "2000": 0.006615153946455749,
+              "1500": 0.0032950068943309783,
+              "1000": 0.004663923598656847,
+              "800": 0.00564830130022126,
+              "600": 0.0013607178503166715,
+              "400": 0.0021253621215099583,
+              "300": 0.010064488835679801,
+              "200": 0.01068005828584104,
+              "100": 0.015728440406610932,
+              "75": 0.020093974296286066,
+              "50": 0.03239040217458022,
+              "30": 0.07483148334061865,
+              "20": 0.021053856083352872,
+              "15": 0.09140477232272295
+            }
+          },
+          "end_errors_by_sample": {
+            "circ": {
+              "0": 0.002033664148297777,
+              "2000": 0.01789809024070665,
+              "1500": 0.010105485348932264,
+              "1000": 0.013083710619511489,
+              "800": 0.018005413118462144,
+              "600": 0.005248296112423631,
+              "400": 0.005540033494146091,
+              "300": 0.02521491528378859,
+              "200": 0.026463187546320446,
+              "100": 0.03662695073044346,
+              "75": 0.04684439148608437,
+              "50": 0.07412847819300199,
+              "30": 0.16284200602793655,
+              "20": 0.009737659927219828,
+              "15": 0.12078903739673373
+            }
+          }
+        },
+        "120": {
+          "normal_weighted_loss": 0.02666096883418874,
+          "avg_point_err": {
+            "circ": 0.013308196191444388,
+            "calib": 0.013308196191444388
+          },
+          "avg_end_err": {
+            "circ": 0.0267055452854887,
+            "calib": 0.0267055452854887
+          },
+          "avg_pitch_err": 0,
+          "avg_radius_err": 0,
+          "point_errors_by_sample": {
+            "circ": {
+              "0": 0.0012028028114914005,
+              "2000": 0.006453425839097775,
+              "1500": 0.007900318751722361,
+              "1000": 0.012240467716407325,
+              "800": 0.007523215089814282,
+              "600": 0.00839184617059286,
+              "400": 0.0016602505089270984,
+              "300": 0.010275106453793587,
+              "200": 0.009344086270566177,
+              "100": 0.011493768266768596,
+              "75": 0.013683883523422294,
+              "50": 0.01957636698496136,
+              "30": 0.026874047873027322,
+              "20": 0.02968261311294164,
+              "15": 0.03332074349813174
+            }
+          },
+          "end_errors_by_sample": {
+            "circ": {
+              "0": 0.0028308282112823814,
+              "2000": 0.01870900350690062,
+              "1500": 0.023023357847501005,
+              "1000": 0.0310319456048524,
+              "800": 0.019880400791805124,
+              "600": 0.024385059370558692,
+              "400": 0.0019399624948607127,
+              "300": 0.026111770601900428,
+              "200": 0.022584404729040726,
+              "100": 0.024987773919402954,
+              "75": 0.03101113496036683,
+              "50": 0.04430394008998296,
+              "30": 0.05539871648730401,
+              "20": 0.048609215452251706,
+              "15": 0.025775665214319943
+            }
+          }
+        },
+        "240": {
+          "normal_weighted_loss": 0.08151295415769214,
+          "avg_point_err": {
+            "circ": 0.04248692012294437,
+            "calib": 0.04248692012294437
+          },
+          "avg_end_err": {
+            "circ": 0.07805206806949554,
+            "calib": 0.07805206806949554
+          },
+          "avg_pitch_err": 0,
+          "avg_radius_err": 0,
+          "point_errors_by_sample": {
+            "circ": {
+              "0": 7.39884060978514e-05,
+              "2000": 0.0016578034158287293,
+              "1500": 0.001995085879073485,
+              "1000": 0.0014291599245156853,
+              "800": 0.004170210802953358,
+              "600": 0.0036485922032081595,
+              "400": 0.0034028843762326667,
+              "300": 0.008836839410496436,
+              "200": 0.013697923348919097,
+              "100": 0.02471369441422348,
+              "75": 0.03089026128615865,
+              "50": 0.04611667004353563,
+              "30": 0.09743112852279757,
+              "20": 0.17582657400913462,
+              "15": 0.22341298580099003
+            }
+          },
+          "end_errors_by_sample": {
+            "circ": {
+              "0": 0.00022837936324160353,
+              "2000": 0.003920706454581921,
+              "1500": 0.005455898588779543,
+              "1000": 0.004952862243535236,
+              "800": 0.010494922118736883,
+              "600": 0.008828407313236643,
+              "400": 0.00786737283071323,
+              "300": 0.022522178366724634,
+              "200": 0.03378294679367241,
+              "100": 0.05964922583637672,
+              "75": 0.07393789855050187,
+              "50": 0.10746794377072291,
+              "30": 0.21675078449332416,
+              "20": 0.3041977921372191,
+              "15": 0.31072370218106626
+            }
+          }
+        }
+      },
+      "optimization": {
+        "0": {
+          "objective": "real_points",
+          "loss_definitions": {
+            "slopes": "mean circular direction error to first real point (1-cos)",
+            "weights": "mean squared relative real-point curvature error"
+          },
+          "stages": {
+            "slopes": {
+              "status": "converge",
+              "start_loss": 0.18121145004502623,
+              "final_loss": 0.06936666088180189,
+              "source_sensor_params": null
+            },
+            "weights": {
+              "status": "converge",
+              "start_loss": 0.1135578648939121,
+              "final_loss": 0.07206598907176541
+            }
+          },
+          "parameter_bounds": {
+            "weights": {
+              "configured_bounds": [
+                0.6,
+                5.0
+              ],
+              "lower_bound_hits": 1,
+              "upper_bound_hits": 0,
+              "total": 22
+            },
+            "slopes": {
+              "configured_abs_upper_bound": 50.0,
+              "effective_abs_upper_bound": 50.0,
+              "configured_bound_exceedances": 0,
+              "effective_bound_hits": 9,
+              "total": 22
+            }
+          }
+        },
+        "120": {
+          "objective": "real_points",
+          "loss_definitions": {
+            "slopes": "mean circular direction error to first real point (1-cos)",
+            "weights": "mean squared relative real-point curvature error"
+          },
+          "stages": {
+            "slopes": {
+              "status": "converge",
+              "start_loss": 0.3834171120955762,
+              "final_loss": 0.3008756530930027,
+              "source_sensor_params": null
+            },
+            "weights": {
+              "status": "converge",
+              "start_loss": 0.28745792516818186,
+              "final_loss": 0.08259597118101573
+            }
+          },
+          "parameter_bounds": {
+            "weights": {
+              "configured_bounds": [
+                0.6,
+                5.0
+              ],
+              "lower_bound_hits": 3,
+              "upper_bound_hits": 1,
+              "total": 22
+            },
+            "slopes": {
+              "configured_abs_upper_bound": 50.0,
+              "effective_abs_upper_bound": 50.0,
+              "configured_bound_exceedances": 0,
+              "effective_bound_hits": 8,
+              "total": 22
+            }
+          }
+        },
+        "240": {
+          "objective": "real_points",
+          "loss_definitions": {
+            "slopes": "mean circular direction error to first real point (1-cos)",
+            "weights": "mean squared relative real-point curvature error"
+          },
+          "stages": {
+            "slopes": {
+              "status": "converge",
+              "start_loss": 0.2202992114489013,
+              "final_loss": 0.04762277502569405,
+              "source_sensor_params": null
+            },
+            "weights": {
+              "status": "converge",
+              "start_loss": 0.07633098402599722,
+              "final_loss": 0.011406817887895137
+            }
+          },
+          "parameter_bounds": {
+            "weights": {
+              "configured_bounds": [
+                0.6,
+                5.0
+              ],
+              "lower_bound_hits": 1,
+              "upper_bound_hits": 0,
+              "total": 22
+            },
+            "slopes": {
+              "configured_abs_upper_bound": 50.0,
+              "effective_abs_upper_bound": 50.0,
+              "configured_bound_exceedances": 0,
+              "effective_bound_hits": 11,
+              "total": 22
+            }
+          }
+        }
+      },
+      "phase_reference": {
+        "0": {
+          "mode": "assembled_absolute_direction_per_sample",
+          "direct": 0,
+          "source_radii_mm": [
+            2000,
+            1500,
+            1000,
+            800,
+            600,
+            400,
+            300,
+            200,
+            100,
+            75,
+            50,
+            30
+          ],
+          "phase_at_first_point_rad": 2.991227826762228,
+          "phase_at_crop_origin_rad": 2.991227826762228,
+          "crop_phase_is_display_seed_only": true,
+          "first_point_id": 15,
+          "per_sample_phase_during_optimization": true,
+          "source_kind": "current_batch",
+          "source_sensor_params": null
+        },
+        "120": {
+          "mode": "assembled_absolute_direction_per_sample",
+          "direct": 120,
+          "source_radii_mm": [
+            2000,
+            1500,
+            1000,
+            800,
+            600,
+            400,
+            300,
+            200,
+            100,
+            75,
+            50,
+            30
+          ],
+          "phase_at_first_point_rad": 3.1156096173102816,
+          "phase_at_crop_origin_rad": 3.1156096173102816,
+          "crop_phase_is_display_seed_only": true,
+          "first_point_id": 15,
+          "per_sample_phase_during_optimization": true,
+          "source_kind": "current_batch",
+          "source_sensor_params": null
+        },
+        "240": {
+          "mode": "assembled_absolute_direction_per_sample",
+          "direct": 240,
+          "source_radii_mm": [
+            2000,
+            1500,
+            1000,
+            800,
+            600,
+            400,
+            300,
+            200,
+            100,
+            75,
+            50,
+            30
+          ],
+          "phase_at_first_point_rad": 3.1030480535000753,
+          "phase_at_crop_origin_rad": 3.1030480535000753,
+          "crop_phase_is_display_seed_only": true,
+          "first_point_id": 15,
+          "per_sample_phase_during_optimization": true,
+          "source_kind": "current_batch",
+          "source_sensor_params": null
+        }
+      }
+    }
+  },
+  "provenance": {
+    "source_commit": "b5bc776dcc48741f2c70a0aad8e22cf859e356b7",
+    "generated_at": "2026-11-16T09:59:18.453097+00:00",
+    "parser_destination_order": [
+      "phase_output",
+      "sensor_params",
+      "use_full_transported_phase",
+      "full_preserve_first_point",
+      "full_absolute_direction",
+      "full_point_calib",
+      "end15cm_point_calib",
+      "end5cm_point_calib",
+      "end5cm_independent_weights",
+      "end5cm_independent_weight_score",
+      "end5cm_coverage_aware_weights",
+      "end5cm_min_weight_effective_samples",
+      "end5cm_min_weight_max_mass",
+      "end5cm_uncovered_weight_policy",
+      "optim_weights_only",
+      "multi_region_calib",
+      "optimization_region",
+      "optimization_regions",
+      "full_segmentation",
+      "calibration_data_root",
+      "calibration_regions",
+      "calibration_output_dir",
+      "sensor_id",
+      "start_value",
+      "end_value",
+      "R",
+      "ideal_len",
+      "samp_dist_preset",
+      "samp_dist_preset_sub",
+      "centre_fibre",
+      "interlaced_grating",
+      "interlaced_offset",
+      "global_phases_set",
+      "interrogator",
+      "active_channels",
+      "channel_change",
+      "channel_layout",
+      "active_angles",
+      "folder_path",
+      "rot_dir",
+      "exp_directs",
+      "radii",
+      "end_len",
+      "direct",
+      "freeze",
+      "weight_bounds",
+      "slope_upper_bound",
+      "thresholds",
+      "max_iter",
+      "k_point",
+      "k_end",
+      "k_pitch",
+      "k_radius",
+      "method",
+      "hyper_params",
+      "min_loss_diff",
+      "ss",
+      "IP",
+      "PORT",
+      "maxsize",
+      "data_freq",
+      "use_stored_zero",
+      "zero_reference_path",
+      "wavelength_jump_guard_enabled",
+      "wavelength_jump_threshold_pm",
+      "total_scale",
+      "imu",
+      "imu_com",
+      "imu_maxlen",
+      "demo_recorder",
+      "unwrap_threshold",
+      "align_threshold",
+      "direction_blend_enabled",
+      "direction_reference_direct",
+      "direction_min_curvature",
+      "direction_min_consecutive",
+      "direction_consistency_threshold",
+      "direction_smooth_alpha",
+      "demo_kalman_enabled",
+      "demo_kalman_Rk",
+      "demo_kalman_Bk",
+      "anchor_translation_enabled",
+      "anchor_rotation_enabled",
+      "anchor_constraint_enabled",
+      "anchor_offset_m",
+      "soft",
+      "reverse",
+      "discont",
+      "frame_rule",
+      "straight_threshold",
+      "rot_threshold",
+      "min_consecutive",
+      "move_filter",
+      "move_filter_for_vector",
+      "kalman_params",
+      "smoothing_params",
+      "interp_num",
+      "curvature_interp",
+      "nonnegative_curvature",
+      "sharpness",
+      "end_weights",
+      "end_start",
+      "TNB_threshold",
+      "straight_trim",
+      "segmentation",
+      "connect",
+      "turn_threshold",
+      "sensing_ranges",
+      "rot_ang",
+      "weights",
+      "slopes",
+      "task",
+      "ang_step",
+      "ang_range"
+    ],
+    "source_results": [
+      "./calibration_results/11B1_NeTi-20261116T175334+0800-direct0-acaec4/results.json",
+      "./calibration_results/11B1_NeTi-20261116T175526+0800-direct120-ef58f6/results.json",
+      "./calibration_results/11B1_NeTi-20261116T175722+0800-direct240-2d26c4/results.json"
+    ],
+    "local_global_phases_set": {
+      "full": {
+        "0": -2.1182908509274143,
+        "120": -2.1182908509274143,
+        "240": -2.1182908509274143
+      },
+      "end15cm": {
+        "0": -2.587349371250151,
+        "120": -2.6519705215146105,
+        "240": -2.8847213697507885
+      },
+      "end5cm": {
+        "0": 2.991227826762228,
+        "120": 3.1156096173102816,
+        "240": 3.1030480535000753
+      }
+    },
+    "local_rot_ang": {
+      "full": {
+        "0": 0.0,
+        "120": 0.0,
+        "240": 0.0
+      },
+      "end15cm": {
+        "0": 0.0,
+        "120": 0.0,
+        "240": 0.0
+      },
+      "end5cm": {
+        "0": 0.0,
+        "120": 0.0,
+        "240": 0.0
+      }
+    }
+  }
+}

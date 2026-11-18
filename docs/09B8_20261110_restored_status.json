@@ -1,0 +1,12 @@
+{
+  "stage": "validation_finished_requires_review",
+  "started": "2026-11-10 15:27:41",
+  "results": {
+    "0": "calibration_results\\09B8-20261110T152922+0800-direct0-2b7763\\results.json",
+    "120": "calibration_results\\09B8-20261110T152922+0800-direct120-9cbc38\\results.json",
+    "240": "calibration_results\\09B8-20261110T152922+0800-direct240-69bbef\\results.json"
+  },
+  "score": "calibration_results\\09B8-20261110T152748+0800-direct0-a556de\\results.json",
+  "candidate": "params/09B8_20261110_restored_candidate.json",
+  "validation": "docs/09B8_20261110_restored_validation.json"
+}

@@ -495,6 +495,9 @@ def build_sensor_package(parser, reports, *, source_commit=None, generated_at=No
         for group, names in PARSER_GROUPS.items()
     }
     shared['runtime_control_parameters']['use_full_transported_phase'] = bool(reference_directions)
+    # Export the segmentation actually optimized, not the current parser default.
+    shared['runtime_control_parameters']['full_segmentation'] = deepcopy(
+        region_blocks['full']['local_segmentation'])
     shared['runtime_control_parameters']['full_point_calib'] = (
         region_blocks['full']['calibration_objective'] == 'real_points')
     shared['runtime_control_parameters']['end15cm_point_calib'] = (

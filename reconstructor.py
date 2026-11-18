@@ -1071,6 +1071,23 @@ class Reconstructor(Initialiser):
                                                 for name in config['region_order']})
             diagnostics['full_mixed_phase_anchors'] = bridges
             diagnostics['full_independent_mixed_slopes'] = full_mixed.tolist()
+            for name in config['region_order']:
+                block = config['regions'][name]
+                corrections = block.get('bridge_slope_corrections', {})
+                values = corrections.get(str(direct), corrections.get(direct))
+                if values is None:
+                    continue
+                values = np.asarray(values, dtype=float)
+                masses = np.asarray(diagnostics[name]['slope_masses'])[:, 0]
+                if values.shape != masses.shape or not np.all(np.isfinite(values)):
+                    raise ValueError(f'{name} invalid bridge_slope_corrections')
+                point = block['support_point_ids'][0]
+                index = list(self.global_point_ids).index(point)
+                if name == 'full' or index == 0:
+                    raise ValueError('Bridge correction requires a local preceding point')
+                correction = float(masses @ values)
+                slope_map[index] += correction
+                diagnostics[name]['bridge_slope_correction'] = correction
         weighted_strain = strain_data * final_weight
         final_segments, final_slopes = self._generate_dynamic_segments(slope_map)
         final_angles = self._calculate_dynamic_angles(

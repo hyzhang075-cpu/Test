@@ -1,0 +1,175 @@
+{
+  "sensor_parameter_package.py": {
+    "current_path": "C:\\Users\\hyzha\\Desktop\\shape-sensing-integrate-1\\tools\\sensor_parameter_package.py",
+    "changed": [
+      {
+        "function": "_region_context",
+        "current_line": 214,
+        "attachment_line": 211
+      },
+      {
+        "function": "build_sensor_package",
+        "current_line": 318,
+        "attachment_line": 315
+      },
+      {
+        "function": "package_parser_defaults",
+        "current_line": 888,
+        "attachment_line": 880
+      }
+    ],
+    "added": [],
+    "removed": [],
+    "zip": [
+      {
+        "path": "shape-sensing-integrate-09B7/tools/sensor_parameter_package.py",
+        "equals_attachment_ast": false,
+        "changed_from_current": [
+          "_region_context",
+          "_validate_parser_groups",
+          "build_sensor_package",
+          "package_parser_defaults"
+        ],
+        "added_current": [],
+        "removed_current": []
+      }
+    ]
+  },
+  "optimiser.py": {
+    "current_path": "C:\\Users\\hyzha\\Desktop\\shape-sensing-integrate-1\\optimiser.py",
+    "changed": [
+      {
+        "function": "Optimiser.__init__",
+        "current_line": 12,
+        "attachment_line": 12
+      },
+      {
+        "function": "Optimiser._get_weight_freeze_mask",
+        "current_line": 143,
+        "attachment_line": 141
+      },
+      {
+        "function": "Optimiser._real_point_loss",
+        "current_line": 620,
+        "attachment_line": 612
+      }
+    ],
+    "added": [],
+    "removed": [],
+    "zip": [
+      {
+        "path": "shape-sensing-integrate-09B7/optimiser.py",
+        "equals_attachment_ast": true,
+        "changed_from_current": [
+          "Optimiser.__init__",
+          "Optimiser._get_weight_freeze_mask",
+          "Optimiser._real_point_loss"
+        ],
+        "added_current": [],
+        "removed_current": []
+      }
+    ]
+  },
+  "calibration_phase_reference.py": {
+    "current_path": "C:\\Users\\hyzha\\Desktop\\shape-sensing-integrate-1\\calibration_phase_reference.py",
+    "changed": [],
+    "added": [],
+    "removed": [],
+    "zip": [
+      {
+        "path": "shape-sensing-integrate-09B7/calibration_phase_reference.py",
+        "equals_attachment_ast": true,
+        "changed_from_current": [],
+        "added_current": [],
+        "removed_current": []
+      }
+    ]
+  },
+  "reconstructor.py": {
+    "current_path": "C:\\Users\\hyzha\\Desktop\\shape-sensing-integrate-1\\reconstructor.py",
+    "changed": [
+      {
+        "function": "Reconstructor._assemble_multiregion_parameters",
+        "current_line": 949,
+        "attachment_line": 949
+      }
+    ],
+    "added": [],
+    "removed": [],
+    "zip": [
+      {
+        "path": "shape-sensing-integrate-09B7/reconstructor.py",
+        "equals_attachment_ast": true,
+        "changed_from_current": [
+          "Reconstructor._assemble_multiregion_parameters"
+        ],
+        "added_current": [],
+        "removed_current": []
+      }
+    ]
+  },
+  "calibration_batch.py": {
+    "current_path": "C:\\Users\\hyzha\\Desktop\\shape-sensing-integrate-1\\calibration_batch.py",
+    "changed": [
+      {
+        "function": "optimizer_parameters",
+        "current_line": 40,
+        "attachment_line": 40
+      }
+    ],
+    "added": [],
+    "removed": [],
+    "zip": [
+      {
+        "path": "shape-sensing-integrate-09B7/calibration_batch.py",
+        "equals_attachment_ast": true,
+        "changed_from_current": [
+          "optimizer_parameters"
+        ],
+        "added_current": [],
+        "removed_current": []
+      }
+    ]
+  },
+  "main.py": {
+    "current_path": "C:\\Users\\hyzha\\Desktop\\shape-sensing-integrate-1\\main.py",
+    "changed": [
+      {
+        "function": "configure_calibration_args",
+        "current_line": 27,
+        "attachment_line": 27
+      },
+      {
+        "function": "compute_error_ang",
+        "current_line": 250,
+        "attachment_line": 248
+      },
+      {
+        "function": "build_argument_parser",
+        "current_line": 367,
+        "attachment_line": 365
+      },
+      {
+        "function": "main",
+        "current_line": 756,
+        "attachment_line": 748
+      }
+    ],
+    "added": [],
+    "removed": [],
+    "zip": [
+      {
+        "path": "shape-sensing-integrate-09B7/main.py",
+        "equals_attachment_ast": true,
+        "changed_from_current": [
+          "build_argument_parser",
+          "compute_error_ang",
+          "configure_calibration_args",
+          "main"
+        ],
+        "added_current": [],
+        "removed_current": []
+      }
+    ]
+  }
+}

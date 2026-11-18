@@ -1,0 +1,104 @@
+[
+  {
+    "segmentation": [
+      3,
+      2,
+      2,
+      7,
+      4
+    ],
+    "direct": 0,
+    "metrics": {
+      "point_ratio": 0.009795213850503701,
+      "end_ratio": 0.012628635815132017
+    },
+    "max_difference": 0.0,
+    "rot_ang": 1.210758694539912
+  },
+  {
+    "segmentation": [
+      3,
+      2,
+      2,
+      7,
+      4
+    ],
+    "direct": 120,
+    "metrics": {
+      "point_ratio": 0.006234465824943198,
+      "end_ratio": 0.008864716010323855
+    },
+    "max_difference": 0.0,
+    "rot_ang": 3.769481803668856
+  },
+  {
+    "segmentation": [
+      3,
+      2,
+      2,
+      7,
+      4
+    ],
+    "direct": 240,
+    "metrics": {
+      "point_ratio": 0.015293187312593718,
+      "end_ratio": 0.020010206883130797
+    },
+    "max_difference": 0.0,
+    "rot_ang": -3.8306952666193825
+  },
+  {
+    "segmentation": [
+      3,
+      2,
+      2,
+      3,
+      4,
+      2,
+      2
+    ],
+    "direct": 0,
+    "metrics": {
+      "point_ratio": 0.009939899875495721,
+      "end_ratio": 0.012603423390498606
+    },
+    "max_difference": 0.0,
+    "rot_ang": 1.7654524671743326
+  },
+  {
+    "segmentation": [
+      3,
+      2,
+      2,
+      3,
+      4,
+      2,
+      2
+    ],
+    "direct": 120,
+    "metrics": {
+      "point_ratio": 0.006309912740994169,
+      "end_ratio": 0.008900084738290437
+    },
+    "max_difference": 0.0,
+    "rot_ang": 3.8452229464632497
+  },
+  {
+    "segmentation": [
+      3,
+      2,
+      2,
+      3,
+      4,
+      2,
+      2
+    ],
+    "direct": 240,
+    "metrics": {
+      "point_ratio": 0.01566721418067846,
+      "end_ratio": 0.019939289048704283
+    },
+    "max_difference": 0.0,
+    "rot_ang": -4.475858558033681
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "source": "params/09B8_20261110_raw_direction_candidate.json",
+  "delta_phase_deg": -13.444722573048935,
+  "first_weights": [
+    1.0573989281447123,
+    0.941485458351287,
+    1.0598317559317816,
+    0.8372614002411402,
+    1.217161728312574,
+    1.020716955827409
+  ],
+  "held_out_radii": [
+    1500,
+    400
+  ],
+  "directions": {
+    "0": {
+      "train": {
+        "direction_mean_abs_before_deg": 8.233171979638186,
+        "direction_mean_abs_after_deg": 5.21155059341075,
+        "direction_max_abs_after_deg": 10.786103098431157,
+        "curvature_mean_abs_relative_percent": 15.70131661932076
+      },
+      "held_out": {
+        "direction_mean_abs_before_deg": 7.295366715718263,
+        "direction_mean_abs_after_deg": 6.149355857330671,
+        "direction_max_abs_after_deg": 10.654496448217353,
+        "curvature_mean_abs_relative_percent": 14.457172425391517
+      }
+    },
+    "120": {
+      "train": {
+        "direction_mean_abs_before_deg": 13.65514664722543,
+        "direction_mean_abs_after_deg": 7.887652203635176,
+        "direction_max_abs_after_deg": 20.261240777835404,
+        "curvature_mean_abs_relative_percent": 5.797772183856512
+      },
+      "held_out": {
+        "direction_mean_abs_before_deg": 14.849944452419361,
+        "direction_mean_abs_after_deg": 1.4052218793704268,
+        "direction_max_abs_after_deg": 2.049616914017453,
+        "curvature_mean_abs_relative_percent": 8.82426553472751
+      }
+    },
+    "240": {
+      "train": {
+        "direction_mean_abs_before_deg": 22.68981270649117,
+        "direction_mean_abs_after_deg": 13.726664324458552,
+        "direction_max_abs_after_deg": 23.43210082439231,
+        "curvature_mean_abs_relative_percent": 18.890393386251205
+      },
+      "held_out": {
+        "direction_mean_abs_before_deg": 30.205372820156448,
+        "direction_mean_abs_after_deg": 16.76065024710751,
+        "direction_max_abs_after_deg": 17.236118343968542,
+        "curvature_mean_abs_relative_percent": 20.027568373040378
+      }
+    }
+  }
+}

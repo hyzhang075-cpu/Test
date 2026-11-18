@@ -1,0 +1,1380 @@
+{
+  "sensor_id": "11B1_NeTi",
+  "task": "optim",
+  "direct": 120,
+  "regions": {
+    "end15cm": {
+      "status": "complete",
+      "configuration": {
+        "phase_output": null,
+        "sensor_params": null,
+        "use_full_transported_phase": false,
+        "full_preserve_first_point": false,
+        "full_absolute_direction": false,
+        "full_point_calib": true,
+        "end15cm_point_calib": true,
+        "end5cm_point_calib": true,
+        "end5cm_independent_weights": false,
+        "end5cm_independent_weight_score": false,
+        "end5cm_coverage_aware_weights": false,
+        "end5cm_min_weight_effective_samples": 1.0,
+        "end5cm_min_weight_max_mass": 0.05,
+        "end5cm_uncovered_weight_policy": "interpolate_neutral_edges",
+        "optim_weights_only": false,
+        "multi_region_calib": true,
+        "optimization_region": "end15cm",
+        "optimization_regions": [
+          "end15cm",
+          "end5cm"
+        ],
+        "full_segmentation": [
+          3,
+          2,
+          2,
+          3,
+          4,
+          2,
+          2
+        ],
+        "calibration_data_root": "./1113-11B1-自研（1+3）18点79.7cmFBG+镍钛管",
+        "calibration_regions": {
+          "full": {
+            "length_m": null,
+            "folder_path": "全段测试",
+            "radii": {
+              "circ": [
+                0,
+                2000,
+                1500,
+                1000,
+                800,
+                600,
+                400,
+                300,
+                200
+              ]
+            },
+            "thresholds": [
+              0.8,
+              1.2,
+              2.0,
+              3.0,
+              4.0
+            ],
+            "end_weights": false,
+            "end_start": -5,
+            "segmentation": [
+              3,
+              2,
+              2,
+              3,
+              4,
+              2,
+              2
+            ],
+            "weights": null,
+            "slopes": null
+          },
+          "end15cm": {
+            "length_m": 0.15,
+            "folder_path": "末端测试/15cm",
+            "radii": {
+              "circ": [
+                0,
+                2000,
+                1500,
+                1000,
+                800,
+                600,
+                400,
+                300,
+                200,
+                100,
+                75,
+                50,
+                30
+              ]
+            },
+            "thresholds": [
+              0.8,
+              1.2,
+              2.0,
+              3.0,
+              4.0,
+              10.0,
+              20.0
+            ],
+            "end_weights": false,
+            "end_start": -5,
+            "segmentation": [
+              3,
+              4,
+              2,
+              2
+            ],
+            "weights": null,
+            "slopes": null
+          },
+          "end5cm": {
+            "length_m": 0.05,
+            "folder_path": "末端测试/5cm",
+            "radii": {
+              "circ": [
+                0,
+                2000,
+                1500,
+                1000,
+                800,
+                600,
+                400,
+                300,
+                200,
+                100,
+                75,
+                50,
+                30,
+                20,
+                15
+              ]
+            },
+            "thresholds": [
+              0.8,
+              1.2,
+              2.0,
+              3.0,
+              4.0,
+              10.0,
+              20.0,
+              35.0,
+              45.0,
+              70.0
+            ],
+            "end_weights": true,
+            "end_start": -1,
+            "segmentation": [
+              2,
+              2
+            ],
+            "weights": null,
+            "slopes": null
+          }
+        },
+        "calibration_output_dir": "docs\\11B1_seven_local_replay",
+        "sensor_id": "11B1_NeTi",
+        "start_value": 114.0,
+        "end_value": 8.0,
+        "R": 0.0001,
+        "ideal_len": 0.919,
+        "samp_dist_preset": [
+          510,
+          521,
+          532,
+          543,
+          554,
+          565,
+          576,
+          587,
+          607,
+          627,
+          647,
+          667,
+          687,
+          707,
+          807,
+          907,
+          1107,
+          1307
+        ],
+        "samp_dist_preset_sub": [
+          120,
+          160,
+          200,
+          295,
+          445,
+          595,
+          745,
+          895
+        ],
+        "centre_fibre": true,
+        "interlaced_grating": false,
+        "interlaced_offset": 1.0471975511965976,
+        "global_phases_set": null,
+        "interrogator": "FiberTecc",
+        "active_channels": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "channel_change": false,
+        "channel_layout": [
+          [
+            5,
+            [
+              2,
+              1,
+              4,
+              3,
+              7,
+              5,
+              6
+            ]
+          ],
+          [
+            7,
+            [
+              5,
+              1,
+              4,
+              3,
+              2,
+              7,
+              6
+            ]
+          ],
+          [
+            4,
+            [
+              7,
+              1,
+              4,
+              3,
+              2,
+              5,
+              6
+            ]
+          ]
+        ],
+        "active_angles": null,
+        "folder_path": "末端测试/15cm",
+        "rot_dir": {
+          "0": -1,
+          "120": -1,
+          "240": -1
+        },
+        "exp_directs": [
+          0,
+          120,
+          240
+        ],
+        "radii": {
+          "circ": [
+            0,
+            2000,
+            1500,
+            1000,
+            800,
+            600,
+            400,
+            300,
+            200,
+            100,
+            75,
+            50,
+            30
+          ]
+        },
+        "end_len": 0.05,
+        "direct": 120,
+        "freeze": null,
+        "weight_bounds": [
+          0.6,
+          5.0
+        ],
+        "slope_upper_bound": 50.0,
+        "thresholds": [
+          0.8,
+          1.2,
+          2.0,
+          3.0,
+          4.0,
+          10.0,
+          20.0
+        ],
+        "max_iter": 30,
+        "k_point": 1.0,
+        "k_end": 0.5,
+        "k_pitch": 1.0,
+        "k_radius": 1.0,
+        "method": "L-BFGS-B",
+        "hyper_params": [
+          20000,
+          1e-06,
+          1e-06
+        ],
+        "min_loss_diff": 0.0001,
+        "ss": 0.0026,
+        "IP": "192.168.1.75",
+        "PORT": 26546,
+        "maxsize": 10,
+        "data_freq": 100,
+        "use_stored_zero": false,
+        "zero_reference_path": "./params/06B6_NeTi_v2_ftube_zero_reference.json",
+        "wavelength_jump_guard_enabled": true,
+        "wavelength_jump_threshold_pm": 12000.0,
+        "total_scale": 1.0,
+        "imu": false,
+        "imu_com": "COM6",
+        "imu_maxlen": 10,
+        "demo_recorder": true,
+        "unwrap_threshold": 0.65,
+        "align_threshold": 0.2,
+        "direction_blend_enabled": false,
+        "direction_reference_direct": 240,
+        "direction_min_curvature": 0.5,
+        "direction_min_consecutive": 3,
+        "direction_consistency_threshold": 0.6,
+        "direction_smooth_alpha": 0.15,
+        "demo_kalman_enabled": true,
+        "demo_kalman_Rk": 0.0001,
+        "demo_kalman_Bk": 1e-05,
+        "anchor_translation_enabled": false,
+        "anchor_rotation_enabled": false,
+        "anchor_constraint_enabled": null,
+        "anchor_offset_m": 0.06,
+        "soft": true,
+        "reverse": false,
+        "discont": 3.141592653589793,
+        "frame_rule": "TNN",
+        "straight_threshold": 2.0,
+        "rot_threshold": 4.0,
+        "min_consecutive": 3,
+        "move_filter": 3,
+        "move_filter_for_vector": true,
+        "kalman_params": {
+          "angle": {
+            "Rk": 0.001,
+            "Bk": 0.001
+          },
+          "magnitude": {
+            "Rk": 0.0001,
+            "Bk": 0.01
+          }
+        },
+        "smoothing_params": {
+          "window_length": 21,
+          "polyorder": 3
+        },
+        "interp_num": 120,
+        "curvature_interp": "vector_pchip",
+        "nonnegative_curvature": false,
+        "sharpness": 4.8,
+        "end_weights": false,
+        "end_start": -5,
+        "TNB_threshold": 0.0,
+        "straight_trim": -0.15,
+        "segmentation": [
+          3,
+          4,
+          2,
+          2
+        ],
+        "connect": false,
+        "turn_threshold": 2.0,
+        "sensing_ranges": {
+          "1": [
+            583,
+            1048
+          ],
+          "3": [
+            678,
+            1146
+          ],
+          "4": [
+            749,
+            1215
+          ]
+        },
+        "rot_ang": 0.0,
+        "weights": null,
+        "slopes": null,
+        "task": "optim",
+        "ang_step": 0.1,
+        "ang_range": 1.0,
+        "_full_segmentation_explicit": true,
+        "_explicit_seed_parameters": [
+          "weights",
+          "slopes"
+        ],
+        "_explicit_cli_parameters": [
+          "calibration_data_root",
+          "calibration_output_dir",
+          "calibration_regions",
+          "direct",
+          "end15cm_point_calib",
+          "end5cm_coverage_aware_weights",
+          "end5cm_independent_weight_score",
+          "end5cm_independent_weights",
+          "end5cm_point_calib",
+          "end_value",
+          "exp_directs",
+          "full_point_calib",
+          "full_segmentation",
+          "max_iter",
+          "method",
+          "multi_region_calib",
+          "optimization_regions",
+          "rot_ang",
+          "samp_dist_preset",
+          "sensor_id",
+          "slopes",
+          "start_value",
+          "task",
+          "use_full_transported_phase",
+          "use_stored_zero",
+          "weights"
+        ],
+        "_sensor_package": null,
+        "_resolved_weight_group_ids": null
+      },
+      "context": {
+        "length_m": 0.15,
+        "folder_path": "末端测试/15cm",
+        "radii": {
+          "circ": [
+            0,
+            2000,
+            1500,
+            1000,
+            800,
+            600,
+            400,
+            300,
+            200,
+            100,
+            75,
+            50,
+            30
+          ]
+        },
+        "thresholds": [
+          0.8,
+          1.2,
+          2.0,
+          3.0,
+          4.0,
+          10.0,
+          20.0
+        ],
+        "end_weights": false,
+        "end_start": -5,
+        "segmentation": [
+          3,
+          4,
+          2,
+          2
+        ],
+        "weights": null,
+        "slopes": null,
+        "ideal_len": 0.919,
+        "straight_trim": -0.15,
+        "optimization_region": "end15cm",
+        "global_point_ids": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "global_segment_ids": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "global_sample_dist_m": [
+          0.774,
+          0.794,
+          0.814,
+          0.834,
+          0.845,
+          0.856,
+          0.867,
+          0.878,
+          0.889,
+          0.9,
+          0.911
+        ],
+        "sample_dist_m": [
+          0.0050000000000000044,
+          0.025000000000000022,
+          0.04499999999999993,
+          0.06499999999999995,
+          0.07599999999999996,
+          0.08699999999999997,
+          0.09799999999999998,
+          0.10899999999999999,
+          0.12,
+          0.131,
+          0.14200000000000002
+        ],
+        "crop_origin_m": 0.769,
+        "reconstruction_length_m": 0.15,
+        "calibration_objective": "real_points",
+        "end5cm_coverage_aware_weights": false,
+        "end5cm_min_weight_effective_samples": 1.0,
+        "end5cm_min_weight_max_mass": 0.05,
+        "end5cm_uncovered_weight_policy": "interpolate_neutral_edges",
+        "weight_group_ids": null,
+        "weight_score_mode": "spatial_window"
+      },
+      "parameters": {
+        "weights": {
+          "120": [
+            1.384223484950974,
+            0.6,
+            1.0714570092712659,
+            1.005521839112245,
+            0.9249450090791573,
+            0.9649905585487233,
+            0.8937548689326827,
+            0.9088689030056969
+          ]
+        },
+        "slopes": {
+          "120": [
+            [
+              36.354499506148215,
+              2.73134295752917,
+              -9.722552190455632,
+              26.96597752481904
+            ],
+            [
+              -27.989312107620652,
+              -14.12048473311654,
+              -24.182151132506714,
+              -2.6157268395057804
+            ],
+            [
+              7.5118418326215215,
+              -6.223792329779966,
+              -21.156907266128606,
+              23.43146931966933
+            ],
+            [
+              1.4691735793718974,
+              -8.537717769605559,
+              -21.434957026651922,
+              18.66442909277203
+            ],
+            [
+              0.6456442773048678,
+              -5.614364070702444,
+              -18.680370913796633,
+              31.63033191456423
+            ],
+            [
+              3.1057477406987637,
+              -6.9667465249501515,
+              -20.756421353037034,
+              18.77907174798693
+            ],
+            [
+              -0.5445256075995575,
+              -7.349469045779081,
+              -14.805447881505978,
+              17.93599413935477
+            ],
+            [
+              -0.732471138415981,
+              -8.252254491720876,
+              -17.15066780852409,
+              21.406031186255873
+            ]
+          ]
+        },
+        "end_weights": false,
+        "end_start": -5,
+        "global_phases_set": -2.9267571176905776,
+        "rot_ang": 0.0,
+        "phase_reference": null,
+        "calibration_objective": "real_points",
+        "weight_group_ids": null,
+        "weight_score_mode": "spatial_window",
+        "source_sensor_params": null,
+        "coverage_aware_weights": {
+          "enabled": false
+        }
+      },
+      "optimized_directions": [
+        120
+      ],
+      "errors": {
+        "normal_weighted_loss": 0.040166447986302437,
+        "avg_point_err": {
+          "circ": 0.01973230412667041,
+          "calib": 0.01973230412667041
+        },
+        "avg_end_err": {
+          "circ": 0.04086828771926406,
+          "calib": 0.04086828771926406
+        },
+        "avg_pitch_err": 0,
+        "avg_radius_err": 0,
+        "point_errors_by_sample": {
+          "circ": {
+            "0": 0.00027305642943031746,
+            "2000": 0.010274479171607346,
+            "1500": 0.006985635099711035,
+            "1000": 0.005499120520422615,
+            "800": 0.0048624137433903114,
+            "600": 0.002745387595092444,
+            "400": 0.0027920612216027394,
+            "300": 0.004191956017356128,
+            "200": 0.008068689196166167,
+            "100": 0.03819793615496594,
+            "75": 0.05441267336897135,
+            "50": 0.06266382266007174,
+            "30": 0.055552722467927175
+          }
+        },
+        "end_errors_by_sample": {
+          "circ": {
+            "0": 0.0008682965381945893,
+            "2000": 0.030112874166476386,
+            "1500": 0.020910215751877726,
+            "1000": 0.016859281841194583,
+            "800": 0.012804760098350415,
+            "600": 0.005513874835685693,
+            "400": 0.006925781364833234,
+            "300": 0.012591719891008072,
+            "200": 0.02278714877953339,
+            "100": 0.10355375225916781,
+            "75": 0.13844463692347467,
+            "50": 0.12859035006278213,
+            "30": 0.03132504783785416
+          }
+        }
+      },
+      "optimization": {
+        "objective": "real_points",
+        "loss_definitions": {
+          "slopes": "mean circular direction error to first real point (1-cos)",
+          "weights": "mean squared relative real-point curvature error"
+        },
+        "stages": {
+          "slopes": {
+            "status": "converge",
+            "start_loss": 0.042478656744953686,
+            "final_loss": 0.0029286213415791866,
+            "source_sensor_params": null
+          },
+          "weights": {
+            "status": "converge",
+            "start_loss": 0.05561282129568262,
+            "final_loss": 0.04591526958388223
+          }
+        },
+        "parameter_bounds": {
+          "weights": {
+            "configured_bounds": [
+              0.6,
+              5.0
+            ],
+            "lower_bound_hits": 1,
+            "upper_bound_hits": 0,
+            "total": 8
+          },
+          "slopes": {
+            "configured_abs_upper_bound": 50.0,
+            "effective_abs_upper_bound": 50.0,
+            "configured_bound_exceedances": 0,
+            "effective_bound_hits": 0,
+            "total": 32
+          }
+        }
+      }
+    },
+    "end5cm": {
+      "status": "complete",
+      "configuration": {
+        "phase_output": null,
+        "sensor_params": null,
+        "use_full_transported_phase": false,
+        "full_preserve_first_point": false,
+        "full_absolute_direction": false,
+        "full_point_calib": true,
+        "end15cm_point_calib": true,
+        "end5cm_point_calib": true,
+        "end5cm_independent_weights": false,
+        "end5cm_independent_weight_score": false,
+        "end5cm_coverage_aware_weights": false,
+        "end5cm_min_weight_effective_samples": 1.0,
+        "end5cm_min_weight_max_mass": 0.05,
+        "end5cm_uncovered_weight_policy": "interpolate_neutral_edges",
+        "optim_weights_only": false,
+        "multi_region_calib": true,
+        "optimization_region": "end5cm",
+        "optimization_regions": [
+          "end15cm",
+          "end5cm"
+        ],
+        "full_segmentation": [
+          3,
+          2,
+          2,
+          3,
+          4,
+          2,
+          2
+        ],
+        "calibration_data_root": "./1113-11B1-自研（1+3）18点79.7cmFBG+镍钛管",
+        "calibration_regions": {
+          "full": {
+            "length_m": null,
+            "folder_path": "全段测试",
+            "radii": {
+              "circ": [
+                0,
+                2000,
+                1500,
+                1000,
+                800,
+                600,
+                400,
+                300,
+                200
+              ]
+            },
+            "thresholds": [
+              0.8,
+              1.2,
+              2.0,
+              3.0,
+              4.0
+            ],
+            "end_weights": false,
+            "end_start": -5,
+            "segmentation": [
+              3,
+              2,
+              2,
+              3,
+              4,
+              2,
+              2
+            ],
+            "weights": null,
+            "slopes": null
+          },
+          "end15cm": {
+            "length_m": 0.15,
+            "folder_path": "末端测试/15cm",
+            "radii": {
+              "circ": [
+                0,
+                2000,
+                1500,
+                1000,
+                800,
+                600,
+                400,
+                300,
+                200,
+                100,
+                75,
+                50,
+                30
+              ]
+            },
+            "thresholds": [
+              0.8,
+              1.2,
+              2.0,
+              3.0,
+              4.0,
+              10.0,
+              20.0
+            ],
+            "end_weights": false,
+            "end_start": -5,
+            "segmentation": [
+              3,
+              4,
+              2,
+              2
+            ],
+            "weights": null,
+            "slopes": null
+          },
+          "end5cm": {
+            "length_m": 0.05,
+            "folder_path": "末端测试/5cm",
+            "radii": {
+              "circ": [
+                0,
+                2000,
+                1500,
+                1000,
+                800,
+                600,
+                400,
+                300,
+                200,
+                100,
+                75,
+                50,
+                30,
+                20,
+                15
+              ]
+            },
+            "thresholds": [
+              0.8,
+              1.2,
+              2.0,
+              3.0,
+              4.0,
+              10.0,
+              20.0,
+              35.0,
+              45.0,
+              70.0
+            ],
+            "end_weights": true,
+            "end_start": -1,
+            "segmentation": [
+              2,
+              2
+            ],
+            "weights": null,
+            "slopes": null
+          }
+        },
+        "calibration_output_dir": "docs\\11B1_seven_local_replay",
+        "sensor_id": "11B1_NeTi",
+        "start_value": 114.0,
+        "end_value": 8.0,
+        "R": 0.0001,
+        "ideal_len": 0.919,
+        "samp_dist_preset": [
+          510,
+          521,
+          532,
+          543,
+          554,
+          565,
+          576,
+          587,
+          607,
+          627,
+          647,
+          667,
+          687,
+          707,
+          807,
+          907,
+          1107,
+          1307
+        ],
+        "samp_dist_preset_sub": [
+          120,
+          160,
+          200,
+          295,
+          445,
+          595,
+          745,
+          895
+        ],
+        "centre_fibre": true,
+        "interlaced_grating": false,
+        "interlaced_offset": 1.0471975511965976,
+        "global_phases_set": null,
+        "interrogator": "FiberTecc",
+        "active_channels": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "channel_change": false,
+        "channel_layout": [
+          [
+            5,
+            [
+              2,
+              1,
+              4,
+              3,
+              7,
+              5,
+              6
+            ]
+          ],
+          [
+            7,
+            [
+              5,
+              1,
+              4,
+              3,
+              2,
+              7,
+              6
+            ]
+          ],
+          [
+            4,
+            [
+              7,
+              1,
+              4,
+              3,
+              2,
+              5,
+              6
+            ]
+          ]
+        ],
+        "active_angles": null,
+        "folder_path": "末端测试/5cm",
+        "rot_dir": {
+          "0": -1,
+          "120": -1,
+          "240": -1
+        },
+        "exp_directs": [
+          0,
+          120,
+          240
+        ],
+        "radii": {
+          "circ": [
+            0,
+            2000,
+            1500,
+            1000,
+            800,
+            600,
+            400,
+            300,
+            200,
+            100,
+            75,
+            50,
+            30,
+            20,
+            15
+          ]
+        },
+        "end_len": 0.05,
+        "direct": 120,
+        "freeze": null,
+        "weight_bounds": [
+          0.6,
+          5.0
+        ],
+        "slope_upper_bound": 50.0,
+        "thresholds": [
+          0.8,
+          1.2,
+          2.0,
+          3.0,
+          4.0,
+          10.0,
+          20.0,
+          35.0,
+          45.0,
+          70.0
+        ],
+        "max_iter": 30,
+        "k_point": 1.0,
+        "k_end": 0.5,
+        "k_pitch": 1.0,
+        "k_radius": 1.0,
+        "method": "L-BFGS-B",
+        "hyper_params": [
+          20000,
+          1e-06,
+          1e-06
+        ],
+        "min_loss_diff": 0.0001,
+        "ss": 0.0026,
+        "IP": "192.168.1.75",
+        "PORT": 26546,
+        "maxsize": 10,
+        "data_freq": 100,
+        "use_stored_zero": false,
+        "zero_reference_path": "./params/06B6_NeTi_v2_ftube_zero_reference.json",
+        "wavelength_jump_guard_enabled": true,
+        "wavelength_jump_threshold_pm": 12000.0,
+        "total_scale": 1.0,
+        "imu": false,
+        "imu_com": "COM6",
+        "imu_maxlen": 10,
+        "demo_recorder": true,
+        "unwrap_threshold": 0.65,
+        "align_threshold": 0.2,
+        "direction_blend_enabled": false,
+        "direction_reference_direct": 240,
+        "direction_min_curvature": 0.5,
+        "direction_min_consecutive": 3,
+        "direction_consistency_threshold": 0.6,
+        "direction_smooth_alpha": 0.15,
+        "demo_kalman_enabled": true,
+        "demo_kalman_Rk": 0.0001,
+        "demo_kalman_Bk": 1e-05,
+        "anchor_translation_enabled": false,
+        "anchor_rotation_enabled": false,
+        "anchor_constraint_enabled": null,
+        "anchor_offset_m": 0.06,
+        "soft": true,
+        "reverse": false,
+        "discont": 3.141592653589793,
+        "frame_rule": "TNN",
+        "straight_threshold": 2.0,
+        "rot_threshold": 4.0,
+        "min_consecutive": 3,
+        "move_filter": 3,
+        "move_filter_for_vector": true,
+        "kalman_params": {
+          "angle": {
+            "Rk": 0.001,
+            "Bk": 0.001
+          },
+          "magnitude": {
+            "Rk": 0.0001,
+            "Bk": 0.01
+          }
+        },
+        "smoothing_params": {
+          "window_length": 21,
+          "polyorder": 3
+        },
+        "interp_num": 120,
+        "curvature_interp": "vector_pchip",
+        "nonnegative_curvature": false,
+        "sharpness": 4.8,
+        "end_weights": true,
+        "end_start": -1,
+        "TNB_threshold": 0.0,
+        "straight_trim": -0.05,
+        "segmentation": [
+          2,
+          2
+        ],
+        "connect": false,
+        "turn_threshold": 2.0,
+        "sensing_ranges": {
+          "1": [
+            583,
+            1048
+          ],
+          "3": [
+            678,
+            1146
+          ],
+          "4": [
+            749,
+            1215
+          ]
+        },
+        "rot_ang": 0.0,
+        "weights": null,
+        "slopes": null,
+        "task": "optim",
+        "ang_step": 0.1,
+        "ang_range": 1.0,
+        "_full_segmentation_explicit": true,
+        "_explicit_seed_parameters": [
+          "weights",
+          "slopes"
+        ],
+        "_explicit_cli_parameters": [
+          "calibration_data_root",
+          "calibration_output_dir",
+          "calibration_regions",
+          "direct",
+          "end15cm_point_calib",
+          "end5cm_coverage_aware_weights",
+          "end5cm_independent_weight_score",
+          "end5cm_independent_weights",
+          "end5cm_point_calib",
+          "end_value",
+          "exp_directs",
+          "full_point_calib",
+          "full_segmentation",
+          "max_iter",
+          "method",
+          "multi_region_calib",
+          "optimization_regions",
+          "rot_ang",
+          "samp_dist_preset",
+          "sensor_id",
+          "slopes",
+          "start_value",
+          "task",
+          "use_full_transported_phase",
+          "use_stored_zero",
+          "weights"
+        ],
+        "_sensor_package": null,
+        "_resolved_weight_group_ids": null
+      },
+      "context": {
+        "length_m": 0.05,
+        "folder_path": "末端测试/5cm",
+        "radii": {
+          "circ": [
+            0,
+            2000,
+            1500,
+            1000,
+            800,
+            600,
+            400,
+            300,
+            200,
+            100,
+            75,
+            50,
+            30,
+            20,
+            15
+          ]
+        },
+        "thresholds": [
+          0.8,
+          1.2,
+          2.0,
+          3.0,
+          4.0,
+          10.0,
+          20.0,
+          35.0,
+          45.0,
+          70.0
+        ],
+        "end_weights": true,
+        "end_start": -1,
+        "segmentation": [
+          2,
+          2
+        ],
+        "weights": null,
+        "slopes": null,
+        "ideal_len": 0.919,
+        "straight_trim": -0.05,
+        "optimization_region": "end5cm",
+        "global_point_ids": [
+          15,
+          16,
+          17,
+          18
+        ],
+        "global_segment_ids": [
+          5,
+          6
+        ],
+        "global_sample_dist_m": [
+          0.878,
+          0.889,
+          0.9,
+          0.911
+        ],
+        "sample_dist_m": [
+          0.009000000000000008,
+          0.020000000000000018,
+          0.031000000000000028,
+          0.04200000000000004
+        ],
+        "crop_origin_m": 0.869,
+        "reconstruction_length_m": 0.05,
+        "calibration_objective": "real_points",
+        "end5cm_coverage_aware_weights": false,
+        "end5cm_min_weight_effective_samples": 1.0,
+        "end5cm_min_weight_max_mass": 0.05,
+        "end5cm_uncovered_weight_policy": "interpolate_neutral_edges",
+        "weight_group_ids": null,
+        "weight_score_mode": "spatial_window"
+      },
+      "parameters": {
+        "weights": {
+          "120": [
+            5.0,
+            0.6,
+            2.5835951967676585,
+            0.884471302061996,
+            1.4872486382008105,
+            1.0533344786375645,
+            1.0712673719867998,
+            1.0577234735661225,
+            0.9354438665784769,
+            1.1444492573998033,
+            1.0,
+            4.248094519854553,
+            0.6,
+            0.6,
+            2.0669277072329697,
+            1.1637879974138317,
+            1.0340493492442078,
+            1.0372664446087756,
+            0.9505880284692831,
+            0.7499742663770178,
+            1.133602921403315,
+            1.0
+          ]
+        },
+        "slopes": {
+          "120": [
+            [
+              -22.366870775731513,
+              12.708344595492175
+            ],
+            [
+              -37.97387519541534,
+              34.99698083427429
+            ],
+            [
+              -31.445828649838276,
+              -1.5571222809457779
+            ],
+            [
+              -12.514683784549627,
+              50.0
+            ],
+            [
+              -6.771707451332083,
+              31.720049708257857
+            ],
+            [
+              -18.49808229928508,
+              25.732381944306802
+            ],
+            [
+              -18.31537188241881,
+              27.060075102675725
+            ],
+            [
+              -21.372951730603422,
+              27.339337320903752
+            ],
+            [
+              -41.08462323984261,
+              50.0
+            ],
+            [
+              -18.98333393622024,
+              23.075403428103964
+            ],
+            [
+              -15.182441003958111,
+              38.40556269521427
+            ]
+          ]
+        },
+        "end_weights": true,
+        "end_start": -1,
+        "global_phases_set": 2.743190359574097,
+        "rot_ang": 0.0,
+        "phase_reference": null,
+        "calibration_objective": "real_points",
+        "weight_group_ids": null,
+        "weight_score_mode": "spatial_window",
+        "source_sensor_params": null,
+        "coverage_aware_weights": {
+          "enabled": false
+        }
+      },
+      "optimized_directions": [
+        120
+      ],
+      "errors": {
+        "normal_weighted_loss": 0.03573874080741881,
+        "avg_point_err": {
+          "circ": 0.01584794748044868,
+          "calib": 0.01584794748044868
+        },
+        "avg_end_err": {
+          "circ": 0.039781586653940264,
+          "calib": 0.039781586653940264
+        },
+        "avg_pitch_err": 0,
+        "avg_radius_err": 0,
+        "point_errors_by_sample": {
+          "circ": {
+            "0": 0.001239672662522732,
+            "2000": 0.006569584269295102,
+            "1500": 0.008885612729007376,
+            "1000": 0.014952289872308736,
+            "800": 0.005946668675009731,
+            "600": 0.004660653594411295,
+            "400": 0.00608693870280715,
+            "300": 0.00626803763588217,
+            "200": 0.0031481364118736755,
+            "100": 0.01543789775144077,
+            "75": 0.017885015388564483,
+            "50": 0.027731726115305205,
+            "30": 0.03346951254226563,
+            "20": 0.04629625631463529,
+            "15": 0.039141209541400816
+          }
+        },
+        "end_errors_by_sample": {
+          "circ": {
+            "0": 0.0031232312224357614,
+            "2000": 0.019057837078148714,
+            "1500": 0.025886841397387502,
+            "1000": 0.03833028150485953,
+            "800": 0.015539422847211376,
+            "600": 0.014475681295789014,
+            "400": 0.016987895812893818,
+            "300": 0.018591043431829147,
+            "200": 0.009529830697519118,
+            "100": 0.04103556356601315,
+            "75": 0.049802634359745135,
+            "50": 0.07628432968144386,
+            "30": 0.08845663469543366,
+            "20": 0.1045661156225046,
+            "15": 0.07505645659588954
+          }
+        }
+      },
+      "optimization": {
+        "objective": "real_points",
+        "loss_definitions": {
+          "slopes": "mean circular direction error to first real point (1-cos)",
+          "weights": "mean squared relative real-point curvature error"
+        },
+        "stages": {
+          "slopes": {
+            "status": "converge",
+            "start_loss": 0.0977844379564551,
+            "final_loss": 0.07143835187647608,
+            "source_sensor_params": null
+          },
+          "weights": {
+            "status": "converge",
+            "start_loss": 0.28745792516818186,
+            "final_loss": 0.08259598270826782
+          }
+        },
+        "parameter_bounds": {
+          "weights": {
+            "configured_bounds": [
+              0.6,
+              5.0
+            ],
+            "lower_bound_hits": 3,
+            "upper_bound_hits": 1,
+            "total": 22
+          },
+          "slopes": {
+            "configured_abs_upper_bound": 50.0,
+            "effective_abs_upper_bound": 50.0,
+            "configured_bound_exceedances": 0,
+            "effective_bound_hits": 2,
+            "total": 22
+          }
+        }
+      }
+    }
+  }
+}
