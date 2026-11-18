@@ -607,7 +607,10 @@ class Initialiser(Sensor):
 
         # Step 2: 如果不启用连接，则直接返回不重叠分段
         if not self.connect:
-            return x_data, y_data, base_segments
+            # A singleton represents the interval ending at that point.
+            return x_data, y_data, [(max(int(start)-1, 0), int(end))
+                                    if int(end)-int(start) == 1 else (start, end)
+                                    for start, end in base_segments]
 
         # Step 3: 启用连接时，从第二段开始，每段向左拓展 1 个点
         if len(base_segments) <= 1:
