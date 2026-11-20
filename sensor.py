@@ -16,65 +16,8 @@ from pathlib import Path
 from collections import defaultdict
 from scipy.signal import savgol_filter
 
-from tools.utils import build_valid_row_mask, dict_recur_extract
-from tools.zero_reference import load_zero_reference
-from calibration_regions import compute_fbg_geometry
-
-
-class WavelengthContinuityGuard:
-    """Reject isolated large FiberTecc wavelength jumps independently per FBG."""
-
-    def __init__(self, threshold_nm=12.0):
-        threshold_nm = float(threshold_nm)
-        if not np.isfinite(threshold_nm) or threshold_nm < 0.0:
-            raise ValueError("threshold_nm must be a finite nonnegative number")
-        self.threshold_nm = threshold_nm
-        self._last_valid = {}
-        self._candidate = {}
-
-    def filter(self, sensor_id, wavelength):
-        """Return a safe wavelength, or None until the first finite sample arrives."""
-        value = float(wavelength)
-        previous = self._last_valid.get(sensor_id)
-        if not np.isfinite(value):
-            return previous
-
-        if previous is None:
-            self._last_valid[sensor_id] = value
-            return value
-
-        candidate = self._candidate.get(sensor_id)
-        if candidate is None:
-            change = abs(value - previous)
-            if change <= self.threshold_nm or np.isclose(
-                    change, self.threshold_nm, rtol=0.0, atol=1e-12):
-                self._last_valid[sensor_id] = value
-                return value
-            self._candidate[sensor_id] = value
-            print(
-                f"波长跳变提醒 sensor_id={sensor_id} "
-                f"旧值={previous:.6f} 新值={value:.6f} "
-                f"变化量={change:.6f} nm ({change * 1000.0:.3f} pm)"
-            )
-            return previous
-
-        previous_change = abs(value - previous)
-        candidate_change = abs(value - candidate)
-        near_previous = previous_change <= self.threshold_nm or np.isclose(
-            previous_change, self.threshold_nm, rtol=0.0, atol=1e-12)
-        near_candidate = candidate_change <= self.threshold_nm or np.isclose(
-            candidate_change, self.threshold_nm, rtol=0.0, atol=1e-12)
-        if near_previous:
-            self._candidate.pop(sensor_id, None)
-            self._last_valid[sensor_id] = value
-            return value
-        if near_candidate:
-            self._candidate.pop(sensor_id, None)
-            self._last_valid[sensor_id] = value
-            return value
-
-        self._candidate[sensor_id] = value
-        return previous
+from utils import build_valid_row_mask, dict_recur_extract
+from zero_reference import load_zero_reference
 
 
 class Sensor:
@@ -87,9 +30,27 @@ class Sensor:
                 samp_dist_preset=[510, 540, 570, 630, 710, 810, 910, 1010, 1110, 1210, 1310, 1410, 1510, 1610, 1710, 1815], active_angles=None, reverse=False, straight_trim=0.0,
                 ss=2.6e-3, N=100, sensing_ranges={1: (583, 1048), 3: (678, 1146), 4: (749, 1215)}, smoothing_params={'window_length': 21,'polyorder': 3},
                 IP='192.168.1.75', PORT=26546, data_freq=100, maxsize=100, samp_dist_preset_sub=None, interlaced_grating=False, channel_change=False, channel_layout=None, interlaced_offset=0.0,
-                use_stored_zero=False, zero_reference_path=None,
-                wavelength_jump_threshold_pm=12000.0, wavelength_jump_guard_enabled=True):
+                use_stored_zero=False, zero_reference_path=None, samp_dist_preset_a=None, samp_dist_preset_b=None, samp_dist_preset_c=None):
         
+        # 11B8刻栅表坐标从密栅端起算，重构从疏栅固定端起算。
+        # 保持每个位置与原始WL列的对应，三组一起转换后再统一排序。
+        if sensor_id == '11B8' and all(v is not None for v in
+                (samp_dist_preset_a, samp_dist_preset_b, samp_dist_preset_c)):
+            origin_sum = min(min(samp_dist_preset_a), min(samp_dist_preset_b)) + max(max(samp_dist_preset_a), max(samp_dist_preset_b))
+            samp_dist_preset_a = [origin_sum - p for p in samp_dist_preset_a]
+            samp_dist_preset_b = [origin_sum - p for p in samp_dist_preset_b]
+            samp_dist_preset_c = [origin_sum - p for p in samp_dist_preset_c]
+        self.samp_dist_preset_c = samp_dist_preset_c
+        # 三组交错刻栅由 A/B/C 位置配置启用，与传感器编号无关。
+        group_positions = (samp_dist_preset_a, samp_dist_preset_b, samp_dist_preset_c)
+        self.three_group = all(value is not None for value in group_positions)
+        if any(value is not None for value in group_positions) and not self.three_group:
+            raise ValueError("三组交错刻栅必须同时提供 A/B/C 栅点位置")
+        if self.three_group:
+            if not interlaced_grating or not centre_fibre or set(active_channels) != set(range(1,8)):
+                raise ValueError("三组交错刻栅要求启用交错刻栅、中心光纤及 CH0–CH6")
+            samp_dist_preset = samp_dist_preset_a
+            samp_dist_preset_sub = samp_dist_preset_b
         # 实验参数
         self.exp_directs = exp_directs
         self.interrogator = interrogator
@@ -147,11 +108,6 @@ class Sensor:
         self._configure_zero_reference(use_stored_zero, zero_reference_path)
         self.current_snapshot = np.zeros((self.total_points, self.num_channels))
         self.buffer = bytearray()
-        self.wavelength_jump_guard_enabled = bool(wavelength_jump_guard_enabled)
-        self.wavelength_jump_threshold_pm = float(wavelength_jump_threshold_pm)
-        self._wavelength_guard = WavelengthContinuityGuard(
-            threshold_nm=self.wavelength_jump_threshold_pm / 1000.0
-        )
 
         # 数据存储结构
         self.channel_change = channel_change
@@ -270,50 +226,43 @@ class Sensor:
             else:
                 preset_to_diff = np.array(samp_dist_preset)
 
-            # FBG 的物理全长与点位必须来自同一份几何；先计算再裁剪。
-            # 即使直接构造 Sensor 而不经过 main，也不能沿用旧的手填 ideal_len。
-            self.ideal_len, raw_samp_dist = compute_fbg_geometry(
-                start_value, end_value, preset_to_diff,
-            )
+            # 按实际栅点位置顺序计算间隔
+            diff = np.diff(preset_to_diff)
+            diff_reversed = diff
+            samp_dist = [start_value]
+            for d in diff_reversed:
+                samp_dist.append(samp_dist[-1] + d)
+            raw_samp_dist = np.array(samp_dist) * 0.001
 
         if not np.all(np.isfinite(raw_samp_dist)):
             raise ValueError("samp_dist 包含非有限值（NaN 或 inf）")
 
         # straight_trim 裁剪 samp_dist
         self.straight_trim = straight_trim
-        # 负坐标点位于固定件内部，不参与应变定标或曲线重构。该索引稍后也用于
-        # 裁切 Data，确保采样坐标与数据矩阵始终逐行对应。
-        zero_start_idx = int(np.searchsorted(raw_samp_dist, -1e-12, side="left"))
-        self.raw_trim_idx = zero_start_idx
+        self.raw_trim_idx = 0
         if type(self.straight_trim) == float:
             self.trim_len = straight_trim if straight_trim >= 0 else self.ideal_len + straight_trim
 
             if self.trim_len < raw_samp_dist[0]:
                 raw_trim_idx = 0
             else:
-                raw_trim_idx = np.searchsorted(raw_samp_dist, self.trim_len - 1e-12, side="left")
+                raw_trim_idx = np.searchsorted(raw_samp_dist, self.trim_len, side="left")
 
             if raw_trim_idx >= len(raw_samp_dist):
                 raise ValueError(
                     f"straight_trim={straight_trim} 对应的 trim_len={self.trim_len} 已超出采样范围，"
                     f"最大采样距离为 {raw_samp_dist[-1]}"
                 )
-            self.raw_trim_idx = max(zero_start_idx, int(raw_trim_idx))
+            self.raw_trim_idx = raw_trim_idx
         else:
             if self.straight_trim != 0:
-                point_trim_idx = max(0, len(raw_samp_dist) - int(np.abs(self.straight_trim)))
-                self.raw_trim_idx = max(zero_start_idx, point_trim_idx)
+                self.raw_trim_idx = -np.abs(self.straight_trim)
 
-        # 1-based 全局真实数据行号，不包含重构用虚拟点，也不冒充硬件 FBG 标签。
-        self.global_point_ids = np.arange(1, len(raw_samp_dist) + 1)[self.raw_trim_idx:]
         raw_samp_dist = raw_samp_dist[self.raw_trim_idx:]
-        self.global_samp_dist = raw_samp_dist.copy()
 
         # 先生成完整 samp_dist；reverse 只改变坐标方向，不与 straight_trim 耦合。
         if reverse:
             self.samp_dist = (raw_samp_dist[-1] - raw_samp_dist)[::-1] + end_value * 0.001
-            self.global_point_ids = self.global_point_ids[::-1]
-            self.global_samp_dist = self.global_samp_dist[::-1]
         else:
             if self.straight_trim != 0:
                 # self.samp_dist = raw_samp_dist - raw_samp_dist[0]
@@ -326,7 +275,7 @@ class Sensor:
         
         if np.abs(self.samp_dist[0]) < 1e-8:    # 处理浮点数精度问题，避免出现 -1e-16 之类的值
             self.samp_dist[0] = 0.0
-        self.zero_init = bool(self.samp_dist[0] != 0.0)
+        self.zero_init = self.samp_dist[0] != 0.0
 
         # reverse=False 时，在最后一个真实传感点之后补一个虚拟末端点
         # end_value 单位是 mm，这里转成 m
@@ -362,7 +311,6 @@ class Sensor:
             sensor_id=self.sensor_id,
             active_channels=list(self.active_channels),
             total_points=self.total_points,
-            raw_trim_idx=self.raw_trim_idx,
         )
         self.zero_points = {channel: loaded[channel].tolist() for channel in self.active_channels}
         self.is_zero_set = {channel: True for channel in self.active_channels}
@@ -493,6 +441,11 @@ class Sensor:
                     logging.info(f"文件 {file_path} 只有表头没有数据行，视为未连接通道，已跳过 channel {channel}。")
                     continue
 
+                if self.three_group:
+                    names = [f"WL_{i}" for i in range(1,21)]
+                    if not all(name in df.columns for name in names):
+                        raise ValueError(f"{file_path}: missing FBG0-FBG7")
+                    df = df[list(df.columns[:2]) + names]
                 current_num_cols = df.shape[1]
 
                 if current_num_cols != expected_cols:
@@ -599,11 +552,11 @@ class Sensor:
                 continue
 
             # 根据 active_channels 构造“必需 channel 列表”
-            if self.interrogator == 'Hippo':
+            if self.interrogator == 'Hippo' and not self.three_group:
                 required_channels = [phy_ch - 1 for phy_ch in self.active_channels]
                 missing_channels = [ch for ch in required_channels if ch not in channel_data]
                 missing_display_channels = [ch + 1 for ch in missing_channels]
-            elif self.interrogator == 'FiberTecc':
+            elif self.interrogator == 'FiberTecc' or self.three_group:
                 required_channels = list(self.active_channels)
                 missing_channels = [ch for ch in required_channels if ch not in channel_data]
                 missing_display_channels = missing_channels
@@ -705,7 +658,7 @@ class Sensor:
         说明：
         - 该方法只改变列顺序，不改变行数、单位或嵌套结构。
         """
-        if self.interrogator == 'Hippo':
+        if self.interrogator == 'Hippo' and not self.three_group:
             req_chs = [phy_ch - 1 for phy_ch in self.active_channels]
         else:
             req_chs = list(self.active_channels)
@@ -746,7 +699,7 @@ class Sensor:
         - 该方法应在 straight_trim 裁剪之前执行；否则 channel_layout 的行段边界会与原始数据错位。
         - channel_layout 中引用的通道必须存在于 active_channels 对应的数据中。
         """
-        if self.interrogator == 'Hippo':
+        if self.interrogator == 'Hippo' and not self.three_group:
             req_chs = [phy_ch - 1 for phy_ch in self.active_channels]
         else:
             req_chs = list(self.active_channels)
@@ -824,7 +777,7 @@ class Sensor:
             # 针对当前行切片 [current_row : row_end]，按照 order 提取物理通道作为逻辑列
             for phy_ch in order:
                 # 映射物理通道号到 channel_data 的键
-                if self.interrogator == 'Hippo':
+                if self.interrogator == 'Hippo' and not self.three_group:
                     ch_key = phy_ch - 1
                 else:
                     ch_key = phy_ch
@@ -875,6 +828,21 @@ class Sensor:
         - 当前实现固定假定有 1 个中心通道和 3 个外围通道，且输入列数至少为 7。
         - 该方法不做 straight_trim 裁剪；裁剪应在 __init__ 中交错合并之后统一执行。
         """
+        if self.three_group:
+            p_a = np.asarray(samp_dist_preset, dtype=float)
+            p_b = np.asarray(samp_dist_preset_sub, dtype=float)
+            p_c = np.asarray(self.samp_dist_preset_c, dtype=float)
+            for positions in (p_a, p_b, p_c):
+                if len(positions) != data_matrix.shape[0] or len(np.unique(positions)) != len(positions):
+                    raise ValueError('三组交错刻栅各组位置数必须与 FBG 行数一致，且组内位置不能重复')
+            target = np.concatenate((p_a, p_b))
+            order = np.argsort(target)
+            c_order = np.argsort(p_c)
+            center = np.interp(target, p_c[c_order], data_matrix[c_order, self.active_channels[1]])
+            outer = np.vstack((data_matrix[:, [self.active_channels[ch] for ch in (2, 4, 6)]],
+                               data_matrix[:, [self.active_channels[ch] for ch in (3, 5, 7)]]))
+            return np.column_stack((center, outer))[order]
+
         p1 = np.array(samp_dist_preset)
         p2 = np.array(samp_dist_preset_sub)
         
@@ -1508,29 +1476,18 @@ class Sensor:
                 except: 
                     continue
                 
-                # 静态数据与几何都使用 raw_trim_idx 裁掉了固定件内部/区域外点；
-                # 动态包仍携带原始点号，因此必须应用相同偏移。
-                effective_idx = idx - self.raw_trim_idx
-                if phy_ch in self.active_channels and 0 <= effective_idx < self.total_points:
+                # 检查是否在白名单中
+                if phy_ch in self.active_channels and 0 <= idx < self.total_points:
                     # 找到对应的列
                     col = self.active_channels[phy_ch]
                     
-                    if self.wavelength_jump_guard_enabled:
-                        # 逐 FBG 连续性检查必须发生在绝对波长写入快照之前。
-                        safe_wavelength = self._wavelength_guard.filter(
-                            sensor_id=sensor_id,
-                            wavelength=wavelength,
-                        )
-                        if safe_wavelength is None:
-                            continue
-                    else:
-                        safe_wavelength = wavelength
-                    self.current_snapshot[effective_idx, col] = safe_wavelength
+                    # 更新快照
+                    self.current_snapshot[idx, col] = wavelength
                     
                     # 4. 归零基准设置 (首次收到有效数据时)
                     if not self.is_zero_set[phy_ch]:
-                        if self.zero_points[phy_ch][effective_idx] is None:
-                            self.zero_points[phy_ch][effective_idx] = safe_wavelength
+                        if self.zero_points[phy_ch][idx] is None:
+                            self.zero_points[phy_ch][idx] = wavelength
                         
                         # 检查是否该通道已满
                         if all(v is not None for v in self.zero_points[phy_ch]):
@@ -1685,3 +1642,7 @@ class Sensor:
             if ch < 8 and waves:
                 wave2d[ch, :len(waves)] = waves[:16]
         return wave2d
+
+
+
+
