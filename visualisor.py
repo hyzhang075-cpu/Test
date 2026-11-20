@@ -6,7 +6,7 @@ from datetime import datetime
 from matplotlib import animation
 from scipy import stats
 
-from tools.utils import dict_recur_paths, dict_recur_value, update_view
+from utils import dict_recur_paths, dict_recur_value, update_view
 
 class Visualisor:
     """
@@ -14,6 +14,7 @@ class Visualisor:
     """
     def __init__(self, recon):
         self.sensor_id = recon.sensor_id
+        self.three_group = getattr(recon, 'three_group', False)
         self.active_channels = recon.active_channels
         self.samp_dist = recon.samp_dist
         self.ad_samp_dist = recon.ad_samp_dist
@@ -31,7 +32,6 @@ class Visualisor:
         self.individual_fits_direct = recon.individual_fits_direct
 
         self.zero_init = recon.zero_init
-        self.straight_trim = recon.straight_trim
         self._segment_data = recon._segment_data
 
         self._calculate_segments = recon._calculate_segments
@@ -294,10 +294,13 @@ class Visualisor:
         """
         title = f"Strain Data {calib_shape}"
         # 创建图形
-        fig, axes = plt.subplots(len(self.active_channels), 1, figsize=(8, 12))  
+        channels = self.active_channels
+        if self.three_group:
+            channels = {'CH1 (center)': 0, 'A2 / B3': 1, 'A4 / B5': 2, 'A6 / B7': 3}
+        fig, axes = plt.subplots(len(channels), 1, figsize=(8, 12))  
         
         # 遍历每个通道
-        for phy_ch, idx in self.active_channels.items():
+        for phy_ch, idx in channels.items():
             ax = axes[idx]  # 当前子图
             for radius, data in self.plot_Data[calib_shape][direct].items():
                 if calib_shape in ['circ', 'S']:
@@ -311,7 +314,7 @@ class Visualisor:
                         ax.plot(x, y, label=f"{radius}-{radius_end}")
 
             ax.set_ylabel(f'Ch {phy_ch}') #限制y轴范围，便于观察细节
-            ax.set_ylim(-500, 500)  # 根据实际数据调整范围
+            ax.set_ylim(-300, 300)  # 根据实际数据调整范围
         # 显示图形
         safe_title = title.replace(" ", "_").replace("/", "_")
         save_path = os.path.join(save_dir, f"{safe_title}.png")
@@ -799,3 +802,4 @@ class Visualisor:
         
         # 显示图形
         plt.show()
+
