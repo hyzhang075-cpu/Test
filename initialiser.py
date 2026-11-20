@@ -3,7 +3,7 @@ from scipy import stats
 
 from sensor import Sensor
 
-from tools.utils import dict_recur_extract_path, dict_recur_flatten, dict_recur_unflatten
+from utils import dict_recur_extract_path, dict_recur_flatten, dict_recur_unflatten
 
 class Initialiser(Sensor):
     """
@@ -273,7 +273,19 @@ class Initialiser(Sensor):
         active_angles = self.active_angles
         
         # 判断是否传入了有效的 active_angles
-        if active_angles is not None and len(active_angles) == self.num_channels_recon:
+        if self.three_group:
+            angles = np.asarray(self.active_angles, dtype=float)
+            if angles.shape != (6,):
+                raise ValueError('三组交错刻栅需要六个外围物理通道角度')
+            a = np.repeat(angles[[0, 2, 4], None], len(self.samp_dist_preset), axis=1)
+            b = np.repeat(angles[[1, 3, 5], None], len(self.samp_dist_preset_sub), axis=1)
+            order = np.argsort(np.concatenate((self.samp_dist_preset, self.samp_dist_preset_sub)))
+            theta_0 = np.deg2rad(np.concatenate((a, b), axis=1)[:, order])
+            theta_0 = theta_0[:, self.raw_trim_idx:]
+            if self.reverse:
+                theta_0 = theta_0[:, ::-1]
+            theta_0 = theta_0 + self.global_phases_set
+        elif active_angles is not None and len(active_angles) == self.num_channels_recon:
             # 将传入的角度(度)转换为弧度，并加上全局相位
             theta_0_list = [self.global_phases_set + np.deg2rad(ang) for ang in active_angles]
             theta_0 = np.array([theta_0_list]).T
@@ -534,10 +546,6 @@ class Initialiser(Sensor):
             seg_slice = slice(int(start), int(end))
             x_seg = x_data[seg_slice]
             y_seg = y_data[seg_slice]
-            if len(x_seg) and np.all(x_seg == x_seg[0]):
-                # A singleton first point defines phase only, not a spatial derivative.
-                results.append((0.0, float(np.mean(y_seg))))
-                continue
             if len(x_seg) < 2 or len(y_seg) < 2:
                 results.append((np.nan, np.nan))
                 continue
@@ -600,17 +608,9 @@ class Initialiser(Sensor):
         # Step 1: 生成不重叠基础分段
         base_segments = self._calculate_segments(total_points)
 
-        if all(int(end) - int(start) == 1 for start, end in base_segments):
-            # Independent interval slopes: point j uses the interval (j-1,j).
-            return x_data, y_data, [(max(int(start)-1, 0), int(end))
-                                    for start, end in base_segments]
-
         # Step 2: 如果不启用连接，则直接返回不重叠分段
         if not self.connect:
-            # A singleton represents the interval ending at that point.
-            return x_data, y_data, [(max(int(start)-1, 0), int(end))
-                                    if int(end)-int(start) == 1 else (start, end)
-                                    for start, end in base_segments]
+            return x_data, y_data, base_segments
 
         # Step 3: 启用连接时，从第二段开始，每段向左拓展 1 个点
         if len(base_segments) <= 1:
