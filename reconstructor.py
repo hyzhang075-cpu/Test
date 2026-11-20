@@ -1,27 +1,19 @@
-from copy import deepcopy
-
 import numpy as np
 from scipy.ndimage import uniform_filter1d
 from scipy.interpolate import CubicHermiteSpline, PchipInterpolator
 
 from initialiser import Initialiser
-from calibration_regions import validate_end_weight_config, validate_weight_group_ids
 
-from tools.utils import dict_recur_paths, dict_recur_unflatten, dict_recur_extract_path
+from utils import dict_recur_paths, dict_recur_unflatten, dict_recur_extract_path
 
 class Reconstructor(Initialiser):
     """
     形状重构模块
     """
     def __init__(self, soft=True, frame_rule='TNB', rot_ang=0.0, turn_threshold=2.0, init_weight=1.0, weights=None, slopes=None, min_consecutive=3, sharpness=4.8, end_start=-6, end_weights=False, thresholds=[0.8, 1.5, 2.0, 3.0, 4.0], 
-                 TNB_threshold=0.15, interp_num=120, move_filter=3, kalman_params={'angle': {'Rk': 0.001, 'Bk': 0.001}, 'magnitude': {'Rk': 0.0001, 'Bk': 0.01}},
-                 curvature_interp='hermite', nonnegative_curvature=False,
-                 *args, move_filter_for_vector=False, multi_region_parameters=None, **kwargs):
-        weight_group_ids = kwargs.pop('weight_group_ids', None)
-        end5cm_independent_weight_score = kwargs.pop('end5cm_independent_weight_score', None)
-        legacy_groupwise = kwargs.pop('end5cm_groupwise_weight_score', False)
-        if end5cm_independent_weight_score is None:
-            end5cm_independent_weight_score = legacy_groupwise
+                 TNB_threshold=0.15, interp_num=60, move_filter=3, kalman_params={'angle': {'Rk': 0.001, 'Bk': 0.001}, 'magnitude': {'Rk': 0.0001, 'Bk': 0.01}},
+                 curvature_interp='hermite', nonnegative_curvature=False, rot_ang_by_direct=None,
+                 *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.rot_seg_fit(verbose=True, update_phase=False) # 打印初始信息，但不更新全局相位
@@ -33,26 +25,17 @@ class Reconstructor(Initialiser):
         self.thresholds = thresholds # 曲率分级阈值
         self.min_consecutive = min_consecutive
         self.sharpness = sharpness
-        self.end5cm_independent_weight_score = bool(end5cm_independent_weight_score)
-        # Runtime compatibility for older callers; production code reads the canonical name.
-        self.end5cm_groupwise_weight_score = self.end5cm_independent_weight_score
 
         self.num_levels = len(self.thresholds) + 1 
         self.base_segments = self._calculate_segments(total_points=self.total_points)
         self.end_mask = np.arange(self.total_points) >= self.total_points + end_start
-        self.end_start = end_start
         self.TNB_threshold = TNB_threshold # FS重构时直接复制上一点的曲率大小阈值
 
         # 需要优化的应变权重、扭转系数以及旋转角度
         self.end_weights = end_weights # 是否优化末端权重
-        self.weight_group_ids = validate_weight_group_ids(weight_group_ids, self.total_points)
         self.init_weight = init_weight
         if not weights:
-            if self.weight_group_ids is not None:
-                self.weights = {direct: init_weight*np.ones((max(self.weight_group_ids)+1)*self.num_levels)
-                                for direct in self.exp_directs}
-            else:
-                self.weights = {direct: np.ones(2 * self.num_levels) for direct in self.exp_directs} if self.end_weights else {direct: init_weight * np.ones(self.num_levels) for direct in self.exp_directs}
+            self.weights = {direct: np.ones(2 * self.num_levels) for direct in self.exp_directs} if self.end_weights else {direct: init_weight * np.ones(self.num_levels) for direct in self.exp_directs}
         else:
             self.weights = weights
 
@@ -61,20 +44,15 @@ class Reconstructor(Initialiser):
             self.slopes = {direct: np.array([np.concatenate((self.slopes_init[direct], self.slopes_init[direct])) for _ in range(self.num_levels)]) for direct in self.exp_directs} if 'S' in self.calib_shapes else {direct: np.array([self.slopes_init[direct] for _ in range(self.num_levels)]) for direct in self.exp_directs} 
         else:
             self.slopes = slopes
-        self.rot_ang = rot_ang 
+        self.rot_ang = rot_ang
+        self.rot_ang_by_direct = rot_ang_by_direct or {} 
 
         # 滤波、插值所需参数
         self.move_filter = move_filter
-        self.move_filter_for_vector = bool(move_filter_for_vector)
         self.kalman_params = kalman_params
         self.interp_num = interp_num
         self.curvature_interp = self._normalise_curvature_interp(curvature_interp)
         self.nonnegative_curvature = bool(nonnegative_curvature)
-        self.multi_region_parameters = (
-            self._normalise_multiregion_parameters(multi_region_parameters)
-            if multi_region_parameters is not None else None
-        )
-        self.last_parameter_assembly = None
 
     @staticmethod
     def _normalise_curvature_interp(method):
@@ -162,7 +140,7 @@ class Reconstructor(Initialiser):
             if isinstance(magnitude_ratio, dict):
                 magnitude_ratio = magnitude_ratio[keys[1]]
 
-            _, _, _, interp_dist, r, _, _, _, _ = self._reconstruct_frame(keys=keys, calib_shape=calib_shape, calib_Data=calib_Data, weight=weight, slope=slope, magnitude_ratio=magnitude_ratio, init_T=[1.0, 0.0, 0.0], verbose=verbose, force_ideal_magnitude=force_ideal_magnitude, direct=direct)
+            _, _, _, interp_dist, r, _, _, _, _ = self._reconstruct_frame(keys=keys, calib_shape=calib_shape, calib_Data=calib_Data, weight=weight, slope=slope, magnitude_ratio=magnitude_ratio, init_T=[1.0, 0.0, 0.0], verbose=verbose, force_ideal_magnitude=force_ideal_magnitude)
 
             r_postrot = r @ rot_matrix.T
             flat_results[path] = r_postrot
@@ -177,7 +155,7 @@ class Reconstructor(Initialiser):
 
         return r_results_postrot, interp_dist
 
-    def _reconstruct_frame(self, keys, calib_shape, calib_Data, weight, slope, magnitude_ratio, init_T, verbose=False, unwrap_threshold=0.65, align_threshold=0.15, angle_prev=None, angle_unwrap_prev=None, force_ideal_magnitude=False, direct=None):
+    def _reconstruct_frame(self, keys, calib_shape, calib_Data, weight, slope, magnitude_ratio, init_T, verbose=False, unwrap_threshold=0.65, align_threshold=0.15, angle_prev=None, angle_unwrap_prev=None, force_ideal_magnitude=False):
         """
         对单组应变数据执行完整的单帧三维重构流程。
 
@@ -206,16 +184,10 @@ class Reconstructor(Initialiser):
         - zero_init=False: 将 angle[0] 设置为 angle[1]；
         - end_point=True: 在末尾复制最后一个真实点的 magnitude 和 angle。
         4. 调用 _framewise_unwrap_limit() 得到连续角度 angle_unwrap。
-        5. 对 angle_unwrap 做空间移动平均，得到 ang_filter；仅标量插值路径使用它，
-           向量路径仍计算、校验并保存它，但插值使用 angle_unwrap。
-        6. 对 magnitude 做单帧空间 Kalman 滤波，得到 cur_kal；标量路径使用它，
-           向量路径仅校验/保存该中间量，不将其用于插值。
+        5. 对 angle_unwrap 做移动平均滤波。
+        6. 对 magnitude 做 Kalman 滤波。
         7. 检查滤波后的角度和曲率是否包含 NaN / inf。
-        8. 按 self.ad_samp_dist 插值：标量路径对 ang_filter 做 Hermite、对 cur_kal
-           按所选标量方法插值；向量路径将补齐虚拟点的 magnitude 与 angle_unwrap 转成两分量，
-           根据 move_filter_for_vector 选择用分量空间平均修正方向或保留原始分量，
-           恢复输入模长后再做线性/PCHIP 插值，
-           最后还原曲率大小和方向。
+        8. 使用 _KT_Hermit_interp_tang() 对角度和曲率分别按 self.ad_samp_dist 做 Hermite 插值。
         9. 根据插值后的首点角度构造初始法向量 init_N。
         10. 根据 self.frame_rule 选择重构方式：
             - 'TNB': 由角度差分计算 torsion，并调用 _F_S_frame()；
@@ -237,7 +209,7 @@ class Reconstructor(Initialiser):
         - self.cur_interp 会被更新为当前帧插值后的曲率数组，主要用于调试或外部诊断。
         """
         # ---------- 计算重构使用的曲率大小与方向 ----------
-        magnitude, angle = self._Strain_2_Cur(keys=keys, calib_shape=calib_shape, calib_Data=calib_Data, weight=weight, slope=slope, magnitude_ratio=magnitude_ratio, verbose=verbose, direct=direct)
+        magnitude, angle = self._Strain_2_Cur(keys=keys, calib_shape=calib_shape, calib_Data=calib_Data, weight=weight, slope=slope, magnitude_ratio=magnitude_ratio, verbose=verbose)
         magnitude_raw = magnitude.copy()
         angle_raw = angle.copy()
         if force_ideal_magnitude:
@@ -257,11 +229,7 @@ class Reconstructor(Initialiser):
         # print(magnitude)
         # ---------- 重构前预处理 ----------
         angle_unwrap = self._framewise_unwrap_limit(angle=angle, angle_prev=angle_prev, angle_unwrap_prev=angle_unwrap_prev, unwrap_threshold=unwrap_threshold)
-        # 此处沿单帧的空间采样点平均，不是跨帧滤波。
-        # ang_filter 仅供下方标量路径插值；向量路径只将它作为中间量校验/保存。
         ang_filter = self._moving_average_scipy(data=angle_unwrap, window_size=self.move_filter, mode='reflect')
-        # 标量路径使用此空间 Kalman 输出；向量路径保留它用于中间量校验/记录，
-        # 实际插值直接使用 magnitude，避免再叠加一层曲率空间滤波。
         cur_kal = self._Kalman_filter(data=magnitude, Rk=self.kalman_params['magnitude']['Rk'], Bk=self.kalman_params['magnitude']['Bk'])
 
         # 增加上下文信息字符串，方便报错时追踪
@@ -283,10 +251,7 @@ class Reconstructor(Initialiser):
                         sample_dist=self.ad_samp_dist,
                     )
                 else:
-                    curvature_samples = magnitude
-                # 使用未做角度窗口平均的 angle_unwrap；是否执行独立的分量方向窗口
-                # 由 move_filter_for_vector 控制。force_ideal_magnitude 时输入理想曲率，
-                # 绕过 cur_kal 输出。
+                    curvature_samples = cur_kal
                 cur_interp, ang_interp, interp_dist = self._interpolate_curvature_vector(
                     magnitude=curvature_samples,
                     angle=angle_unwrap,
@@ -342,7 +307,7 @@ class Reconstructor(Initialiser):
             torsion = (ang_diff - 2 * np.pi * np.floor((ang_diff + np.pi) / (2 * np.pi))) / interp_ss
             if verbose:
                 print(f"torsion: {torsion}")
-            r, T, N, B = self._F_S_frame(kappa=cur_interp, tau=torsion, ss=interp_ss, init_T=init_T, init_N=init_N)
+            r, T, N, B = self._F_S_frame(kappa=cur_interp, tau=torsion, ss=interp_ss, init_T=init_T, init_N=init_N)  
             return angle, angle_unwrap, cur_interp, interp_dist, r, T, N, B, intermediates
         elif self.frame_rule == 'TNN':
             # 平行标架重构
@@ -355,54 +320,6 @@ class Reconstructor(Initialiser):
                 return_principal_frame=True,
             )
             return angle, angle_unwrap, cur_interp, interp_dist, r, T, Y, Z, intermediates
-
-    def _reconstruct_from_interpolated_curvature(
-        self, cur_interp, ang_interp, interp_dist, init_T
-    ):
-        """Build the curve and local frame from the exact interpolated curvature used."""
-        cur_interp = np.asarray(cur_interp, dtype=float)
-        ang_interp = np.asarray(ang_interp, dtype=float)
-        interp_dist = np.asarray(interp_dist, dtype=float)
-        init_T = np.asarray(init_T, dtype=float)
-        if (
-            cur_interp.ndim != 1
-            or ang_interp.ndim != 1
-            or interp_dist.ndim != 1
-            or cur_interp.shape != ang_interp.shape
-            or cur_interp.size != interp_dist.size
-            or cur_interp.size < 2
-            or init_T.shape != (3,)
-            or not np.all(np.isfinite(cur_interp))
-            or not np.all(np.isfinite(ang_interp))
-            or not np.all(np.isfinite(interp_dist))
-            or not np.all(np.isfinite(init_T))
-            or not np.all(np.diff(interp_dist) > 0.0)
-        ):
-            raise ValueError("interpolated curvature inputs must be finite, ordered, and shape-compatible")
-
-        interp_ss = np.diff(interp_dist)
-        init_N = np.array([0.0, np.cos(ang_interp[0]), np.sin(ang_interp[0])])
-        if self.frame_rule == 'TNB':
-            ang_diff = np.diff(ang_interp)
-            torsion = (ang_diff - 2 * np.pi * np.floor((ang_diff + np.pi) / (2 * np.pi))) / interp_ss
-            return self._F_S_frame(
-                kappa=cur_interp,
-                tau=torsion,
-                ss=interp_ss,
-                init_T=init_T,
-                init_N=init_N,
-            )
-        if self.frame_rule == 'TNN':
-            r, T, Y, Z, _, _ = self._parallel_frame(
-                kappa=cur_interp,
-                angles=ang_interp,
-                ss=interp_ss,
-                init_T=init_T,
-                init_N=init_N,
-                return_principal_frame=True,
-            )
-            return r, T, Y, Z
-        raise ValueError(f"unsupported frame_rule: {self.frame_rule}")
 
     def _construct_ideal_magnitude_for_recon(self, keys, calib_shape, sample_dist):
         """
@@ -553,7 +470,7 @@ class Reconstructor(Initialiser):
 
         return angle_unwrap
 
-    def _Strain_2_Cur(self, keys, calib_shape, calib_Data, weight, slope, magnitude_ratio=1.0, verbose=False, direct=None):
+    def _Strain_2_Cur(self, keys, calib_shape, calib_Data, weight, slope, magnitude_ratio=1.0, verbose=False):
         """
         将一组应变数据转换为最终用于三维重构的曲率大小与方向角。
 
@@ -605,23 +522,6 @@ class Reconstructor(Initialiser):
         - calib_shape == 'S' 时，slope 通常被解释为两套分段系数：
         前 num_segments 个用于普通段，后 num_segments 个用于转折段。
         """
-        if self.multi_region_parameters is not None:
-            if direct is None:
-                raise ValueError('multi-region reconstruction requires direct=0/120/240')
-            if keys is None:
-                strain_data = np.asarray(calib_Data).T
-            elif len(keys) == 1:
-                strain_data = np.asarray(calib_Data[keys[0]]).T
-            elif len(keys) == 2:
-                strain_data = np.asarray(calib_Data[keys[0]][keys[1]]).T
-            magnitude, angle, _, _, diagnostics = self._assemble_multiregion_parameters(
-                strain_data, direct, magnitude_ratio=magnitude_ratio,
-            )
-            self.last_parameter_assembly = diagnostics
-            if verbose:
-                print(f'multi-region parameter assembly: {diagnostics}')
-            return magnitude, angle
-
         # ---------- 初始准备 ----------
         base_slopes = slope[0]
 
@@ -630,9 +530,8 @@ class Reconstructor(Initialiser):
 
         # ---------- 进行曲率分级和分级参数计算 ----------
         score_magnitude = magnitude * magnitude_ratio
-        groups = getattr(self, 'weight_group_ids', None)
         if not self.soft:
-            slope_scores = None
+            scores = None
             hard_level_idx = np.zeros(self.total_points, dtype=int)
             hard_regions = [None] * self.num_levels
             min_consecutive = max(1, int(self.min_consecutive))
@@ -661,35 +560,23 @@ class Reconstructor(Initialiser):
                     hard_level_idx[region_indices] = level
                     hard_regions[level] = region_indices
 
-            slope_masses = np.zeros((self.num_levels, self.total_points))
-            slope_masses[hard_level_idx, np.arange(self.total_points)] = 1.0
-            weight_scores = slope_scores
-            weight_masses = slope_masses
+            masses = np.zeros((self.num_levels, self.total_points))
+            masses[hard_level_idx, np.arange(self.total_points)] = 1.0
         else:
-            slope_scores = self._get_scores(magnitude=score_magnitude)
-            slope_masses = self._alloc_mass(scores=slope_scores)
-            weight_scores = slope_scores
-            weight_masses = slope_masses
-            if getattr(self, 'end5cm_independent_weight_score', False) and groups is not None:
-                weight_scores, _ = self._get_groupwise_weight_scores(
-                    score_magnitude, groups,
-                )
-                weight_masses = self._alloc_mass(weight_scores)
+            scores = self._get_scores(magnitude=score_magnitude)
+            masses = self._alloc_mass(scores=scores)
         if verbose:
-            if slope_scores is not None:
-                print(f"slope scores: {slope_scores}")
+            if scores is not None:
+                print(f"scores: {scores}")
             else:
                 print(f"hard level index: {hard_level_idx}")
                 print(f"hard regions: {hard_regions}")
             for i in range(self.num_levels-1):
-                print(f"Probability mass for curvature class {i+1}: {slope_masses[i]}")
+                print(f"Probability mass for curvature class {i+1}: {masses[i]}")
 
         # ---------- 计算加权后的应变 ----------
-        if groups is not None:
-            weight_vecs = np.asarray(weight).reshape(-1, self.num_levels)[np.asarray(groups)].T
-        else:
-            weight_vecs = np.array([np.where(self.end_mask, weight[i+self.num_levels] if self.end_weights else weight[i], weight[i]) for i in range(self.num_levels)])
-        final_weight = np.sum(weight_masses * weight_vecs, axis=0)
+        weight_vecs = np.array([np.where(self.end_mask, weight[i+self.num_levels] if self.end_weights else weight[i], weight[i]) for i in range(self.num_levels)]) 
+        final_weight = np.sum(masses * weight_vecs, axis=0)
         weighted_strain = strain_data * final_weight
         if verbose:
             print(f"final weight: {final_weight}")
@@ -711,7 +598,7 @@ class Reconstructor(Initialiser):
                 for j, (start, end) in enumerate(self.base_segments):
                         slope_vecs[i, start:end] = slope[i, j]
                     
-        slope_map = np.sum(slope_masses * slope_vecs, axis=0)
+        slope_map = np.sum(masses * slope_vecs, axis=0)
         final_segments, final_slope = self._generate_dynamic_segments(slope_map=slope_map)
         if verbose:
             print(f"final segments: {final_segments}")
@@ -801,8 +688,7 @@ class Reconstructor(Initialiser):
         - final_masses: 各等级的概率质量分布，形状为 (num_levels, total_points)
         """
         masses = []
-        scores = np.asarray(scores, dtype=float)
-        remained = np.ones(scores.shape[1])
+        remained = np.ones(self.total_points)
         for score in scores[::-1]:
             mass = remained * score
             masses.append(mass)
@@ -810,8 +696,7 @@ class Reconstructor(Initialiser):
         final_masses = np.vstack((remained, np.asarray(masses[::-1])))
         return np.clip(final_masses, 0.0, 1.0)
 
-    def _get_scores(self, magnitude, *, thresholds=None, sharpness=None,
-                    min_consecutive=None, boundary_mode='constant'):
+    def _get_scores(self, magnitude):
         """
         根据曲率大小计算各等级的软分级分数。
 
@@ -826,310 +711,14 @@ class Reconstructor(Initialiser):
         输出：
         - scores: 各等级对应的分数数组，形状通常为 (num_levels - 1, total_points)
         """
-        thresholds = self.thresholds if thresholds is None else thresholds
-        sharpness = self.sharpness if sharpness is None else sharpness
-        min_consecutive = self.min_consecutive if min_consecutive is None else min_consecutive
         scores = []
-        for threshold in thresholds:
-            level_score = 1.0 / (1.0 + np.exp(-sharpness * (np.asarray(magnitude) - threshold)))
-            if min_consecutive > 1:
-                level_score = self._moving_average_scipy(
-                    data=level_score, window_size=min_consecutive, mode=boundary_mode,
-                )
+        for i in range(self.num_levels-1):
+            level_score = 1.0 / (1.0 + np.exp(-self.sharpness * (np.asarray(magnitude) - self.thresholds[i])))
+            if self.min_consecutive > 1:
+                level_score = self._moving_average_scipy(data=level_score, window_size=self.min_consecutive, mode='constant')
             scores.append(level_score)
         return np.asarray(scores)
-
-    def _normalise_multiregion_parameters(self, config):
-        """校验并规范化多区域参数包，建立 0/120/240 方向的 NumPy 参数表。
-
-        每个区域的 support 点用于局部评分，owned 点决定最终写入范围；所有 owned
-        点必须无重叠地覆盖完整传感器，防止拼接时出现未赋值或重复赋值。
-        """
-        config = deepcopy(config)
-        meta = config.get('multi_region', config)
-        regions = config.get('regions')
-        order = list(meta.get('region_order', ()))
-        directions = list(meta.get('directions', ()))
-        if directions != [0, 120, 240]:
-            raise ValueError(f'multi-region direct 必须恰好为 0、120、240；收到 {directions}')
-        if not order or not isinstance(regions, dict) or set(order) != set(regions):
-            raise ValueError('multi-region region_order 与 regions 不一致')
-
-        sensor_points = [int(point) for point in np.asarray(self.global_point_ids).tolist()]
-        owned_all = []
-        for name in order:
-            block = regions[name]
-            thresholds = np.asarray(block.get('thresholds'), dtype=float)
-            segmentation = np.asarray(block.get('local_segmentation'), dtype=int)
-            support = [int(point) for point in block.get('support_point_ids', ())]
-            owned = [int(point) for point in block.get('owned_point_ids', ())]
-            segment_ids = [int(segment) for segment in block.get('global_segment_ids', ())]
-            if (thresholds.ndim != 1 or np.any(~np.isfinite(thresholds))
-                    or np.any(thresholds <= 0) or np.any(np.diff(thresholds) <= 0)):
-                raise ValueError(f'{name} thresholds 必须严格递增')
-            if (segmentation.ndim != 1 or len(segmentation) != len(segment_ids)
-                    or np.any(segmentation <= 0) or int(segmentation.sum()) != len(support)):
-                raise ValueError(f'{name} local segmentation/support 不一致')
-            if not set(owned).issubset(support) or not set(support).issubset(sensor_points):
-                raise ValueError(f'{name} owned/support points 无效')
-            levels = len(thresholds) + 1
-            enabled, end_start = validate_end_weight_config(
-                block.get('end_weights', False), block.get('end_start', -5), len(support))
-            groups = validate_weight_group_ids(block.get('weight_group_ids'), len(support))
-            expected_weights = levels * (max(groups)+1 if groups is not None else (2 if enabled else 1))
-            normalized_weights = {}
-            normalized_slopes = {}
-            for direct in directions:
-                key = str(direct) if str(direct) in block['weights'] else direct
-                weights = np.asarray(block['weights'][key], dtype=float)
-                slopes = np.asarray(block['slopes'][key], dtype=float)
-                if weights.shape != (expected_weights,) or not np.all(np.isfinite(weights)):
-                    raise ValueError(f'{direct}/{name} weights shape 应为 {(expected_weights,)}')
-                if slopes.shape != (levels, len(segmentation)) or not np.all(np.isfinite(slopes)):
-                    raise ValueError(
-                        f'{direct}/{name} slopes shape 应为 {(levels, len(segmentation))}'
-                    )
-                normalized_weights[direct] = weights
-                normalized_slopes[direct] = slopes
-            block['thresholds'] = thresholds
-            block['local_segmentation'] = segmentation
-            block['support_point_ids'] = support
-            block['owned_point_ids'] = owned
-            block['global_segment_ids'] = segment_ids
-            block['weights'] = normalized_weights
-            block['end_weights'] = enabled
-            block['end_start'] = end_start
-            block['weight_group_ids'] = groups
-            block['slopes'] = normalized_slopes
-            block['sharpness'] = float(block.get('sharpness', self.sharpness))
-            block['score_window'] = max(1, int(block.get('score_window', self.min_consecutive)))
-            block['score_boundary_mode'] = block.get('score_boundary_mode', 'constant')
-            block['weight_score_mode'] = block.get('weight_score_mode', 'spatial_window')
-            if block['weight_score_mode'] not in ('spatial_window', 'group_mean'):
-                raise ValueError(f'{name} weight_score_mode 不合法: {block["weight_score_mode"]!r}')
-            if block['weight_score_mode'] == 'group_mean' and groups is None:
-                raise ValueError(f'{name} weight_score_mode=group_mean 需要 weight_group_ids')
-            owned_all.extend(owned)
-        if sorted(owned_all) != sorted(sensor_points) or len(owned_all) != len(set(owned_all)):
-            raise ValueError(
-                f'multi-region owned points 必须无重叠覆盖全部传感点；收到 {owned_all}'
-            )
-        return {'region_order': order, 'directions': directions, 'regions': regions,
-                'use_full_transported_phase': bool(meta.get('use_full_transported_phase', False)),
-                'phase_reference_directions': list(meta.get('phase_reference_directions', directions))}
-
-    @staticmethod
-    def _local_segment_labels(segmentation):
-        """把局部分段长度展开成逐点的局部分段编号。"""
-        return np.repeat(np.arange(len(segmentation)), segmentation.astype(int))
-
-    def _get_groupwise_weight_scores(self, magnitude, group_ids, *, thresholds=None, sharpness=None):
-        """Score each independent weight group from its own base-magnitude mean."""
-        magnitude = np.asarray(magnitude, dtype=float)
-        groups = np.asarray(group_ids, dtype=int)
-        if magnitude.ndim != 1 or groups.shape != magnitude.shape:
-            raise ValueError('groupwise weight scoring requires one group id per magnitude point')
-        if groups.size == 0:
-            raise ValueError('groupwise weight scoring requires at least one point')
-        thresholds = self.thresholds if thresholds is None else thresholds
-        sharpness = self.sharpness if sharpness is None else sharpness
-        scores = np.empty((len(thresholds), magnitude.size), dtype=float)
-        group_base_magnitude = {}
-        for group in sorted(set(groups.tolist())):
-            members = groups == group
-            mean_magnitude = float(np.mean(magnitude[members]))
-            group_base_magnitude[str(int(group))] = mean_magnitude
-            group_score = self._get_scores(
-                np.asarray([mean_magnitude]), thresholds=thresholds,
-                sharpness=sharpness, min_consecutive=1,
-            )[:, 0]
-            scores[:, members] = group_score[:, None]
-        return scores, group_base_magnitude
-
-    def _assemble_multiregion_parameters(self, strain_data, direct, magnitude_ratio=1.0):
-        """使用各区域自己的曲率阈值和 sigmoid 配置装配逐点参数。
-
-        先用每个区域第 0 档 slope 形成全长基础相位并估计评分曲率，再在各区域
-        support 点计算等级质量；最终只把混合后的 weight 和 slope 写入该区域的
-        owned 点。``direct`` 是字面方向角 0、120 或 240。
-        """
-        config = self.multi_region_parameters
-        if config is None:
-            raise ValueError('multi_region_parameters 未配置')
-        if direct not in config['directions']:
-            raise ValueError(f'direct 必须为 0、120、240；收到 {direct}')
-        strain_data = np.asarray(strain_data, dtype=float)
-        if strain_data.ndim != 2 or strain_data.shape[1] != self.total_points:
-            raise ValueError(
-                f'strain_data 应为 (channels, {self.total_points})，收到 {strain_data.shape}'
-            )
-        point_index = {int(point): index for index, point in enumerate(self.global_point_ids)}
-        base_slope_map = np.empty(self.total_points, dtype=float)
-
-        for name in config['region_order']:
-            block = config['regions'][name]
-            support_labels = self._local_segment_labels(block['local_segmentation'])
-            support_lookup = {
-                point: local_index for local_index, point in enumerate(block['support_point_ids'])
-            }
-            base_slopes = block['slopes'][direct][0]
-            for point in block['owned_point_ids']:
-                local_index = support_lookup[point]
-                base_slope_map[point_index[point]] = base_slopes[support_labels[local_index]]
-
-        transported = bool(config.get('use_full_transported_phase', False))
-        fixed_bridges = False
-        base_segments, base_slopes = self._generate_dynamic_segments(base_slope_map)
-        base_angles = self._calculate_dynamic_angles(
-            mode='recon', segments=base_segments, seg_slopes=base_slopes,
-        )
-        base_magnitude, _ = self._calculate_curvature_and_angle(
-            epsilon=strain_data, alpha_dynamic=base_angles,
-        )
-        score_magnitude = np.asarray(base_magnitude, dtype=float) * magnitude_ratio
-
-        final_weight = np.empty(self.total_points, dtype=float)
-        slope_map = np.empty(self.total_points, dtype=float)
-        diagnostics = {
-            'direct': direct,
-            'base_slope_map': base_slope_map.tolist(),
-            'fixed_full_level0_bridges': bool(fixed_bridges),
-            'base_magnitude': np.asarray(base_magnitude).tolist(),
-        }
-        for name in config['region_order']:
-            block = config['regions'][name]
-            support_indices = np.asarray([point_index[p] for p in block['support_point_ids']], dtype=int)
-            owned_indices = np.asarray([point_index[p] for p in block['owned_point_ids']], dtype=int)
-            support_lookup = {
-                point: local_index for local_index, point in enumerate(block['support_point_ids'])
-            }
-            owned_local = np.asarray([support_lookup[p] for p in block['owned_point_ids']], dtype=int)
-            support_score = score_magnitude[support_indices]
-            slope_scores = self._get_scores(
-                support_score,
-                thresholds=block['thresholds'],
-                sharpness=block['sharpness'],
-                min_consecutive=block['score_window'],
-                boundary_mode=block['score_boundary_mode'],
-            )
-            slope_masses = self._alloc_mass(slope_scores)
-            if block['weight_score_mode'] == 'group_mean':
-                weight_scores, group_base_magnitude = self._get_groupwise_weight_scores(
-                    support_score,
-                    block['weight_group_ids'],
-                    thresholds=block['thresholds'],
-                    sharpness=block['sharpness'],
-                )
-                weight_masses = self._alloc_mass(weight_scores)
-            else:
-                weight_scores = slope_scores
-                weight_masses = slope_masses
-                group_base_magnitude = None
-            weights = block['weights'][direct]
-            levels = weight_masses.shape[0]
-            weight_vectors = np.broadcast_to(weights[:levels, None], weight_masses.shape).copy()
-            if block['weight_group_ids'] is not None:
-                weight_vectors = weights.reshape(-1, levels)[np.asarray(block['weight_group_ids'])].T
-            elif block['end_weights']:
-                # 负索引相对于区域support真实点，虚拟点随后复制补偿后的末点。
-                weight_vectors[:, block['end_start']:] = weights[levels:, None]
-            support_weights = np.sum(weight_masses * weight_vectors, axis=0)
-            labels = self._local_segment_labels(block['local_segmentation'])
-            slopes = block['slopes'][direct]
-            slope_vectors = slopes[:, labels]
-            support_slopes = np.sum(slope_masses * slope_vectors, axis=0)
-            final_weight[owned_indices] = support_weights[owned_local]
-            slope_map[owned_indices] = support_slopes[owned_local]
-            diagnostics[name] = {
-                'support_point_ids': list(block['support_point_ids']),
-                'owned_point_ids': list(block['owned_point_ids']),
-                'thresholds': block['thresholds'].tolist(),
-                'score_mode': block['weight_score_mode'],
-                'weight_score_mode': block['weight_score_mode'],
-                'group_base_magnitude': group_base_magnitude,
-                'scores': slope_scores.tolist(),
-                'masses': slope_masses.tolist(),
-                'slope_scores': slope_scores.tolist(),
-                'slope_masses': slope_masses.tolist(),
-                'weight_scores': weight_scores.tolist(),
-                'weight_masses': weight_masses.tolist(),
-                'mass_shape': list(weight_masses.shape),
-                'end_weights': block['end_weights'],
-                'end_start': block['end_start'],
-                'weight_group_ids': block['weight_group_ids'],
-                'effective_weights': support_weights.tolist(),
-                'effective_support_slopes': support_slopes.tolist(),
-            }
-
-        if transported:
-            from calibration_phase_reference import _mixed_slopes, anchor_full_mixed_phases
-            # self retains full's independent score/window/threshold configuration.
-            full_mixed = _mixed_slopes(self, strain_data.T, direct)
-            bridges = anchor_full_mixed_phases(slope_map, full_mixed, self.samp_dist,
-                                               config, self.global_point_ids,
-                                               {name: diagnostics[name]['effective_support_slopes']
-                                                for name in config['region_order']})
-            diagnostics['full_mixed_phase_anchors'] = bridges
-            diagnostics['full_independent_mixed_slopes'] = full_mixed.tolist()
-            for name in config['region_order']:
-                block = config['regions'][name]
-                corrections = block.get('bridge_slope_corrections', {})
-                values = corrections.get(str(direct), corrections.get(direct))
-                if values is None:
-                    continue
-                values = np.asarray(values, dtype=float)
-                masses = np.asarray(diagnostics[name]['slope_masses'])[:, 0]
-                if values.shape != masses.shape or not np.all(np.isfinite(values)):
-                    raise ValueError(f'{name} invalid bridge_slope_corrections')
-                point = block['support_point_ids'][0]
-                index = list(self.global_point_ids).index(point)
-                if name == 'full' or index == 0:
-                    raise ValueError('Bridge correction requires a local preceding point')
-                correction = float(masses @ values)
-                slope_map[index] += correction
-                diagnostics[name]['bridge_slope_correction'] = correction
-        weighted_strain = strain_data * final_weight
-        final_segments, final_slopes = self._generate_dynamic_segments(slope_map)
-        final_angles = self._calculate_dynamic_angles(
-            mode='recon', segments=final_segments, seg_slopes=final_slopes,
-        )
-        magnitude, angle = self._calculate_curvature_and_angle(
-            epsilon=weighted_strain, alpha_dynamic=final_angles,
-        )
-        diagnostics['final_weight'] = final_weight.tolist()
-        diagnostics['slope_map'] = slope_map.tolist()
-        diagnostics['final_magnitude'] = np.asarray(magnitude).tolist()
-        diagnostics['final_angle'] = np.asarray(angle).tolist()
-        diagnostics['final_theta_dynamic'] = np.asarray(final_angles).tolist()
-        return magnitude, angle, final_weight, slope_map, diagnostics
     
-    def export_point_phases(self, output_path, *, direct):
-        """Export sample-specific real-point phases before display rotation."""
-        import csv
-        from pathlib import Path
-        if self.multi_region_parameters is None:
-            raise ValueError('Phase export currently requires multi-region reconstruction')
-        rows = []
-        for shape in self.calib_shapes:
-            for radius, frame in self.processed_Data[shape][direct].items():
-                _, _, _, _, diagnostic = self._assemble_multiregion_parameters(
-                    np.asarray(frame).T, direct)
-                phase = np.asarray(diagnostic['final_theta_dynamic'])[0]
-                for j, point in enumerate(self.global_point_ids):
-                    rows.append([direct, shape, radius, int(point), self.samp_dist[j],
-                                 phase[j], np.degrees(phase[j]), diagnostic['slope_map'][j],
-                                 diagnostic['final_weight'][j], diagnostic['final_magnitude'][j],
-                                 np.degrees(diagnostic['final_angle'][j])])
-        path = Path(output_path)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        with path.open('w', encoding='utf-8-sig', newline='') as stream:
-            writer = csv.writer(stream)
-            writer.writerow(['direct','shape','radius_mm','point','distance_m','phase_rad',
-                             'phase_deg_unwrapped','slope_rad_per_m','weight',
-                             'curvature_m_inv','bend_direction_deg'])
-            writer.writerows(rows)
-        return path
-
     def _generate_dynamic_segments(self, slope_map):
         """
         根据逐点扭转系数映射生成动态分段结构。
@@ -1158,11 +747,6 @@ class Reconstructor(Initialiser):
     def _moving_average_scipy(self, data, window_size, mode):
         """
         使用 scipy.ndimage.uniform_filter1d 实现一维移动平均滤波。
-
-        在重构调用中，数组下标表示空间采样点，因此这是按点数等权的空间平均，
-        不考虑相邻点的实际物理间距，也不保存跨帧状态。window_size=1 不做平滑。
-        size=3、reflect 时，内部点取左右邻点和自身的均值；末点取
-        (倒数第二点 + 2 * 末点) / 3，首点同理。
 
         输入：
         - data: 输入的一维数组
@@ -1262,76 +846,8 @@ class Reconstructor(Initialiser):
             interp_data = np.maximum(np.asarray(interp_data, dtype=float), 0.0)
         return np.asarray(interp_data, dtype=float), np.asarray(interp_samp_dist, dtype=float)
 
-    def _smooth_curvature_direction(self, magnitude, angle,
-                                    coherence_low=0.25, coherence_high=0.75,
-                                    antipodal_start=np.deg2rad(150.0)):
-        """用当前帧的邻域向量修正方向，保留每个点的原始曲率模长。
-
-        不读取或更新上一帧状态，静态标定/优化与动态重构使用同一规则。
-        magnitude、angle 为已经过调用方校验的一维等长数组，模长须非负。
-        窗口内的曲率大小自然成为方向平均的权重，低曲率角度噪声影响较小。
-
-        rho = |平均向量| / 平均模长衡量方向一致性。rho 低时保留当前点方向，
-        高时采用平均方向，中间用 smoothstep 连续过渡，避免优化时硬切换。
-        修正角接近 ±pi 时逐渐退回原方向，避免反向分支选择不稳定。
-        默认 rho 阈值 0.25/0.75 和反向保护起点150度是可调初值，非标定结果；
-        连续权重并不意味着整条 PCHIP/参数优化链处处可微。
-
-        如果领域方向一致性很低，保持原方向不变，避免在零曲率/数值抵消处制造不可靠的方向。
-        如果领域方向接近当前方向的反向，逐渐退回原方向，避免在 ±π 处不稳定的分支选择。
-        """
-        if not 0 <= coherence_low < coherence_high <= 1:
-            raise ValueError('coherence thresholds must satisfy 0 <= low < high <= 1')
-        if not 0 < antipodal_start < np.pi:
-            raise ValueError('antipodal_start must be between 0 and pi')
-        # 曲率向量的两分量表示，便于窗口平均和插值。cos/sin 对 2π 周期不变，可避免直接插值角度时的 ±π 分支跳变。
-        components = magnitude[:, None] * np.column_stack((np.cos(angle), np.sin(angle)))
-        averaged = np.column_stack([
-            self._moving_average_scipy(components[:, j], self.move_filter, 'reflect')
-            for j in range(2)
-        ])
-        # 平均模长用于计算方向一致性，避免零曲率点的噪声影响。平均向量模长用于计算最终的方向修正。
-        mean_magnitude = self._moving_average_scipy(magnitude, self.move_filter, 'reflect')
-        # 计算平均向量的模长，用于衡量方向一致性。
-        resultant = np.hypot(averaged[:, 0], averaged[:, 1])
-        # 零曲率/数值抵消处不计算有效方向，不用 epsilon 归一化来制造方向。
-        tolerance = 32 * np.finfo(float).eps * np.maximum(1.0, mean_magnitude)
-        # 仅在平均模长和平均向量模长都大于阈值时才计算方向一致性，否则保持原方向。如果曲率接近零，方向本身没有可靠物理意义，因此不进行方向修正。
-        valid = (mean_magnitude > tolerance) & (resultant > tolerance)
-        # 方向一致性计算
-        coherence = np.zeros_like(magnitude)
-        np.divide(resultant, mean_magnitude, out=coherence, where=valid)
-        # 根据阈值归一化到 [0, 1]，并使用 smoothstep 函数平滑过渡。
-        fraction = np.clip((coherence - coherence_low) / (coherence_high - coherence_low), 0., 1.)
-        weight = fraction * fraction * (3. - 2. * fraction) #smoothstep function: 3f^2 - 2f^3
-        # 计算当前点与平均方向的角度差，并用arctan2将其限制在 [-π, π] 范围内，避免 ±π 分支跳变。
-        delta = np.zeros_like(angle)
-        difference = np.arctan2(averaged[valid, 1], averaged[valid, 0]) - angle[valid]
-        delta[valid] = np.arctan2(np.sin(difference), np.cos(difference))
-        # 当 delta 接近 ±π 时，逐渐退回原方向，避免反向分支选择不稳定。
-        fraction = np.clip((np.pi - np.abs(delta)) / (np.pi - antipodal_start), 0., 1.)
-        weight *= fraction * fraction * (3. - 2. * fraction)
-        corrected_angle = angle + weight * delta
-        # 只借用平均后的方向；零模长仍为零，不把邻点的大曲率摊到当前点。
-        return magnitude[:, None] * np.column_stack((np.cos(corrected_angle), np.sin(corrected_angle)))
-
     def _interpolate_curvature_vector(self, magnitude, angle, method):
-        """对局部弯曲平面内的曲率向量进行空间滤波和插值。
-
-        输入 magnitude 是补齐虚拟点、未经 Kalman 滤波的曲率；理想曲率模式传入理论值。
-        angle 是 angle_unwrap，不是预先做过角度窗口平均的 ang_filter。
-        两者均与 ad_samp_dist 一一对应，含调用方添加的虚拟点。
-
-        流程：极坐标转两分量 → 可选窗口估计方向并保护抵消/反向情况 → 恢复原始模长
-        → 各分量线性/PCHIP 插值
-        → 还原模长与方向。分量不是最终三维曲线的全局 X、Y 坐标。
-        cos/sin 对 2π 周期不变，可避免直接插值角度时的 ±π 分支跳变。
-
-        注意：move_filter_for_vector=True 时，本函数显式执行窗口平均；这不是 PCHIP
-        内部操作。窗口仅修正方向，输入节点的模长保持不变；PCHIP点间向量仍可能抵消，
-        因此本方法不保证点间模长或最终形状半径完全无偏。不需要上一帧数据。
-        返回 cur_interp（曲率模长）、ang_interp（弧度）、interp_dist（米）。
-        """
+        """Filter and interpolate the two circularly invariant curvature components."""
         samp_dist = np.asarray(self.ad_samp_dist, dtype=float)
         magnitude = np.asarray(magnitude, dtype=float)
         angle = np.asarray(angle, dtype=float)
@@ -1349,26 +865,28 @@ class Reconstructor(Initialiser):
             raise ValueError("curvature-vector interpolation inputs must be finite and ordered")
         if method not in {'linear', 'pchip'}:
             raise ValueError("curvature-vector interpolation method must be 'linear' or 'pchip'")
-        if np.any(magnitude < 0):
-            raise ValueError('curvature magnitude must be nonnegative')
-        # 可选三点窗口只提供方向候选；关闭时直接插值原始曲率向量分量。
-        # 两种路径都保留调用方输入的 magnitude，且静态/动态没有历史状态依赖。
-        if self.move_filter_for_vector:
-            components = self._smooth_curvature_direction(magnitude, angle)
-        else:
-            components = magnitude[:, None] * np.column_stack((np.cos(angle), np.sin(angle)))
+
+        components = np.column_stack(
+            (magnitude * np.cos(angle), magnitude * np.sin(angle))
+        )
+        filtered = np.column_stack(
+            [
+                self._moving_average_scipy(
+                    data=components[:, component],
+                    window_size=self.move_filter,
+                    mode='reflect',
+                )
+                for component in range(2)
+            ]
+        )
         interp_dist = np.linspace(samp_dist[0], samp_dist[-1], num=self.interp_num)
         if method == 'linear':
             interpolated = np.column_stack(
-                [np.interp(interp_dist, samp_dist, components[:, component]) for component in range(2)]
+                [np.interp(interp_dist, samp_dist, filtered[:, component]) for component in range(2)]
             )
         else:
-            # axis=0 沿空间点插值，两列分量独立处理。PCHIP 本身不做窗口平均，
-            # 输入节点由 move_filter_for_vector 决定；点间向量模长仍可能因方向变化而下降。
-            # 等距输出网格未必包含原采样节点，输出峰值可能低于输入节点峰值。
-            interpolated = PchipInterpolator(samp_dist, components, axis=0)(interp_dist)
+            interpolated = PchipInterpolator(samp_dist, filtered, axis=0)(interp_dist)
 
-        # 将插值后的局部曲率向量还原成后续标架重构需要的曲率大小和方向。
         cur_interp = np.hypot(interpolated[:, 0], interpolated[:, 1])
         ang_interp = np.arctan2(interpolated[:, 1], interpolated[:, 0])
         return cur_interp, ang_interp, interp_dist
@@ -1376,12 +894,6 @@ class Reconstructor(Initialiser):
     def _Kalman_filter(self, data, Rk, Bk):
         """
         对一维数据执行简化 Kalman 滤波。
-
-        _reconstruct_frame 传入单帧 magnitude，因此循环沿光纤空间点推进，
-        每次调用重新初始化，不是对同一传感点进行跨帧 Kalman 滤波。
-        输出为当前观测与前一空间点滤波结果的加权组合，仅向后传递信息。
-        默认 Rk=0.0001、Bk=0.01 时稳态增益约 0.9902，空间平滑较弱。
-        当前重构入口只调用 magnitude 的 Kalman，未调用 angle 的 Kalman。
 
         输入：
         - data: 输入的一维数组
@@ -1565,50 +1077,29 @@ class Reconstructor(Initialiser):
         return r, T, Y, Z, N1, N2
 
     @staticmethod
-    def _build_end_pose(T, Y, Z, rot_matrix, rot_ang_deg):
-        """Rotate the terminal frame globally, then undo rot_ang about its rotated T axis."""
+    def _build_end_pose(T, N, B, rot_matrix):
+        """Return terminal T/N/B rows in the rotated curve coordinates."""
         T = np.asarray(T, dtype=float)
-        Y = np.asarray(Y, dtype=float)
-        Z = np.asarray(Z, dtype=float)
+        N = np.asarray(N, dtype=float)
+        B = np.asarray(B, dtype=float)
         rot_matrix = np.asarray(rot_matrix, dtype=float)
-        rot_ang_deg = float(rot_ang_deg)
 
-        if T.ndim != 2 or Y.ndim != 2 or Z.ndim != 2:
-            raise ValueError("T, Y and Z must be two-dimensional frame arrays")
-        if T.shape[1] != 3 or Y.shape[1] != 3 or Z.shape[1] != 3:
-            raise ValueError("T, Y and Z must have shape (num_points, 3)")
-        if not (len(T) == len(Y) == len(Z)):
-            raise ValueError("T, Y and Z must contain the same number of points")
-        if rot_matrix.shape != (3, 3) or not np.all(np.isfinite(rot_matrix)):
-            raise ValueError("rot_matrix must be a finite matrix with shape (3, 3)")
-        if not np.isfinite(rot_ang_deg):
-            raise ValueError("rot_ang_deg must be finite")
+        if T.ndim != 2 or N.ndim != 2 or B.ndim != 2:
+            raise ValueError("T, N and B must be two-dimensional frame arrays")
+        if T.shape[1] != 3 or N.shape[1] != 3 or B.shape[1] != 3:
+            raise ValueError("T, N and B must have shape (num_points, 3)")
+        if not (len(T) == len(N) == len(B)):
+            raise ValueError("T, N and B must contain the same number of points")
+        if rot_matrix.shape != (3, 3):
+            raise ValueError("rot_matrix must have shape (3, 3)")
         if len(T) == 0:
             return None
 
-        terminal_t = T[-1] @ rot_matrix.T
-        terminal_y = Y[-1] @ rot_matrix.T
-        terminal_z = Z[-1] @ rot_matrix.T
-        t_norm = float(np.linalg.norm(terminal_t))
-        if not np.isfinite(t_norm) or t_norm <= np.finfo(float).eps:
-            raise ValueError("terminal T axis must be finite and non-zero")
-        local_axis = terminal_t / t_norm
-        theta = np.deg2rad(-rot_ang_deg)
-        cos_theta = np.cos(theta)
-        sin_theta = np.sin(theta)
-
-        def rotate_about_terminal_t(vector):
-            return (
-                vector * cos_theta
-                + np.cross(local_axis, vector) * sin_theta
-                + local_axis * np.dot(local_axis, vector) * (1.0 - cos_theta)
-            )
-
         return np.stack(
             (
-                terminal_t,
-                rotate_about_terminal_t(terminal_y),
-                rotate_about_terminal_t(terminal_z),
+                T[-1] @ rot_matrix.T,
+                N[-1] @ rot_matrix.T,
+                B[-1] @ rot_matrix.T,
             )
         )
 
@@ -1622,7 +1113,8 @@ class Reconstructor(Initialiser):
         输出：
         - rot_matrix: 3×3 的绕 x 轴旋转矩阵
         """
-        sigma = np.deg2rad((direct) * rot_dir + self.rot_ang)
+        correction = self.rot_ang_by_direct.get(direct, self.rot_ang_by_direct.get(str(direct), 0.0))
+        sigma = np.deg2rad((direct) * rot_dir + self.rot_ang + correction)
         rot_matrix = np.array([
             [1.0, 0.0, 0.0],
             [0.0, np.cos(sigma), -np.sin(sigma)],
