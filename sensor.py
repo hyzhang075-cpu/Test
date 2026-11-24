@@ -441,6 +441,10 @@ class Sensor:
             x, y, z, folder_type = self._classify_folder(subfolder=subfolder)
             if folder_type is None:
                 continue
+            # Read only the requested experiment directions. Other directions
+            # cannot contribute to this calibration/replay and can be expensive.
+            if x not in self.exp_directs:
+                continue
 
             channel_data = {}
             valid_subfolder = True

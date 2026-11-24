@@ -185,8 +185,8 @@ def configure_calibration_args(args):
         getattr(args, 'end5cm_min_weight_max_mass', 0.05))
     context['end5cm_uncovered_weight_policy'] = getattr(
         args, 'end5cm_uncovered_weight_policy', 'interpolate_neutral_edges')
-    context['weight_group_ids'] = None
-    if independent:
+    context['weight_group_ids'] = selected.get('weight_group_ids')
+    if independent and context['weight_group_ids'] is None:
         point_ids = context['global_point_ids']
 
         if args.reverse or point_ids not in (
@@ -444,27 +444,27 @@ def build_argument_parser():
     parser.add_argument('--calibration_output_dir', type=str, default='calibration_results',
                         help='批量优化/评分诊断输出目录，按传感器、本地时间和优化角度创建新目录')
     # 硬件参数
-    parser.add_argument('--sensor_id', type=str, default='09B7', help='传感器编号')
-    parser.add_argument('--start_value', type=float, default=19.7, help='传感器第一个传感点到固定件的距离, 单位为mm')
-    parser.add_argument('--end_value', type=float, default=5.0, help='传感器最后一个传感点到末端的距离, 单位为mm')
+    parser.add_argument('--sensor_id', type=str, default='11B8', help='传感器编号')
+    parser.add_argument('--start_value', type=float, default=17.7, help='传感器第一个传感点到固定件的距离, 单位为mm')
+    parser.add_argument('--end_value', type=float, default=8.0, help='传感器最后一个传感点到末端的距离, 单位为mm')
     # parser.add_argument('--R', type=float, default=0.235e-3, help='传感器半径, 单位为m') #肠镜
     parser.add_argument('--R', type=float, default=0.1e-3, help='传感器半径, 单位为m') # 支气管镜
     parser.add_argument('--ideal_len', type=float, default=None, help='FBG总长自动计算(m)；显式传值必须与几何一致')
     # parser.add_argument('--ideal_len', type=float, default=1.35, help='传感器长度, 单位为m') #肠镜
     # parser.add_argument('--samp_dist_preset', type=list, default=[510, 540, 570, 630, 710, 810, 910, 1010, 1110, 1210, 1310, 1410, 1510, 1610, 1710, 1815], help='FBG传感点位置(A组及中心), 单位为mm') #肠镜
     # parser.add_argument('--samp_dist_preset', type=list, default=[510, 520, 530, 540, 550, 580, 610, 640, 670, 720, 770, 850, 930, 1010, 1110, 1230], help='FBG传感点位置, 单位为mm')# 16点支气管镜
-    parser.add_argument('--samp_dist_preset', type=ast.literal_eval, default=[510, 521, 532, 543, 554, 588, 622, 656, 707, 758, 809, 860, 911, 962, 1013, 1064, 1115, 1166, 1217, 1268, 1319, 1370], help='FBG传感点位置, 单位为mm')# 22点支气管镜
+    parser.add_argument('--samp_dist_preset', type=ast.literal_eval, default=[517, 531, 545, 559, 573, 587, 601, 615, 629, 643, 657, 671, 685, 699, 713, 727, 827, 927, 1027, 1227], help='FBG传感点位置, 单位为mm')# B组支气管镜，69cm
     # parser.add_argument('--samp_dist_preset', type=ast.literal_eval, default=[510, 521, 533, 543, 577, 611, 645, 696, 746, 797, 847, 899, 950, 1001, 1053, 1104, 1155, 1207, 1257, 1308, 1359, 1410], help='FBG传感点位置, 单位为mm')# 22点支气管镜位置错误版本
     # parser.add_argument('--samp_dist_preset', type=list, default=[510, 521, 532, 543, 554, 579, 604, 629, 654, 696, 738, 780, 822, 864, 906, 948, 990, 1032, 1074, 1116, 1158, 1200], help='FBG传感点位置, 单位为mm')# 22点支气管镜，69cm
-    parser.add_argument('--samp_dist_preset_sub', type=ast.literal_eval, default=[120, 160, 200, 295, 445, 595, 745, 895], help='FBG传感点位置(B组), 单位为mm')
+    parser.add_argument('--samp_dist_preset_sub', type=ast.literal_eval, default=[510, 524, 538, 552, 566, 580, 594, 608, 622, 636, 650, 664, 678, 692, 706, 720, 820, 920, 1020, 1220], help='FBG传感点位置(B组), 单位为mm') #中心&A组
     parser.add_argument('--centre_fibre', type=bool, default=True, help='是否为1+x构型')
-    parser.add_argument('--interlaced_grating', type=bool, default=False, help='栅区是否交错排列')
-    parser.add_argument('--interlaced_offset', type=float, default=np.pi/3, help='交错排列时的角度偏移，单位为度')
+    parser.add_argument('--interlaced_grating', type=bool, default=True, help='栅区是否交错排列')
+    parser.add_argument('--interlaced_offset', type=float, default=-np.pi/3, help='B组相对A组的周向角差，单位为弧度')
     # parser.add_argument('--global_phases_set', type=float, default=-0.20541970186130923, help='全局相位，初始值为None') #全段相位
     parser.add_argument('--global_phases_set', type=float, default=None, help='全局相位，初始值为None')
     # 标定实验参数
     parser.add_argument('--interrogator', type=str, default='FiberTecc', choices=['FiberTecc', 'Hippo', 'LUNA'], help='解调仪器')
-    parser.add_argument('--active_channels', type=list, default=[1,2,3,4], help='传感器连接解调仪的通道以及其顺序')
+    parser.add_argument('--active_channels', type=list, default=[1, 2, 7, 4, 3, 6, 5], help='传感器连接解调仪的通道以及其顺序')
     parser.add_argument('--channel_change', type=bool, default=False, help='通道排布是否变化')
     parser.add_argument('--channel_layout', type=list, default=[(5, [2, 1, 4, 3, 7, 5, 6]), (7, [5, 1, 4, 3, 2, 7, 6]), (4, [7, 1, 4, 3, 2, 5, 6])], help='当通道排布出现错序，每一段的长度及其排布顺序(列表嵌套元组格式)')
     parser.add_argument('--active_angles', type=list, default=None, help='外围通道角度排布(度数)，若为None则默认均匀排布')
@@ -742,14 +742,19 @@ def parse_main_args(argv=None):
     args = parser.parse_args(argv)
     args._explicit_cli_parameters = sorted(explicit)
     args._sensor_package = package
-    if (package is not None and not args.multi_region_calib
-            and args.optimization_region != 'full'
-            and 'global_phases_set' not in explicit):
-        local_phases = package.get('provenance', {}).get('local_global_phases_set', {})
-        region_phases = local_phases.get(args.optimization_region, {})
-        local_phase = region_phases.get(str(args.direct), region_phases.get(args.direct))
-        if local_phase is not None:
-            args.global_phases_set = local_phase
+    if package is not None:
+        region = 'full' if args.multi_region_calib else args.optimization_region
+        provenance = package.get('provenance', {})
+        pose = provenance.get('regional_replay_geometry', {}).get(region, {}).get(str(args.direct), {})
+        for argument, table, pose_key in (
+                ('global_phases_set', 'local_global_phases_set', 'global_phase'),
+                ('rot_ang', 'local_rot_ang', 'rot_ang')):
+            if argument in explicit:
+                continue
+            values = provenance.get(table, {}).get(region, {})
+            value = pose.get(pose_key, values.get(str(args.direct), values.get(args.direct)))
+            if value is not None:
+                setattr(args, argument, value)
     return args
 
 

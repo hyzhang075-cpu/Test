@@ -298,6 +298,10 @@ class Initialiser(Sensor):
                 
                 # 此时 theta_0 是一个形状为 (num_channels_recon, total_points) 的矩阵
                 theta_0 = theta_0_combined[:, sort_idx]
+                # Match Sensor's post-merge Data crop before either init or recon.
+                theta_0 = theta_0[:, self.raw_trim_idx:]
+                if theta_0.shape[1] != len(self.samp_dist):
+                    raise ValueError('交错通道角度与区域采样点数量不一致')
             
             else:# 默认的均匀分布逻辑
                 theta_0 = np.array([[self.global_phases_set + i * 2*np.pi/self.num_channels_recon for i in range(self.num_channels_recon)]]).T
