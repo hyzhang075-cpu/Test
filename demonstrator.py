@@ -1255,6 +1255,7 @@ class Demonstrator(QMainWindow):
         # ---------- 处理数据 ----------
         calib_Data = Data[0] * 1e-6
         raw_data = calib_Data.copy()
+        calib_Data = self.recon.prepare_dynamic_frame(calib_Data)
 
         # 处理中心光纤的数据
         if self.recon.centre_fibre:

@@ -142,10 +142,12 @@ class Sensor:
         self.data_freq = data_freq
 
         # 动态数据处理相关参数
-        self.zero_points = {ch: [None] * self.total_points for ch in active_channels}
+        self.dynamic_raw_point_count = len(samp_dist_preset) if interlaced_grating else self.total_points
+        self.dynamic_interlaced = bool(interlaced_grating)
+        self.zero_points = {ch: [None] * self.dynamic_raw_point_count for ch in active_channels}
         self.is_zero_set = {ch: False for ch in active_channels}
         self._configure_zero_reference(use_stored_zero, zero_reference_path)
-        self.current_snapshot = np.zeros((self.total_points, self.num_channels))
+        self.current_snapshot = np.zeros((self.dynamic_raw_point_count, self.num_channels))
         self.buffer = bytearray()
         self.wavelength_jump_guard_enabled = bool(wavelength_jump_guard_enabled)
         self.wavelength_jump_threshold_pm = float(wavelength_jump_threshold_pm)
@@ -361,8 +363,8 @@ class Sensor:
             zero_reference_path,
             sensor_id=self.sensor_id,
             active_channels=list(self.active_channels),
-            total_points=self.total_points,
-            raw_trim_idx=self.raw_trim_idx,
+            total_points=getattr(self, 'dynamic_raw_point_count', self.total_points),
+            raw_trim_idx=0 if getattr(self, 'dynamic_interlaced', False) else self.raw_trim_idx,
         )
         self.zero_points = {channel: loaded[channel].tolist() for channel in self.active_channels}
         self.is_zero_set = {channel: True for channel in self.active_channels}
@@ -1514,8 +1516,8 @@ class Sensor:
                 
                 # 静态数据与几何都使用 raw_trim_idx 裁掉了固定件内部/区域外点；
                 # 动态包仍携带原始点号，因此必须应用相同偏移。
-                effective_idx = idx - self.raw_trim_idx
-                if phy_ch in self.active_channels and 0 <= effective_idx < self.total_points:
+                effective_idx = idx if getattr(self, 'dynamic_interlaced', False) else idx - self.raw_trim_idx
+                if phy_ch in self.active_channels and 0 <= effective_idx < len(self.current_snapshot):
                     # 找到对应的列
                     col = self.active_channels[phy_ch]
                     
@@ -1593,6 +1595,20 @@ class Sensor:
             print(f"解析错误: {e}")
             return []
 
+    def prepare_dynamic_frame(self, frame):
+        """Merge raw physical-channel samples before center compensation."""
+        frame = np.asarray(frame, dtype=float)
+        if self.interlaced_grating:
+            expected = (len(self.samp_dist_preset), self.num_channels)
+            if frame.shape != expected:
+                raise ValueError(f'交错实时原始帧应为 {expected}，收到 {frame.shape}')
+            frame = self._process_interlaced_grating(
+                frame, self.samp_dist_preset, self.samp_dist_preset_sub)
+            frame = frame[self.raw_trim_idx:, :]
+            if len(frame) != self.total_points:
+                raise ValueError('交错实时帧与区域空间点数不一致')
+        return frame
+
     def _prep_frame(self):
         """
         根据当前快照与归零基准，生成可供下游使用的单帧动态数据。
@@ -1620,7 +1636,7 @@ class Sensor:
         - 该方法不会修改内部状态，仅根据当前缓存状态生成一帧数据
         """
         # 准备发送的数据帧 (1, self.total_points, self.num_channels)
-        frame_to_send = np.zeros((self.total_points, self.num_channels))
+        frame_to_send = np.zeros_like(self.current_snapshot, dtype=float)
         
         # 遍历白名单列表，按顺序填充数据
         for phy_ch in self.active_channels:
@@ -1635,7 +1651,7 @@ class Sensor:
                 frame_to_send[:, i] = 0.0
 
         # 构造成 (1, self.total_points, self.num_channels) 的形状
-        return frame_to_send.reshape(1, self.total_points, self.num_channels)
+        return frame_to_send[None, :, :]
     
     # -------------------- Hippo动态数据接收 --------------------
     def receive_data_Hippo(self):
